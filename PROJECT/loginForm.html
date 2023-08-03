@@ -44,20 +44,20 @@
             <div class="middle">
 
                 <form action="post" method="post">
-                    <input type="email" name="email" id="user_email" placeholder="abc@mail.com">
-                    <input type="password" name="" id="user_pass" placeholder="**********">
+                    <input type="email" name="email" id="user_email" placeholder="abc@mail.com" required>
+                    <input type="password" name="" id="user_pass" placeholder="**********" required>
 
 
                     <div class="user_category">
                         <label for="admin" class="category_label">Admin</label>
-                        <input type="radio" name="user_category" id="admin">
+                        <input type="radio" name="user_category" id="admin" checked>
                         <label for="teacher" class="category_label">Teacher </label>
                         <input type="radio" name="user_category" id="teacher">
                         <label for="student" class="category_label">Student</label>
                         <input type="radio" name="user_category" id="student">
                     </div>
 
-                    <input type="button" value="Get In" id="login_button">
+                    <input type="submit" value="Get In" id="login_button">
                     <div>
                         <p><a href="">Forgot Password?</a></p>
                         <p>No Account/Guest? <a href="signup_enquiry.html">Sign UP</a></p>

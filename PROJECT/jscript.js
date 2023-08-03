@@ -46,3 +46,68 @@ window.addEventListener("load", () => {
 
 
 } )
+
+// <<<-------------------inquiry table summary ----------------->>>
+const summary1 = document.querySelector('.summary1')
+const summary2 = document.querySelector('.summary2')
+const summary3 = document.querySelector('.summary3')
+const summary4 = document.querySelector('.summary4')
+
+const summary_btn1 = document.querySelector('.summary_btn1')
+const summary_btn2 = document.querySelector('.summary_btn2')
+const summary_btn3 = document.querySelector('.summary_btn3')
+const summary_btn4 = document.querySelector('.summary_btn4')
+
+
+// var count=1;
+// var mousein = false;
+summary_btn1.addEventListener('mouseenter', () => {
+    summary1.classList.toggle('open1')
+    summary_btn1.classList.toggle('open1')
+  
+})
+summary_btn1.addEventListener('mouseleave', () => {
+    summary1.classList.toggle('open1')
+    summary_btn1.classList.toggle('open1')
+  
+})
+
+
+summary_btn2.addEventListener('mouseenter', () => {
+ 
+    summary2.classList.toggle('open1')
+    summary_btn2.classList.toggle('open1')
+    
+
+})
+summary_btn2.addEventListener('mouseleave', () => {
+ 
+    summary2.classList.toggle('open1')
+    summary_btn2.classList.toggle('open1')
+    
+
+})
+summary_btn3.addEventListener('mouseenter', () => {
+    summary3.classList.toggle('open1')
+    summary_btn3.classList.toggle('open1')
+    
+
+})
+summary_btn3.addEventListener('mouseleave', () => {
+    summary3.classList.toggle('open1')
+    summary_btn3.classList.toggle('open1')
+    
+
+})
+summary_btn4.addEventListener('mouseenter', () => {
+    summary4.classList.toggle('open1')
+    summary_btn4.classList.toggle('open1')
+    
+
+})
+summary_btn4.addEventListener('mouseleave', () => {
+    summary4.classList.toggle('open1')
+    summary_btn4.classList.toggle('open1')
+    
+
+})
