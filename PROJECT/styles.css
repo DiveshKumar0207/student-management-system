@@ -8,6 +8,7 @@
   --primary: #000;
   --secondary: #f5deb3;
   --tertiary: #494848;
+  --traycolor: #111827;
 }
 
 /* ---------------------------------------------------------loading animation ---------------------------------------------------    */
@@ -345,6 +346,11 @@
   padding: 0.4rem;
   filter: drop-shadow(0.5px 0.5px 1px blue);
 }
+#user_email:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
 #user_pass {
   width: 100%;
   border-style: none;
@@ -353,6 +359,11 @@
   margin-bottom: 1rem;
   padding: 0.4rem;
   filter: drop-shadow(0.5px 0.5px 1px blue);
+}
+#user_pass:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
 }
 
 .user_category {
@@ -365,6 +376,7 @@
   justify-content: center;
   font-size: 1rem;
 }
+
 .category_label {
   padding-right: 0.7rem;
   padding-left: 0.7rem;
@@ -375,6 +387,8 @@
 
 .user_category input[type="radio"] {
   transform: scale(1.5);
+
+  /* outline: 0; */
 }
 
 #login_button {
@@ -425,14 +439,13 @@
 
 .center_part {
   position: absolute;
-  height: 91vh;
+  height: 91.5vh;
   width: 80%;
   top: 3.9rem;
   left: 10%;
   background-color: rgb(247, 237, 224);
-  /* border: 1px solid chocolate; */
   margin: auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .enq_top {
@@ -755,7 +768,7 @@
 
   height: 17rem;
   width: 50vw;
-  min-width: 26rem;
+  min-width: 21rem;
   min-height: 16rem;
 
   margin: auto;
@@ -1490,13 +1503,25 @@ h2 {
 
 /*--------------------------------------------- admin_dashboard ----------------------------------------------*/
 
+.center_part_dashboard {
+  position: absolute;
+  height: 91vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background-color: rgb(247, 237, 224);
+  /* border: 1px solid chocolate; */
+  margin: auto;
+  overflow: hidden;
+}
+
 .admin_dashboard_tray {
   width: 95%;
   /* height: 10rem; */
   margin: 1rem auto;
   padding: 0.5rem;
 
-  background-color: #111827;
+  background-color: var(--traycolor);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1505,7 +1530,7 @@ h2 {
 .admin_dashboard_tray1 {
   width: 25%;
   min-width: 9.9rem;
-  height: 10rem;
+  height: 8rem;
   /* border-right: 0.1px solid rgba(48, 103, 192, 0.5); */
   padding: 1rem;
 }
@@ -1516,6 +1541,10 @@ h2 {
   color: #9ca3af;
   font-size: 1.2rem;
   text-transform: capitalize;
+}
+.admin_dashboard_tray1 p:nth-child(1) a {
+  color: #9ca3af;
+  text-decoration: none;
 }
 .admin_dashboard_tray1 p:nth-child(2) {
   color: white;
@@ -1623,13 +1652,7 @@ h2 {
 .notice_heading {
   position: relative;
 
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
-
   box-shadow: 0.5px 0.5px 8px silver, -0.5px -0.5px 8px silver;
-  box-shadow: inset 0.5px 0.5px 8px silver, inset -0.5px -0.5px 8px silver;
   /* height: 40rem; */
   max-width: 700px;
   margin: auto;
@@ -1644,10 +1667,24 @@ h2 {
   align-items: center;
   font-size: 1.5rem;
   font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
 }
 .notice_middle {
   padding: 1.3rem;
 }
+/* #notice_heading {
+  width: 15rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+#notice_heading:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+} */
 .notice_heading ul {
   list-style: none;
 }
@@ -1655,7 +1692,337 @@ h2 {
 .notice_heading textarea {
   width: 100%;
   height: 20rem;
+  padding: 1rem;
 }
-.notice_heading input[textarea] {
-  color: red;
+.notice_heading textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+
+/* <<<<-----------------------------------------------------student page-------------------------------------------------------->>>>>>>> */
+.student_tray {
+  width: 95%;
+  /* height: 10rem; */
+  margin: 1rem auto;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+.student_tray1 {
+  width: 30%;
+  min-width: 14rem;
+  height: 9rem;
+  background-color: #ffd166;
+  border-right: 0.1px solid rgba(48, 103, 192, 0.5);
+  border-radius: 1rem;
+
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.student_tray .student_tray1:nth-child(2) {
+  background-color: #06d6a0;
+}
+.student_tray .student_tray1:nth-child(3) {
+  background-color: #8338ec;
+}
+.student_tray1 p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+.student_tray1 p:nth-child(2) {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.student_tray1 span {
+  padding-right: 2rem;
+}
+.student_tray1 a {
+  text-decoration: none;
+  color: white;
+}
+
+/* <<<------------------------------------------------------add students---------------------------------------------------------->>>> */
+
+@import url("https://fonts.googleapis.com/css2?family=Dai+Banna+SIL:wght@300;400;500;600&family=Lora:wght@500;600&display=swap");
+.center_part_addstd {
+  position: absolute;
+  height: 91vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background-color: rgb(247, 237, 224);
+  margin: auto;
+  overflow: auto;
+}
+.add_students_top {
+  width: 100%;
+  background: linear-gradient(45deg, purple, purple, blue, purple);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+
+  font-family: "Dai Banna SIL", serif;
+}
+.add_students_middle {
+  margin: auto;
+  padding: 1rem;
+  width: 90%;
+}
+.add_students_middle form {
+  width: 90%;
+  margin: auto;
+}
+
+.add_students_middle table {
+  margin: auto;
+  width: 100%;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 10px salmon, -1px -1px 10px salmon;
+
+  padding-top: 1rem;
+}
+.add_students_middle table tr {
+  margin: auto;
+}
+
+.add_students_middle table tr,
+.add_students_middle table td {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.add_students_middle table td {
+  width: 22rem;
+
+  margin: 0.5rem 0.5rem;
+}
+.add_students_middle tr:nth-child(1) {
+  margin-top: 1rem;
+}
+.add_students_middle tr:nth-last-child(1) {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 692px) {
+  .add_students_middle table td {
+    width: 100%;
+
+    margin: 0.5rem 0.5rem;
+  }
+}
+
+.add_students_middle table td input:not([type="submit"]) {
+  padding: 10px;
+  width: 100%;
+}
+.add_students_middle table td input:not([type="submit"], [type="file"]) {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid skyblue;
+}
+
+.add_students_middle table td input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+.add_students_middle td input[type="submit"] {
+  padding: 0.3rem 1rem;
+  background: linear-gradient(135deg, purple, blueviolet);
+  border: 1px solid transparent;
+  border-radius: 5rem;
+}
+.add_students_middle table td select {
+  width: 100%;
+  background-color: #084cdf;
+  color: white;
+  border-radius: 0.6rem;
+}
+.add_students_middle td:nth-child(2) {
+  display: flex !important;
+  justify-content: right;
+  align-items: right;
+}
+.add_students_middle input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+.add_students_middle input[type="file"]::file-selector-button:hover {
+  background: #0e3ea6;
+}
+.add_students_middle input[type="submit"]:hover {
+  color: white;
+  filter: brightness(90%);
+}
+.add_students_middle td:nth-child(2) input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+
+.add_students_middle td:nth-child(1) input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+.add_students_middle td input[type="file"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+
+.add_students_middle input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  visibility: none;
+}
+
+/* <<<<------------------------------------------------------------fee ------------------------------------------>>>>>*/
+
+.center_part_fee {
+  position: absolute;
+  height: 91.5vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background: linear-gradient(45deg, #49a09d, #5f2c82 90%);
+  margin: auto;
+  overflow-y: auto;
+}
+.fee_top {
+  width: 100%;
+  background: linear-gradient(45deg, #5f2c82 60%, #49a09d);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+
+  font-family: "Dai Banna SIL", serif;
+}
+.fee_middle {
+  margin: auto;
+  padding: 3rem;
+  width: 90%;
+  font-family: sans-serif;
+  /* overflow: auto; */
+}
+.fee_middle table {
+  margin: auto;
+  width: 70%;
+
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0 0.4rem;
+}
+.fee_middle thead th {
+  background: #5b68a1;
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  width: 50%;
+  min-width: 8rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.fee_middle tbody tr {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 0.25px solid rgb(255, 255, 255, 0.2);
+  margin: 2px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.fee_middle tbody tr:nth-last-child(1) {
+  border-style: none;
+}
+.fee_middle td {
+  font-size: 1.3rem;
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+  width: 50%;
+}
+.fee_middle tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.fee_middle a {
+  text-decoration: none;
+  color: greenyellow;
+}
+/* <<<<--------------------------------------------------fee details-------------------------------------------------------->>>>> */
+
+.fee_details_middle {
+  width: 100%;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 0.5rem;
+
+  color: wheat;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  overflow: auto;
+}
+.fee_details_middle table {
+  margin: auto;
+  width: 70%;
+
+  color: white;
+}
+.fee_details_middle thead th {
+  /* position: sticky; */
+  /* top: 5rem; */
+  background: #5b68a1;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  width: 50%;
+  min-width: 8rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.fee_details_middle tbody tr {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 0.25px solid rgb(255, 255, 255, 0.2);
+  margin: 2px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.fee_details_middle tbody tr:nth-last-child(1) {
+  border-style: none;
+}
+.fee_details_middle td {
+  font-size: 1rem;
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+  /* width: 50%; */
+}
+.fee_details_middle tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.fee_details_middle a {
+  text-decoration: none;
+  color: greenyellow;
+}
+.fee_details_middle i {
+  font-size: 1.3rem;
+}
+.fee_details_middle td:nth-last-child(2) i {
+  font-size: 1.3rem;
+  color: darkturquoise;
+}
+.fee_details_middle a {
+  text-decoration: none;
 }
