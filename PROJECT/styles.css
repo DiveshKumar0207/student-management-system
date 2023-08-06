@@ -8,7 +8,6 @@
   --primary: #000;
   --secondary: #f5deb3;
   --tertiary: #494848;
-  --traycolor: #111827;
 }
 
 /* ---------------------------------------------------------loading animation ---------------------------------------------------    */
@@ -447,11 +446,21 @@
   margin: auto;
   /* overflow: hidden; */
 }
+.center_part_enquiry {
+  position: absolute;
+  height: 91.5vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background: linear-gradient(35deg, rgb(120, 17, 120), #2e3780);
+  margin: auto;
+  /* overflow: hidden; */
+}
 
 .enq_top {
   height: 22vh;
   max-width: 43rem;
-  border: 0.15rem solid green;
+  border: 0.15rem solid transparent;
   border-radius: 2rem;
   padding: 0.5rem;
   margin: auto;
@@ -708,12 +717,13 @@
 .enq_top p {
   font-size: 1.4rem;
   font-weight: 600;
-  color: brown;
+  color: red;
 }
 #enquiry_forms_no label {
   font-size: 1.3rem;
   padding-top: 1rem;
   font-weight: 450;
+  color: whitesmoke;
 }
 #inquiry_display {
   width: 9rem;
@@ -1201,14 +1211,7 @@ h2 {
   font-family: "Signika", sans-serif;
   /* line-height: 1em; */
 
-  background: linear-gradient(
-    var(--angle),
-    purple,
-    rgb(255, 0, 0),
-    brown,
-    green,
-    rgb(144, 41, 144)
-  );
+  background: linear-gradient(135deg, rgb(206, 15, 206) 40%, rgb(123, 27, 186));
   background-clip: border-box;
 
   -webkit-background-clip: text;
@@ -1509,7 +1512,8 @@ h2 {
   width: 80%;
   top: 3.9rem;
   left: 10%;
-  background-color: rgb(247, 237, 224);
+  background: linear-gradient(45deg, #49a09d, #5f2c82 90%);
+  /* background-color: rgb(247, 237, 224); */
   /* border: 1px solid chocolate; */
   margin: auto;
   overflow: hidden;
@@ -1521,7 +1525,7 @@ h2 {
   margin: 1rem auto;
   padding: 0.5rem;
 
-  background-color: var(--traycolor);
+  background-color: #111744;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1635,7 +1639,7 @@ h2 {
   margin: 0;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
-  color: #555;
+  color: whitesmoke;
 }
 
 @keyframes notice_animate {
@@ -1649,6 +1653,16 @@ h2 {
 
 /* -----------------------------------notice_entry----------------------- */
 
+.center_part_notice {
+  position: absolute;
+  height: 91.5vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background: linear-gradient(35deg, purple, #111744);
+  margin: auto;
+  /* overflow: hidden; */
+}
 .notice_heading {
   position: relative;
 
@@ -1673,18 +1687,7 @@ h2 {
 .notice_middle {
   padding: 1.3rem;
 }
-/* #notice_heading {
-  width: 15rem;
-  height: 2rem;
-  padding: 0.5rem;
-  border: 1px solid #ced4da;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-#notice_heading:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
-} */
+
 .notice_heading ul {
   list-style: none;
 }
@@ -1693,14 +1696,30 @@ h2 {
   width: 100%;
   height: 20rem;
   padding: 1rem;
+  background: rgb(180, 173, 173);
+  border-radius: 1rem;
+}
+.notice_heading textarea::placeholder {
+  color: black;
+  font-size: 1rem;
 }
 .notice_heading textarea:focus {
-  border-color: #80bdff;
+  border-color: blue;
   outline: 0;
-  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.15rem rgb(0, 0, 255, 0.2);
 }
 
 /* <<<<-----------------------------------------------------student page-------------------------------------------------------->>>>>>>> */
+.center_part_student {
+  position: absolute;
+  height: 91.5vh;
+  width: 80%;
+  top: 3.9rem;
+  left: 10%;
+  background: linear-gradient(45deg, #49a09d, #5f2c82 90%);
+  margin: auto;
+  /* overflow: hidden; */
+}
 .student_tray {
   width: 95%;
   /* height: 10rem; */
@@ -1715,7 +1734,7 @@ h2 {
   width: 30%;
   min-width: 14rem;
   height: 9rem;
-  background-color: #ffd166;
+  background-color: #4979a0;
   border-right: 0.1px solid rgba(48, 103, 192, 0.5);
   border-radius: 1rem;
 
@@ -1723,10 +1742,10 @@ h2 {
   margin: 0.5rem;
 }
 .student_tray .student_tray1:nth-child(2) {
-  background-color: #06d6a0;
+  background-color: #4f58a6;
 }
 .student_tray .student_tray1:nth-child(3) {
-  background-color: #8338ec;
+  background-color: #5f2c8b;
 }
 .student_tray1 p:nth-child(1) {
   font-size: 1.5rem;
@@ -1789,7 +1808,8 @@ h2 {
   margin: auto;
   width: 100%;
   border: 1px solid transparent;
-  box-shadow: 1px 1px 10px salmon, -1px -1px 10px salmon;
+  /* box-shadow: 1px 1px 10px salmon, -1px -1px 10px salmon; */
+  box-shadow: inset 1px 1px 1px blue, inset -1px -1px 1px purple;
 
   padding-top: 1rem;
 }
@@ -1839,16 +1859,18 @@ h2 {
   box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
 }
 .add_students_middle td input[type="submit"] {
-  padding: 0.3rem 1rem;
+  padding: 0.2rem 1rem;
   background: linear-gradient(135deg, purple, blueviolet);
   border: 1px solid transparent;
   border-radius: 5rem;
+  color: wheat;
 }
 .add_students_middle table td select {
   width: 100%;
   background-color: #084cdf;
   color: white;
   border-radius: 0.6rem;
+  font-size: 0.9rem;
 }
 .add_students_middle td:nth-child(2) {
   display: flex !important;
@@ -1863,7 +1885,9 @@ h2 {
   border-radius: 0.5rem;
   color: #fff;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  font-size: 0.9rem;
+
+  /* transition: background 0.2s ease-in-out; */
 }
 .add_students_middle input[type="file"]::file-selector-button:hover {
   background: #0e3ea6;
@@ -1875,20 +1899,24 @@ h2 {
 .add_students_middle td:nth-child(2) input[type="date"]::before {
   content: attr(data-placeholder);
   width: 100%;
+  font-size: 0.9rem;
 }
 
 .add_students_middle td:nth-child(1) input[type="date"]::before {
   content: attr(data-placeholder);
   width: 100%;
+  font-size: 0.9rem;
 }
 .add_students_middle td input[type="file"]::before {
   content: attr(data-placeholder);
   width: 100%;
 }
 
-.add_students_middle input[type="date"]:focus::before,
-input[type="date"]:valid::before {
-  visibility: none;
+.add_students_middle input[type="date"]:focus::before {
+  display: none;
+}
+.add_students_middle td input::placeholder {
+  font-size: 0.9rem;
 }
 
 /* <<<<------------------------------------------------------------fee ------------------------------------------>>>>>*/
@@ -1926,7 +1954,7 @@ input[type="date"]:valid::before {
 }
 .fee_middle table {
   margin: auto;
-  width: 70%;
+  width: 75%;
 
   color: white;
   border-collapse: separate;
@@ -1934,10 +1962,10 @@ input[type="date"]:valid::before {
 }
 .fee_middle thead th {
   background: #5b68a1;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding: 0.8rem;
   padding-left: 1rem;
-  width: 50%;
+  /* width: 50%; */
   min-width: 8rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -1951,10 +1979,10 @@ input[type="date"]:valid::before {
   border-style: none;
 }
 .fee_middle td {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 0.8rem;
   padding-left: 1.5rem;
-  width: 50%;
+  /* width: 50%; */
 }
 .fee_middle tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.3);
@@ -1979,7 +2007,7 @@ input[type="date"]:valid::before {
 }
 .fee_details_middle table {
   margin: auto;
-  width: 70%;
+  width: 95%;
 
   color: white;
 }
@@ -1990,7 +2018,7 @@ input[type="date"]:valid::before {
   font-size: 1.1rem;
   padding: 0.8rem;
   padding-left: 1rem;
-  width: 50%;
+  /* width: 5px; */
   min-width: 8rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -2025,4 +2053,101 @@ input[type="date"]:valid::before {
 }
 .fee_details_middle a {
   text-decoration: none;
+}
+
+/*  <<<<<--------------------------------------- attendance ------------------------------------------>>>>*/
+.fee_top_attendance {
+  width: 100%;
+  background: linear-gradient(35deg, purple, #111744);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+
+  font-family: "Dai Banna SIL", serif;
+}
+/* <<<----------------take attendance-------------------------->>>  */
+.attendance_middle {
+  margin: auto;
+  /* padding: 3rem; */
+  width: 90%;
+  font-family: sans-serif;
+  /* overflow: auto; */
+  /* border: 1px solid red; */
+}
+.attendance_middle table {
+  margin: auto;
+  width: 75%;
+  /* margin: 3rem; */
+
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0 0.4rem;
+}
+.attendance_middle thead th {
+  background: #5b68a1;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  /* width: 50%; */
+  min-width: 8rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.attendance_middle tbody tr {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 0.25px solid rgb(255, 255, 255, 0.2);
+  margin: 2px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.attendance_middle tbody tr:nth-last-child(1) {
+  border-style: none;
+}
+.attendance_middle td {
+  font-size: 1rem;
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+  /* width: 50%; */
+}
+.attendance_middle tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.attendance_middle input[type="date"] {
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.2rem 0.5rem;
+
+  border: none;
+  border-radius: 0.2rem;
+  color: wheat;
+  background: purple;
+}
+.attendance_middle input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+.attendance_middle input[type="date"]:focus::before {
+  display: none;
+}
+.attendance_middle select {
+  padding: 0.1rem;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  background-color: rgb(206, 204, 204);
+}
+.attendance_middle option:nth-child(1) {
+  background: green;
+}
+.attendance_middle option:nth-child(2) {
+  background: red;
+}
+.att_button {
+  background-color: green;
+  padding: 0.1rem 0.5rem;
+  border: none;
+  border-radius: 0.2rem;
+  width: max-content;
 }
