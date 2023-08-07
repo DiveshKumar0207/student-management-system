@@ -1508,7 +1508,7 @@ h2 {
 
 .center_part_dashboard {
   position: absolute;
-  height: 91vh;
+  height: 91.5vh;
   width: 80%;
   top: 3.9rem;
   left: 10%;
@@ -2076,7 +2076,7 @@ h2 {
   /* padding: 3rem; */
   width: 90%;
   font-family: sans-serif;
-  /* overflow: auto; */
+  overflow: auto;
   /* border: 1px solid red; */
 }
 .attendance_middle table {
@@ -2150,4 +2150,115 @@ h2 {
   border: none;
   border-radius: 0.2rem;
   width: max-content;
+}
+/* <<<<<--------------------------------------- courses -------------------------------------------------->>>>*/
+.courses_top {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  background: linear-gradient(35deg, skyblue, blue);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  letter-spacing: 0.5px;
+
+  font-family: "Dai Banna SIL", serif;
+}
+.courses_middle {
+  width: 80%;
+  margin: auto;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+.courses_middle table {
+  margin: auto;
+
+  width: 80%;
+
+  overflow: auto;
+}
+.courses_middle table thead th {
+  font-size: 1.1rem;
+  background-color: #b8daff;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  min-width: 8rem;
+  border-bottom: 1px solid rgb(122, 186, 255, 0.3);
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.courses_middle table tbody td {
+  font-size: 1rem;
+  background-color: rgb(184, 218, 255, 0.9);
+  border-bottom: 1px solid rgb(122, 186, 255);
+  padding: 0.8rem;
+  padding-left: 1.5rem;
+}
+.courses_middle tbody tr:hover {
+  background-color: rgba(255, 255, 255);
+}
+.courses_middle span {
+  display: flex;
+  justify-content: right;
+  font-size: 1.5rem;
+
+  padding: 0.5rem;
+}
+.courses_middle span a {
+  text-decoration: none;
+  color: orange;
+}
+.courses_middle tbody a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: green;
+}
+/*  <<<<-----------------add courses----------------------->>>>> */
+
+.courses_middle_add {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  overflow: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.courses_middle_card {
+  margin: auto;
+  width: 20rem;
+  padding: 2rem;
+  background: linear-gradient(35deg, purple, red);
+  border-radius: 0.5rem;
+}
+.courses_middle_card form {
+  display: flex;
+  flex-direction: column;
+}
+.courses_middle_card input {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border-style: none;
+  font-size: 0.9rem;
+  padding-left: 1rem;
+}
+.courses_middle_card input::placeholder {
+  font-size: 0.9rem;
+}
+.courses_middle_card input:not([type="submit"]):focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem hsl(0, 0%, 100%);
+}
+.courses_middle_card input[type="submit"] {
+  background: radial-gradient(blue, purple, red);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.courses_middle_card input[type="submit"]:hover {
+  transform: scale(1.1, 1.1);
+  transition: all 0.35s ease-out;
 }
