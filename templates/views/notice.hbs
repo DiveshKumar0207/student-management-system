@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+
+  <body>
+       <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <div class="center_part_notice">
+      <div class="notice_heading">
+        <div class="notice_top">Announce Something</div>
+
+        <div class="notice_middle">
+          <form action="" class="Notice_entry">
+            <ul>
+              <!-- <li>
+                            <label for="notice_heading" style="margin-bottom: 2rem;">Notice Heading : </label>
+                            <input type="text" name="" id="notice_heading">
+                        </li> -->
+
+              <li>
+                <textarea
+                  name=""
+                  id="txtarea"
+                  placeholder="Enter Notice...."
+                ></textarea>
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jscript.js"></script>
+  </body>
+</html>
