@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
+// require("dotenv").config();
 
 // studentschema
 const studentSchema = new mongoose.Schema({
@@ -47,7 +49,7 @@ const studentSchema = new mongoose.Schema({
     min: [8, "Must be at least 8, got {VALUE}"],
   },
 
-  location: {
+  address: {
     type: String,
     required: true,
     trim: true,
@@ -72,6 +74,10 @@ const studentSchema = new mongoose.Schema({
     contentType: String,
     data: Buffer,
   },
+  role: {
+    type: String,
+    default: "student",
+  },
 });
 
 const teacherSchema = new mongoose.Schema({
@@ -86,6 +92,19 @@ const teacherSchema = new mongoose.Schema({
     required: true,
     trim: true,
     uppercase: true,
+  },
+  teacherid: {
+    type: Number,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  telephone: {
+    type: Number,
+    required: true,
+    unique: true,
+    trim: true,
+    min: [10, "Must be at least 10, got {VALUE}"],
   },
   email: {
     type: String,
@@ -104,23 +123,19 @@ const teacherSchema = new mongoose.Schema({
     trim: true,
     min: [8, "Must be at least 8, got {VALUE}"],
   },
-  telephone: {
-    type: Number,
-    required: true,
-    unique: true,
-    trim: true,
-    min: [10, "Must be at least 10, got {VALUE}"],
-  },
-  location: {
+
+  address: {
     type: String,
     required: true,
     trim: true,
   },
-  rollno: {
+  teachingcourse: {
+    type: String,
+    required: true,
+  },
+  salary: {
     type: Number,
     required: true,
-    unique: true,
-    trim: true,
   },
 
   joiningdate: {
@@ -130,23 +145,30 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  profilepic: {
+    contentType: String,
+    data: Buffer,
+  },
+  role: {
+    type: String,
+    default: "teacher",
+  },
 });
 
-// Middleware to format joiningdate if not provided
-studentSchema.pre("save", function (next) {
-  if (!this.joiningdate) {
-    const d = new Date();
-    const year = d.getFullYear();
-    const month = d.getMonth() + 1;
-    let date = d.getDate();
-    date < 10 ? `0${date}` : date;
-    const defaultDate = `${year}-${month}-${date}`;
-    this.joiningdate = defaultDate;
-  }
-  next();
-});
+// middleware to generate jwt token
+// studentSchema.methods.generateAuthToken = async function () {
+//   try {
+//     const jwtToken = jwt.sign({ _id: this._id }, process.env.PRIVATE_KEY);
+//     // this.tokens = this.tokens.concat({ token: jwtToken });
+//     console.log(jwtToken);
+//     return jwtToken;
+//   } catch (error) {
+//     console.log(`jwt token error : ${error}`);
+//     throw error;
+//   }
+// };
 
-// middleware to hash password
+// middleware to hash password and default date
 studentSchema.pre("save", async function (next) {
   const saltRounds = 11;
 
@@ -156,6 +178,42 @@ studentSchema.pre("save", async function (next) {
     } catch (error) {
       throw new error("hash failed !");
     }
+  }
+
+  if (!this.joiningdate) {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    let date = d.getDate();
+    date < 10 ? `0${date}` : date;
+    const defaultDate = `${year}-${month}-${date}`;
+    this.joiningdate = defaultDate;
+  }
+
+  next();
+});
+
+// middleware for teacher schema
+
+teacherSchema.pre("save", async function (next) {
+  const saltRounds = 11;
+
+  if (this.isModified("password")) {
+    try {
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    } catch (error) {
+      throw new error("hash failed !");
+    }
+  }
+
+  if (!this.joiningdate) {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    let date = d.getDate();
+    date < 10 ? `0${date}` : date;
+    const defaultDate = `${year}-${month}-${date}`;
+    this.joiningdate = defaultDate;
   }
 
   next();

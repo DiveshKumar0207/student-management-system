@@ -358,6 +358,22 @@ body {
 
 }
 
+.nav button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nav button:hover {
+
+  font-size: 1.14rem;
+
+  transition: 0.2s;
+
+}
+
 /* ---------------------------------------------------------LogIN---------------------------------------------------------- */
 .login {
   height: 100vh;

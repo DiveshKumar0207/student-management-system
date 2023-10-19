@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const usercontroller = require("../controllers/usercontroller");
 const multer = require("multer");
+const verifyJWT = require("../../middleware/verifyJWT");
 
 //  Configure Multer for file uploads
 const storage = multer.memoryStorage(); //  Store file in memory
@@ -9,28 +10,42 @@ const upload = multer({ storage: storage });
 
 // home nd index page
 router.get("/", usercontroller.index);
+router.post("/", usercontroller.login); //login route
 router.get("/postInquiry", usercontroller.inquiry_post);
-router.get("/home", usercontroller.home);
+router.get("/admin/dashboard", usercontroller.home);
+router.get("/student/dashboard", verifyJWT, usercontroller.home_students);
+router.get("/teacher/dashboard", verifyJWT, usercontroller.home_teachers);
 
-//
-router.get("/inquiry", usercontroller.inquiry);
-router.get("/courses", usercontroller.courses);
-router.get("/teachers", usercontroller.teachers);
-router.get("/students", usercontroller.students);
-router.get("/attendance", usercontroller.attendance);
-router.get("/fee", usercontroller.fee);
-router.get("/notice", usercontroller.notice);
+// admin main pages
+router.get("/admin/inquiry", usercontroller.inquiry);
+router.get("/admin/courses", usercontroller.courses);
+router.get("/admin/teachers", usercontroller.teachers);
+router.get("/admin/students", usercontroller.students);
+router.get("/admin/attendance", usercontroller.attendance);
+router.get("/admin/fee", usercontroller.fee);
+router.get("/admin/notice", usercontroller.notice);
 
-//
-router.get("/addStudent", usercontroller.addStudent);
+// sub pages
+router.get("/admin/addStudent", usercontroller.addStudent);
+router.get("/admin/addTeacher", usercontroller.addTeacher);
+
+// regsitering routes sub-page
 router.post(
-  "/addStudent",
+  "/admin/addStudent",
   upload.single("profilepic"),
   usercontroller.register_student
 );
-router.get("/addTeacher", usercontroller.addTeacher);
+router.post(
+  "/admin/addTeacher",
+  upload.single("profilepic"),
+  usercontroller.register_teacher
+);
 
-//
-router.post("/", usercontroller.login);
+// logout routes
+router.get("/logout", usercontroller.logout);
+
+// //
+router.get("/teacher/attendance", verifyJWT, usercontroller.T_attendance);
+router.get("/student/viewAttendance", verifyJWT, usercontroller.S_attendance);
 
 module.exports = router;

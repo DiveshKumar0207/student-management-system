@@ -1,14 +1,26 @@
-"cookie-parser": "^1.4.3",
+# "cookie-parser": "^1.4.3" done
 
 "morgan": "^1.8.2",
 "serve-favicon": "^2.4.3"
 
-"cors" : 
+"cors" 
 
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "hbs": "^5.2.0",    
-    "mongoose": "^4.11.1",
+"sweetalert"
+
+"flash"
+"nodemailer"
+ "http-errors"
+"express-flash"
+"express-session"
+
+# uuid
+# date-fns
+    # "dotenv": "^8.2.0",
+    # "express": "^4.17.1",
+    # "hbs": "^5.2.0",    
+    # "mongoose": "^4.11.1",
+    # multer
+    #
 
 
 

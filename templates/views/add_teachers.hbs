@@ -23,40 +23,78 @@
     <div class="center_part_addstd">
         <div class="add_students_top">Add a Teacher</div>
         <div class="add_students_middle">
-            <form action="">
+              <form action="" method="post" enctype="multipart/form-data" >
                 <table>
                     <tr id="tr">
-                        <td> <input type="text" name="" id="" placeholder="First Name"> </td>
-                        <td> <input type="text" name="" id="" placeholder="Last Name"> </td>
+                        <td> <input type="text" name="firstname" placeholder="First Name" required> </td>
+                        <td> <input type="text" name="lastname" placeholder="Last Name" required> </td>
 
                     </tr>
                     <tr>
-                        <td> <input type="email" name="" id="" placeholder="hey12@email.com"> </td>
-                        <td> <input type="password" name="" id="" placeholder="password"> </td>
+                        <td> <input type="email" name="email" placeholder="hey12@email.com" required> </td>
+                        <td> <input type="password" name="password" placeholder="password" required> </td>
                     </tr>
 
                     <tr>
-                        <td> <input type="tel" name="" id="" placeholder=" 800 000 0000"  pattern="[789][0-9]{9}"></td>
-                        <td> <input type="text" name="" id="" placeholder="Location.."></td>
+                        <td> <input type="tel" name="telephone" placeholder=" 800 000 0000"   pattern="[789][0-9]{9}" required></td>
+                        {{!-- <td> <input type="text" name="address" placeholder="Address.." required></td> --}}
+                        <td><select name="" id="">
+                            <option value="">Male</option>
+                            <option value="">Female</option>
+                        </select></td>
+
                     </tr>
                     <tr>
-                        <td> <input type="text" name="" id="" placeholder="Roll no."> </td>
-                        <td> <input type="number" name="" id="" placeholder="Salary" min="0"></td>
+                        <td> <input type="number" name="teacherid" placeholder="Teacher ID" min="0" required> </td>
+                        <td> <input type="number" name="salary" placeholder="salary" min="0" required></td>
+                    </tr>
+                    {{!-- // TODO colspan issue --}}
+                     <tr> 
+                        <td  >
+                        {{!-- <fieldset >
+                        <legend>Address:</legend> --}}
+                        <input type="text" name="street" placeholder="Street">
+                        {{!-- <input type="text" name="city" placeholder="City">
+                        <input type="text" name="state" placeholder="State">
+                        <input type="text" name="zip" placeholder="ZIP Code"> --}}
+
+                        {{!-- </fieldset> --}}
+                        </td>
+                        <td><input type="text" name="city" placeholder="City"></td>
+                        <td><input type="text" name="state" placeholder="State"></td>
+                        <td><input type="text" name="zip" placeholder="ZIP Code"></td>
                     </tr>
                     <tr>
-                        <td><input type="date" name="" id="" data-placeholder="Date of Joining"></td>
-
-
-                        <td> <input type="date" name="" id="DOB" data-placeholder="D.O.B"></td>
+                        <td> <input type="date" name="joiningdate" data-placeholder="Date of Joining" ></td>
+                        <td> <input type="date" name="dob" id="DOB" data-placeholder="D.O.B" required></td>
                     </tr>
                     <tr>
-                        <td><input type="file" name="" id="" accept="image/*" data-placeholder="Profile img  "> </td>
+                        <td>
+                            <select name="teachingcourse" >
+                                <option value="">Teaching Course</option>
+                                <option value="html">html</option>
+                                <option value="js">js</option>
+                                <option value="css">css</option>
+                            </select>
 
+
+
+                        </td>
+                        <td><input type="file" name="profilepic"  accept="image/*" data-placeholder="Profile img  " required> </td>
+
+
+                    </tr>
+                    
+                    
+                      
+                    <tr>
+                        <td></td>
                         <td> <input type="submit" value="submit"></td>
                     </tr>
+                    
 
                 </table>
-
+                   
             </form>
         </div>
 

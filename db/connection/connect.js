@@ -14,5 +14,5 @@ mongoose
   })
   .catch((err) => {
     console.error("MongoDB connection failed : \n", err);
-    console.log(`MongoDB URL: ${process.env.mongoURL}`);
+    console.log(`MongoDB URL: ${process.env.mongoURL} \n`);
   });
