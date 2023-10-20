@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
+
 const usercontroller = require("../controllers/usercontroller");
-const multer = require("multer");
+const registerUser = require("../controllers/registerUser");
+const logInOut = require("../controllers/logInOut");
+
 const verifyJWT = require("../../middleware/verifyJWT");
 
+const multer = require("multer");
 //  Configure Multer for file uploads
 const storage = multer.memoryStorage(); //  Store file in memory
 const upload = multer({ storage: storage });
 
 // home nd index page
 router.get("/", usercontroller.index);
-router.post("/", usercontroller.login); //login route
+router.post("/", logInOut.login); //login route
 router.get("/postInquiry", usercontroller.inquiry_post);
 router.get("/admin/dashboard", usercontroller.home);
 router.get("/student/dashboard", verifyJWT, usercontroller.home_students);
@@ -33,16 +37,16 @@ router.get("/admin/addTeacher", usercontroller.addTeacher);
 router.post(
   "/admin/addStudent",
   upload.single("profilepic"),
-  usercontroller.register_student
+  registerUser.register_student
 );
 router.post(
   "/admin/addTeacher",
   upload.single("profilepic"),
-  usercontroller.register_teacher
+  registerUser.register_teacher
 );
 
 // logout routes
-router.get("/logout", usercontroller.logout);
+router.get("/logout", logInOut.logout);
 
 // //
 router.get("/teacher/attendance", verifyJWT, usercontroller.T_attendance);

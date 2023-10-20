@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
     try {
       jwt.verify(token, publicKey, { algorithms: "ES256" });
       console.log(`verified token `);
-      console.log(req.user);
+      // console.log(req.user);
       next();
     } catch (error) {
       console.log(`verify error : ${error}`);
