@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const Address = require("./addressSchema");
 
 const teacherSchema = new mongoose.Schema({
   firstname: {
@@ -14,6 +15,10 @@ const teacherSchema = new mongoose.Schema({
     required: true,
     trim: true,
     uppercase: true,
+  },
+  gender: {
+    type: String,
+    required: true,
   },
   teacherid: {
     type: Number,
@@ -33,6 +38,7 @@ const teacherSchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true,
+    lowercase: true,
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new error("Invalid Email !");
@@ -46,11 +52,8 @@ const teacherSchema = new mongoose.Schema({
     min: [8, "Must be at least 8, got {VALUE}"],
   },
 
-  address: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  address: Address.schema,
+
   teachingcourse: {
     type: String,
     required: true,

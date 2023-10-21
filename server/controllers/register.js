@@ -13,10 +13,16 @@ exports.register_student = async (req, res) => {
     const stdRegister = new studentRegister({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      gender: req.body.gender,
       email: req.body.email,
       password: req.body.password,
       telephone: req.body.telephone,
-      address: req.body.address,
+      address: {
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        pincode: req.body.pincode,
+      },
       rollno: req.body.rollno,
       fees: req.body.fees,
       course: req.body.course,
@@ -31,8 +37,14 @@ exports.register_student = async (req, res) => {
       };
     }
 
-    await stdRegister.save();
-    console.log("Successful registration of Student.");
+    await stdRegister
+      .save()
+      .then(() => {
+        console.log("Successful Registration of a Student");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     res.status(201).render("add_Students");
   } catch (error) {
@@ -47,10 +59,16 @@ exports.register_teacher = async (req, res) => {
     const stdRegister = new teacherRegister({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      gender: req.body.gender,
       email: req.body.email,
       password: req.body.password,
       telephone: req.body.telephone,
-      address: req.body.address,
+      address: {
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        pincode: req.body.pincode,
+      },
       teacherid: req.body.teacherid,
       salary: req.body.salary,
       teachingcourse: req.body.teachingcourse,
@@ -64,8 +82,15 @@ exports.register_teacher = async (req, res) => {
         data: req.file.buffer,
       };
     }
-    await stdRegister.save();
-    console.log("Successful registration of Teacher.");
+
+    await stdRegister
+      .save()
+      .then(() => {
+        console.log("Successful Registration of a Teacher");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     res.status(201).render("add_teachers");
   } catch (error) {
     res.status(400).send(error);

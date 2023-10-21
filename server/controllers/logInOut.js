@@ -37,11 +37,10 @@ exports.login = async (req, res) => {
     //TODO token regenrate hona chaiye after sometime, for secuirty purpose
     // genrating jwt token
     try {
-      const token = jwt.sign(
-        { email: user.email, role: user.role },
-        privateKey,
-        { algorithm: "ES256", expiresIn: "1h" }
-      );
+      const token = jwt.sign({ _id: user._id, role: user.role }, privateKey, {
+        algorithm: "ES256",
+        expiresIn: "1h",
+      });
 
       console.log(` token generated`);
 

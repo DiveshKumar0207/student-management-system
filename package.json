@@ -4,7 +4,7 @@
   "description": "IT manages teachers and students fees and all data.\r Admin can add students and teachers, and create there accounts\r and take attendance of students.\r Teacher can also take attendance of students.\r -> student can see their fee receipt and pay fee online",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js -e hbs,js "
+    "dev": "nodemon app.js -e hbs,js,css "
   },
   "author": "",
   "license": "ISC",

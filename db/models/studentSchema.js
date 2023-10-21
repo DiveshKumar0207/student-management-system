@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const Address = require("./addressSchema");
+
 // const jwt = require("jsonwebtoken");
 // require("dotenv").config();
 
-// studentschema
 const studentSchema = new mongoose.Schema({
   firstname: {
     type: String,
@@ -17,6 +18,10 @@ const studentSchema = new mongoose.Schema({
     required: true,
     trim: true,
     uppercase: true,
+  },
+  gender: {
+    type: String,
+    required: true,
   },
   rollno: {
     type: Number,
@@ -36,6 +41,7 @@ const studentSchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true,
+    lowercase: true,
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new error("Invalid Email !");
@@ -49,11 +55,8 @@ const studentSchema = new mongoose.Schema({
     min: [8, "Must be at least 8, got {VALUE}"],
   },
 
-  address: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  address: Address.schema,
+
   course: {
     type: String,
     required: true,

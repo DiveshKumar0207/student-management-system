@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const usercontroller = require("../controllers/usercontroller");
-const registerUser = require("../controllers/registerUser");
+const registerUser = require("../controllers/register");
 const logInOut = require("../controllers/logInOut");
 
 const verifyJWT = require("../../middleware/verifyJWT");

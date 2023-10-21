@@ -1,5 +1,16 @@
-# "cookie-parser": "^1.4.3" done
+ https://snyk.io/
+ 
+ https://expressjs.com/en/advanced/best-practice-security.html  
 
+ https://github.com/advisories?query=type%3Areviewed
+
+ https://blog.risingstack.com/node-js-security-checklist/
+
+ https://sqlmap.org/
+
+
+
+# "cookie-parser": "^1.4.3" done
 "morgan": "^1.8.2",
 "serve-favicon": "^2.4.3"
 
@@ -13,8 +24,35 @@
 "express-flash"
 "express-session"
 
-# uuid
-# date-fns
+"csurf"
+"helmet"
+
+"var ratelimit = require('koa-ratelimit');
+var redis = require('redis');
+var koa = require('koa');"
+
+" uuid"
+ "date-fns"
+
+"cookie-session"--> want to know  more, is res.cookies({}), nd this works same ...blahblah
+
+***-->>> sanitizinf user input against xss
+1) Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
+2) Defend against SQL injection attacks by using parameterized queries or prepared statements.
+3) Use the open-source sqlmap tool to detect SQL injection vulnerabilities in your app.
+4) Use the nmap and sslyze tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
+5) Use safe-regex to ensure your regular expressions are not susceptible to regular expression denial of service attacks.
+
+
+"Prevent brute-force attacks against authorization"
+    *A simple and powerful technique is to block authorization attempts using two metrics:
+1) The first is number of consecutive failed attempts by the same user name and IP address.
+2) The second is number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
+rate-limiter-flexible package provides tools to make this technique easy and fast. You can find an example of brute-force protection in the documentation
+
+-->>child_process.execFile.
+
+
     # "dotenv": "^8.2.0",
     # "express": "^4.17.1",
     # "hbs": "^5.2.0",    

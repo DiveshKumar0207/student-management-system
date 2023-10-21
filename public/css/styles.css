@@ -380,17 +380,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgb(163, 155, 155, 0.2);
 }
 
 .login .card {
-  height: min-content;
-  width: 35rem;
+  height: 30rem;
+  max-width: 30rem;
   /*to be added*/
   background-color: rgb(247, 237, 224);
   border: 1px solid silver;
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding: 0.9rem;
+
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .top {
@@ -410,9 +412,10 @@ body {
       green,
       rgb(144, 41, 144));
   background-clip: border-box;
-
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .middle {
@@ -425,88 +428,99 @@ body {
   text-transform: uppercase;
 }
 
-#user_email {
+.user_login {
   width: 100%;
-  border-style: none;
-  border-radius: 0.3rem;
-  height: 3rem;
-  margin-bottom: 2rem;
-  padding: 0.4rem;
-  filter: drop-shadow(0.5px 0.5px 1px blue);
-}
 
-#user_email:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
-}
-
-#user_pass {
-  width: 100%;
-  border-style: none;
   border-radius: 0.3rem;
-  height: 3rem;
+  /* height: 2rem; */
   margin-bottom: 1rem;
-  padding: 0.4rem;
-  filter: drop-shadow(0.5px 0.5px 1px blue);
+  padding: 0.6rem;
+  /* filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 255, 0.2)); */
+  box-shadow: 3px 3px 6px rgba(21, 43, 212, 0.1);
+
+
+  border: 1px solid skyblue;
+  background-color: whitesmoke;
 }
 
-#user_pass:focus {
+.user_login:focus {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
 }
+
 
 .user_category {
   height: 3rem;
   width: 100%;
-  /* vertical-align: baseline; */
+
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .category_label {
-  padding: 0 0.7rem;
-  font-size: 1.2rem;
+  padding: 0 1rem;
+
   text-transform: uppercase;
   letter-spacing: 0.9px;
+  cursor: pointer;
 }
+
+.user_category input[type="radio"]+label {
+  background-color: #ccc;
+  padding: 5px 10px;
+  margin: 0 0.5rem;
+
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.user_category input[type="radio"]:checked+label {
+  background-color: #49a09d;
+  color: white;
+}
+
 
 .user_category input[type="radio"] {
-  transform: scale(1.4);
+  display: none;
 
-  /* outline: 0; */
 }
 
+
 #login_button {
-  width: 100%;
-  height: 3rem;
-
-  border: 0.1rem solid gray;
-  border-radius: 0.5rem;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 4px;
   color: #fff;
-  background-color: #a486fd;
+  background-color: #4b89ed;
 
-  font-size: 1rem;
-  text-shadow: 1px 1px 0px #000;
-  filter: drop-shadow(0.5px 0.5px 1px skybllue);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-  padding: 0.4rem;
-  margin-bottom: 1rem;
+
+
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+  margin: 0.5rem 0;
 }
 
 #login_button:hover {
-  background-color: #8f6df7;
-
-  filter: brightness(105%);
+  background-color: #3578e5;
+  /* Darker blue on hover */
+  transform: translateY(-2px);
+  /* A slight upward lift on hover */
 }
+
 
 .login .card p {
   text-align: center;
-  margin-bottom: 0.7rem;
+  margin: 0.7rem 0;
+  font-size: 0.9rem;
 }
 
 
@@ -1937,10 +1951,9 @@ h2 {
 
 /* <<<------------------------------------------------------add students---------------------------------------------------------->>>> */
 
-
 .center_part_addstd {
   position: absolute;
-  height: 91vh;
+  height: 91.2vh;
   width: 80%;
   top: 3.9rem;
   left: 10%;
@@ -1958,7 +1971,6 @@ h2 {
   color: white;
   font-size: 2rem;
   letter-spacing: 0.5px;
-
   font-family: "Dai Banna SIL", serif;
 }
 
@@ -1971,20 +1983,24 @@ h2 {
 .add_students_middle form {
   width: 90%;
   margin: auto;
+
 }
 
 .add_students_middle table {
   margin: auto;
+  /* width: 80%; */
   width: 100%;
-  border: 1px solid transparent;
-  /* box-shadow: 1px 1px 10px salmon, -1px -1px 10px salmon; */
-  box-shadow: inset 1px 1px 1px blue, inset -1px -1px 1px purple;
 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  border: 2px solid blue;
+  border-left: 2px solid purple;
+  border-top: 2px solid purple;
   padding-top: 1rem;
 }
 
 .add_students_middle table tr {
   margin: auto;
+
 }
 
 .add_students_middle table tr,
@@ -1995,26 +2011,42 @@ h2 {
 }
 
 .add_students_middle table td {
-  width: 22rem;
-
+  /* max-width: 25rem; */
+  width: 45%;
   margin: 0.5rem 0.5rem;
 }
 
+.add_students_middle tr:nth-child(3) td:nth-child(2) {
+  /* border: 1px solid skyblue; */
+  display: inherit;
+  align-items: center;
+  background-color: rgb(135, 206, 235, 0.2);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.add_students_middle tr:nth-child(5) td {
+
+  width: 44rem;
+  max-width: 50rem;
+  padding: 0 1rem;
+
+}
+
 .add_students_middle tr:nth-child(1) {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .add_students_middle tr:nth-last-child(1) {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 692px) {
-  .add_students_middle table td {
-    width: 100%;
 
-    margin: 0.5rem 0.5rem;
-  }
+.add_students_middle fieldset {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+
 
 .add_students_middle table td input:not([type="submit"]) {
   padding: 10px;
@@ -2025,6 +2057,7 @@ h2 {
   padding: 10px;
   width: 100%;
   border: 1px solid skyblue;
+  background-color: whitesmoke;
 }
 
 .add_students_middle table td input:focus {
@@ -2034,19 +2067,43 @@ h2 {
 }
 
 .add_students_middle td input[type="submit"] {
-  padding: 0.2rem 1rem;
-  background: linear-gradient(135deg, purple, blueviolet);
+
+  /* background: linear-gradient(135deg, #ff6b6b, #d32f2f); */
+  /* background: linear-gradient(135deg, #4dabf5, #1976d2); */
+  background-color: #f54242;
   border: 1px solid transparent;
-  border-radius: 5rem;
-  color: wheat;
+  border-radius: 8px;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.1s;
+}
+
+.add_students_middle input[type="submit"]:hover {
+  /* background: linear-gradient(135deg, #ff4848, #c62828); */
+  /* background: linear-gradient(135deg, #ff6b6b, #d32f2f); */
+  background: #d63030;
+  transform: scale(1.05);
+
+
 }
 
 .add_students_middle table td select {
   width: 100%;
-  background-color: #084cdf;
-  color: white;
   border-radius: 0.6rem;
+  padding: 0.3rem 0.5rem;
   font-size: 0.9rem;
+
+  /* Remove default arrow on Webkit,Mozilla,other browsers */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('../img/arrow-down-short.svg') no-repeat right center;
+  background-color: #49a09d;
+  color: white;
 }
 
 .add_students_middle td:nth-child(2) {
@@ -2055,38 +2112,43 @@ h2 {
   align-items: right;
 }
 
+
+
 .add_students_middle input[type="file"]::file-selector-button {
   margin-right: 20px;
   border: none;
-  background: #084cdf;
+  /* background: #4dabf5; */
+  background: #f39c12;
   padding: 0.3rem 0.5rem;
   border-radius: 0.5rem;
   color: #fff;
   cursor: pointer;
   font-size: 0.9rem;
-
-  /* transition: background 0.2s ease-in-out; */
 }
 
 .add_students_middle input[type="file"]::file-selector-button:hover {
-  background: #0e3ea6;
+  background: #d68711;
 }
 
-.add_students_middle input[type="submit"]:hover {
-  color: white;
-  filter: brightness(90%);
-}
+
 
 .add_students_middle td:nth-child(2) input[type="date"]::before {
   content: attr(data-placeholder);
   width: 100%;
   font-size: 0.9rem;
+
 }
 
 .add_students_middle td:nth-child(1) input[type="date"]::before {
   content: attr(data-placeholder);
   width: 100%;
   font-size: 0.9rem;
+
+}
+
+.add_students_middle input[type="date"]:focus::before {
+  display: none;
+  content: attr(data-placeholder);
 }
 
 .add_students_middle td input[type="file"]::before {
@@ -2094,12 +2156,134 @@ h2 {
   width: 100%;
 }
 
-.add_students_middle input[type="date"]:focus::before {
-  display: none;
-}
+
 
 .add_students_middle td input::placeholder {
   font-size: 0.9rem;
+}
+
+.add_students_middle .radio-group input[type="radio"] {
+  display: none;
+}
+
+.add_students_middle .radio-group label {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0 0.7rem;
+
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+
+  font-size: 0.9rem;
+}
+
+.add_students_middle .radio-group input[type="radio"]+label {
+  background-color: #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.add_students_middle .radio-group input[type="radio"]:checked+label {
+  background-color: #49a09d;
+  color: white;
+}
+
+.address-fieldset {
+  border: 1px solid #bdbaba;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+.address-fieldset legend {
+  font-weight: 600;
+}
+
+.address-fieldset input {
+  width: 100%;
+  margin: 5px;
+}
+
+
+@media (min-width: 768px) and (max-width: 1240px) {
+
+  .add_students_middle table td {
+
+    min-width: 10rem;
+    /* max-width: 15rem; */
+    /* Reset to 100% for smaller screens */
+  }
+
+  .add_students_middle tr:nth-child(5) td {
+    max-width: 30rem;
+
+  }
+}
+
+@media (max-width: 768px) and (min-width: 500px) {
+
+  .add_students_middle table td,
+  .add_students_middle tr:nth-child(5) td {
+    width: 100%;
+    /* Reset to 100% for smaller screens */
+  }
+
+  .add_students_middle table {
+    width: 100%;
+  }
+
+  .add_students_middle {
+    width: 100%;
+    padding: 0rem;
+  }
+
+  .address-fieldset {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+  }
+
+
+}
+
+@media (max-width: 490px) {
+
+  .add_students_middle table td,
+  .add_students_middle tr:nth-child(5) td {
+    width: 100%;
+  }
+
+  .add_students_middle table {
+    width: 100%;
+    border: none;
+    padding: 0rem;
+  }
+
+  .add_students_middle {
+    width: 100%;
+  }
+
+  .address-fieldset {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    width: 100%;
+  }
+
 }
 
 /* <<<<------------------------------------------------------------fee ------------------------------------------>>>>>*/
