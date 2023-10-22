@@ -78,6 +78,7 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     default: "teacher",
   },
+  refreshtokens: [String],
 });
 
 // middleware for teacher schema

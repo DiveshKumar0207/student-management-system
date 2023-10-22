@@ -3,10 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const Address = require("./addressSchema");
 
-// const jwt = require("jsonwebtoken");
-// require("dotenv").config();
-
-const studentSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
   firstname: {
     type: String,
     required: true,
@@ -23,7 +20,7 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  rollno: {
+  teacherid: {
     type: Number,
     required: true,
     unique: true,
@@ -57,12 +54,8 @@ const studentSchema = new mongoose.Schema({
 
   address: Address.schema,
 
-  course: {
+  teachingcourse: {
     type: String,
-    required: true,
-  },
-  fees: {
-    type: Number,
     required: true,
   },
 
@@ -79,26 +72,14 @@ const studentSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "student",
+    default: "admin",
   },
   refreshtokens: [String],
 });
 
-// middleware to generate jwt token
-// studentSchema.methods.generateAuthToken = async function () {
-//   try {
-//     const jwtToken = jwt.sign({ _id: this._id.toString() }, process.env.PRIVATE_KEY);
-//     // this.tokens = this.tokens.concat({ token: jwtToken });
-//     console.log(jwtToken);
-//     return jwtToken;
-//   } catch (error) {
-//     console.log(`jwt token error : ${error}`);
-//     throw error;
-//   }
-// };
+// middleware for admin schema
 
-// middleware to hash password and default date
-studentSchema.pre("save", async function (next) {
+adminSchema.pre("save", async function (next) {
   const saltRounds = 11;
 
   if (this.isModified("password")) {
@@ -122,6 +103,6 @@ studentSchema.pre("save", async function (next) {
   next();
 });
 
-const studentRegister = new mongoose.model("studentregister", studentSchema);
+const adminRegister = new mongoose.model("adminregister", adminSchema);
 
-module.exports = { studentRegister };
+module.exports = { adminRegister };

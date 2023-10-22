@@ -132,6 +132,8 @@ dist
 # env 
 .env
 
+.vscode
+
 # pem 
 private_key.pem
 public_key.pem
