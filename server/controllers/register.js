@@ -43,10 +43,10 @@ exports.register_student = async (req, res) => {
         console.log("Successful Registration of a Student");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(`save error:  ${error}`);
       });
 
-    res.status(201).render("add_Students");
+    res.status(201).redirect("/admin/addStudent");
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
@@ -89,9 +89,9 @@ exports.register_teacher = async (req, res) => {
         console.log("Successful Registration of a Teacher");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(`save error:  ${error}`);
       });
-    res.status(201).render("add_teachers");
+    res.status(201).redirect("/admin/addTeacher");
   } catch (error) {
     res.status(400).send(error);
     console.log(error);

@@ -58,14 +58,19 @@ exports.refresh = async (req, res) => {
     console.log(`new-accessToken generated `);
 
     // set accessToken --> new cookie
-    await res.cookie("jwtAccess", newAccessToken, {
-      httpOnly: true,
-    });
-    console.log("token set");
+    try {
+      await res.clearCookie("jwtAccess");
+      await res.cookie("jwtAccess", newAccessToken, {
+        httpOnly: true,
+      });
+      console.log("token set-");
+    } catch (err) {
+      console.log(`token regeneration err : ${err}`);
+    }
 
     // console.log(req.cookies);
 
-    res.status(200).json({ message: "success" });
+    res.status(200);
     // }
   } catch (err) {
     console.log(`error: ${err}`);

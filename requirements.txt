@@ -70,23 +70,26 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 #   title="Enter an ID consisting of 4-8 hexadecimal digits"
 #   autocomplete="new-password" />
 
-1. refreshToken code $$$ refreshToken--change on every time      --CHECK--
-2. roles define                                                  --CHECK--
+1. refreshToken code $$$ refreshToken--change on every time      --BUGS--       --REFRESHING-REFRESH-TOKEN--
+2. roles define                                                  --DONE--
 3. otp/mail verification
 4. strong password, forget-password otpVerify,reset-pass page  
 5. logoutAll button
-6. course crud
-7. student/teacher update $ delete $ view on screen                --WORKING--
-8. same for teacher
+6. course crud                                                    --DONE--      
+7. student/teacher update $ delete $ view on screen               --BUG--      --SELECTED-ATTRIBUTE-ISSUE--
+8. same for teacher                                               --BUG--      --SELECTED-ATTRIBUTE-ISSUE--
 9. post inquiry handling
-10. notice
+10. notice                                                        --DONE--
 11. payment gateway
 12. profile view
 13.dashboard for all
 14. Attendance view and mark
-15. "cookie-session/exxpress- cookie use--->INSTEAD OF NORMAL ONE
-        * flash messages
-16. admin database
+15. "cookie-session/exxpress"- cookie use--->INSTEAD OF NORMAL ONE
+        * flash messages 
+# 16. admin database
 17. parent-pages (optional)
 18. more client side validation
-19. correction of date input
+19. correction of date input                                       --DONE--
+
+ERROR :
+dashboard:1  Access to fetch at 'http://localhost:3000/refresh' from origin 'http://127.0.0.1:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.

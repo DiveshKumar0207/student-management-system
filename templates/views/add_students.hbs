@@ -116,6 +116,7 @@
                   type="date"
                   name="joiningdate"
                   data-placeholder="Date of Joining"
+                  required
                 />
               </td>
               <td>
@@ -131,9 +132,12 @@
               <td>
                 <select name="course" required>
                   <option value="" disabled selected>Student Course</option>
-                  <option value="html">HTML</option>
-                  <option value="js">JavaScript</option>
-                  <option value="css">CSS</option>
+
+                   {{#each courseAvailable}}
+                  <option value="{{this.courseName}}" >{{this.courseName}}
+                  </option>
+                  {{/each}}
+                  
                 </select>
               </td>
               <td>

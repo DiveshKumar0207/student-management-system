@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>head }}
+
+</head>
+
+<body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <div class="center_part_fee">
+        <div class="courses_top"> Update Course </div>
+        <div class="courses_middle_add">
+
+            <div class="courses_middle_card">           
+
+               {{!-- {{#each updateDetail}} --}}
+                <form action="/updateCourse/{{updateDetail._id}}" method="post">
+               
+                    <input type="text" name="courseID" value="{{updateDetail.courseID}}" placeholder="Course ID" required>
+                    <input type="text" name="courseName" value="{{updateDetail.courseName}}" placeholder="Course Name" required>
+                    <input type="number" name="courseFee" value="{{updateDetail.courseFee}}" placeholder="Fees..." min="0" required>
+                
+                    <input type="submit" value="Update">
+                </form>
+              {{!-- {{/each}} --}}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/jscript.js"></script>
+</body>
+
+</html>

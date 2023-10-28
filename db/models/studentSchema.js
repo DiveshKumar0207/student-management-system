@@ -65,6 +65,9 @@ const studentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  age: {
+    type: Number,
+  },
 
   joiningdate: {
     type: String,

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   {{> head}}
+    {{>head}}
 
 </head>
 
@@ -20,47 +20,41 @@
     {{> sidebar}}
     {{!-- sidebar end --}}
 
-    <div class="center_part_addstd">
-      <div class="add_students_top">Add a Teacher</div>
+
+     <div class="center_part_addstd">
+      <div class="add_students_top">Student Update</div>
       <div class="add_students_middle">
 
-        <form action="" method="post" enctype="multipart/form-data">
+             {{#each studentData}}
+        <form action="/updateStudent/{{_doc._id}}" method="post" enctype="multipart/form-data">
           <table>
             <tr>
-
               <td>
                 <input
                   type="text"
                   name="firstname"
+                  value="{{_doc.firstname}}"
                   placeholder="First Name"
                   required
                 />
               </td>
               <td>
-                <input type="text" name="lastname" placeholder="Last Name"
+                <input type="text" name="lastname" value="{{_doc.lastname}}" placeholder="Last Name"
                 required />
               </td>
             </tr>
-
             <tr>
               <td>
-                <input type="email" name="email" placeholder="example123@gmail.com" required />
+                <input type="email" name="email" value="{{_doc.email}}" placeholder="example@123gmail.com" required />
               </td>
-              <td>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                />
-              </td>
+              <td></td>
             </tr>
-
             <tr>
               <td>
                 <input
                   type="tel"
                   name="telephone"
+                  value="{{_doc.telephone}}"
                   placeholder="800 000 0000"
                   pattern="[789][0-9]{9}"
                   required
@@ -73,21 +67,29 @@
                     name="gender"
                     id="male"
                     value="male"
-                    checked
+                    {{#if (eq _doc.gender "male")}} checked {{/if}}
+                   
                   />
                   <label for="male" >male</label>
-                  <input type="radio" name="gender" id="female" value="female" />
+
+                  <input 
+                    type="radio" 
+                    name="gender" 
+                    id="female" 
+                    value="female" 
+                    {{#if (eq _doc.gender "female")}} checked {{/if}} 
+                  />
                   <label for="female" >female</label>
                 </div>
               </td>
             </tr>
-
             <tr>
               <td>
                 <input
                   type="number"
-                  name="teacherid"
-                  placeholder="Teacher ID"
+                  name="rollno"
+                  value="{{_doc.rollno}}"
+                  placeholder="Roll no."
                   min="0"
                   required
                 />
@@ -95,32 +97,32 @@
               <td>
                 <input
                   type="number"
-                  name="salary"
-                  placeholder="salary"
+                  name="fees"
+                  value="{{_doc.fees}}"
+                  placeholder="fees"
                   min="0"
                   required
                 />
               </td>
             </tr>
-
             <tr>
               <td>
                 <fieldset class="address-fieldset">
                   <legend>Address:</legend>
-                  <input type="text" name="street" placeholder="Street" />
-                  <input type="text" name="city" placeholder="City" required/>
-                  <input type="text" name="state" placeholder="State" required/>
-                  <input type="text" name="pincode" placeholder="PIN Code" required/>
+                  <input type="text" name="street" value="{{_doc.address.street}}" placeholder="Street" />
+                  <input type="text" name="city" value="{{_doc.address.city}}" placeholder="City" required/>
+                  <input type="text" name="state" value="{{_doc.address.state}}" placeholder="State" required />
+                  <input type="text" name="pincode" value="{{_doc.address.pincode}}" placeholder="PIN Code" required />
                 </fieldset>
               </td>
               <!-- <td></td> -->
             </tr>
-
             <tr>
               <td>
                 <input
                   type="date"
                   name="joiningdate"
+                  value="{{_doc.joiningdate}}"
                   data-placeholder="Date of Joining"
                   required
                 />
@@ -129,19 +131,23 @@
                 <input
                   type="date"
                   name="dob"
+                  value="{{_doc.dob}}"
                   data-placeholder="D.O.B"
                   required
                 />
               </td>
             </tr>
-
             <tr>
               <td>
-                <select name="teachingcourse" required>
-                  <option value="" disabled selected>Teaching Course</option>
-                  <option value="html">HTML</option>
-                  <option value="js">JavaScript</option>
-                  <option value="css">CSS</option>
+                <select name="course" required>
+                  <option value="" disabled >Student Course</option>
+
+                  {{!-- //TODO  select nhi ho rha expected --}}
+                   {{#each courseAvailable}}  
+                  <option value="{{this.courseName}}"  {{#if (eq this.courseName  _doc.course)}} selected {{/if}}> {{this.courseName}}{{ _doc.course}}
+                  </option>
+                  {{/each}}
+                 
                 </select>
               </td>
               <td>
@@ -149,24 +155,25 @@
                   type="file"
                   name="profilepic"
                   accept="image/*"
-                  required
                 />
               </td>
             </tr>
-
             <tr>
               <td></td>
               <td><input type="submit" value="Submit" /></td>
             </tr>
-            
           </table>
+          {{/each}}
         </form>
       </div>
     </div>
 
-    
-    
 
+<script>
+    function isSelected(optionValue, selectedValue) {
+        return optionValue === selectedValue;
+    }
+</script>
 
 
 

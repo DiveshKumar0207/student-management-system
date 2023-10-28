@@ -20,72 +20,86 @@
     {{> sidebar}}
     {{!-- sidebar end --}}
 
+
     <!------ enquiry_page ----->
-    <div class="center_part_table">
+     
+    <div class="center_part_usertable">
+      <section>
+        <h1>Zillionsoftech</h1>
+        <h2>Teacher Details</h2>
+      </section>
+      <div class="tableContainer">
+        <table class="user_table">
+          <thead>
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>TeacherID</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Location</th>
+              <th>AGE</th>
+              <th>JoiningDate</th>
+              <th>Course</th>
+              <th>Salary</th>
+              <th>gender</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each TeacherData}}
+            <tr>
+              <td>{{this._doc.firstname}}</td>
+              <td>{{this._doc.lastname}}</td>
+              <td name="TeacherID">{{this._doc.teacherid}}</td>
+              <td name="Email">{{this._doc.email}}</td>
+              <td name="Telephone" class="accordion-content">{{this._doc.telephone}}</td>
+              <!-- prettier ingnore -->
+              <td name="Address" class="accordion-content">
+               {{this._doc.address.street}}, {{this._doc.address.city}}, {{this._doc.address.state}}, {{this._doc.address.pincode}}
+              </td>
 
-        <section>
-            <h1> <span class="yellow"> <a href="index.html">Zillionsoftech</a> </span>
-            </h1>
-            <h2>Teachers Details</a></h2>
-        </section>
+              <td name="Age" class="accordion-content">{{this.age}}</td>
 
-        <table class="enquiry_table">
-            <thead>
-                <tr>
-                    <th>
-                        <h1> First Name</h1>
-                    </th>
-                    <th>
-                        <h1>Last Name</h1>
-                    </th>
-                    <th>
-                        <h1>Email</h1>
-                    </th>
-                    <th>
-                        <h1>Phone</h1>
-                    </th>
-                    <th>
-                        <h1>Location</h1>
-                    </th>
-                    <th>
-                        <h1>D.O.B</h1>
-                    </th>
-                    <th>
-                        <h1>Update</h1>
-                    </th>
-                    <th>
-                        <h1>Delete</h1>
-                    </th>
+              <td name="JoiningDate" class="accordion-content">{{this._doc.joiningdate}}</td>
+              <td name="Course" class="accordion-content">{{this._doc.teachingcourse}}</td>
+              <td name="Salary" class="accordion-content">{{this._doc.salary}}</td>
+              <td name="Gender" class="accordion-content">{{this._doc.gender}}</td>
+              <td class="accordion-content">
 
+                <form action="/admin/editTeacher/{{this._doc._id}}" method="post">
+                    <button class="edit-button">Update</button>
+                </form>
+              </td>
+              <td class="accordion-content">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>sds</td>
-                    <td>eeee</td>
-                    <td>deta12@gmail.com</td>
-                    <td>876876876</td>
-                    <td>dfdsf</td>
-                    <td>7/2/2</td>
-                    <td> <i class="bi bi-pencil-square" style="color: greenyellow; font-size: 1.5rem;"></i></td>
-                    <td><i class="bi bi-trash3-fill" style="color: red; font-size: 1.5rem;"></i></td>
-                </tr>
+                <form action="/deleteTeacher/{{this._doc._id}}" method="post">
+                    <button class="delete-button">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
 
-
-            </tbody>
+          </tbody>
         </table>
-
-
+      </div>
     </div>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var accordionRows = document.querySelectorAll("tr");
+
+        accordionRows.forEach(function (row) {
+          row.addEventListener("click", function () {
+            this.classList.toggle("active");
+          });
+        });
+      });
+    </script>
 
 
-
-
-
-
-    <script src="jscript.js"></script>
+    <script src="js/jscript.js"></script>
 </body>
 
 </html>

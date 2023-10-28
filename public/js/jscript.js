@@ -87,16 +87,15 @@ const a = document.getElementById("refreshbutton");
 
 document.addEventListener("DOMContentLoaded", function () {
   async function sendRefresh() {
+    const baseUrl = window.location.protocol + "//" + window.location.host;
+
+    const fullURL = baseUrl + "/refresh";
+    console.log(fullURL);
+
     try {
-      const response = await fetch("http://localhost:3000/refresh", {
-        method: "get",
-      });
+      const response = await fetch(fullURL, { method: "get" });
 
-      if (response.ok) {
-        const data = await response.json();
-
-        console.log(data);
-      } else {
+      if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
     } catch (error) {

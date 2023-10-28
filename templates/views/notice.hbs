@@ -23,25 +23,41 @@
         <div class="notice_top">Announce Something</div>
 
         <div class="notice_middle">
-          <form action="" class="Notice_entry">
-            <ul>
-              <!-- <li>
-                            <label for="notice_heading" style="margin-bottom: 2rem;">Notice Heading : </label>
-                            <input type="text" name="" id="notice_heading">
-                        </li> -->
+
+          <form action="/postNotice" method="post" class="Notice_entry">
+            <ul >
+              <li>
+                <input type="datetime-local" name="expireAt" id="expireNotice" data-placeholder="Expiry of notice" required>
+              </li>
+               <li>
+                     <textarea
+
+                  name="noticeHead"
+                  id=""
+                  class="noticeHeading"
+                  maxlength="30"
+                  
+                  placeholder="Notice Heading.."
+                  required
+                ></textarea>
+
+                </li> 
 
               <li>
                 <textarea
-                  name=""
-                  id="txtarea"
+                  name="notice"
+                  id=""
+                  maxlength="100"
+                
                   placeholder="Enter Notice...."
+                  required
                 ></textarea>
               </li>
             </ul>
 
             <ul>
               <li>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" >Submit</button>
               </li>
             </ul>
           </form>

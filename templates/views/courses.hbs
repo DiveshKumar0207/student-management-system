@@ -23,77 +23,40 @@
     <div class="center_part_fee">
         <div class="courses_top"> Courses Details</div>
         <div class="courses_middle">
-            <span><a href="courses_add.html"><i class="bi bi-plus-square-fill"></i></a></span>
+            <span><a href="/admin/courses/addCourse"><i class="bi bi-plus-square-fill"></i></a></span>
             <table>
                 <thead>
                     <tr>
                         <th>COURSE ID</th>
                         <th>COURSE NAME</th>
-                        <th>CODING LANGUAGES</th>
+                        <th>COURSE FEE</th>
+                        {{!-- <th>TECHNOLOGY</th> --}}
                         <th>UPDATE</th>
+                        <th>DELETE</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each courseAvailable}}
                     <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href="courses_add.html"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>{{this.courseID}}</td>
+                        <td>{{this.courseName}}</td>
+                        <td>{{this.courseFee}}</td>
+                        {{!-- <td>{{this.courseFee}}</td> --}}
+                        <td>
+                            <form method="post" action="/admin/courses/editCourse/{{this._id}}">
+                                <input type="submit" value="update" class="edit-button">
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="/deleteCourse/{{this._id}}" >
+                            {{!-- <input type="hidden" name="_method" value="DELETE">                             --}}
+                                <input  type="submit" value="Delete" class="delete-button">
+                            </form>
+                        </td>
+                        
                     </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href="courses_add.html"><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href="courses_add.html"><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>121</td>
-                        <td>web</td>
-                        <td>html,css,js</td>
-                        <td><a href=""><i class="bi bi-pencil-square"></i></a></td>
-                    </tr>
+                    {{/each}}
+                   
 
                 </tbody>
             </table>
@@ -101,14 +64,6 @@
         </div>
 
     </div>
-
-
-
-
-
-
-    </div>
-
 
 
     <script src="js/jscript.js"></script>

@@ -1,10 +1,7 @@
+require("../../db/connection/connect");
+const course = require("../../db/models/courseSchema");
 // const { studentRegister } = require("../../db/models/studentSchema");
 // const { teacherRegister } = require("../../db/models/teacherSchema");
-
-require("../../db/connection/connect");
-require("dotenv").config();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 exports.index = (req, res) => {
   res.render("index");
@@ -12,9 +9,9 @@ exports.index = (req, res) => {
 exports.inquiry_post = (req, res) => {
   res.render("inquiry_post");
 };
-exports.home = (req, res) => {
-  res.render("home");
-};
+// exports.home = (req, res) => {
+//   res.render("home");
+// };
 exports.home_students = (req, res) => {
   res.render("home_students");
 };
@@ -26,9 +23,9 @@ exports.home_teachers = (req, res) => {
 exports.inquiry = (req, res) => {
   res.render("inquiry");
 };
-exports.courses = (req, res) => {
-  res.render("courses");
-};
+// exports.courses = (req, res) => {
+//   res.render("courses");
+// };
 exports.teachers = (req, res) => {
   res.render("teachers");
 };
@@ -53,9 +50,14 @@ exports.S_attendance = (req, res) => {
 };
 
 //
-exports.addStudent = (req, res) => {
-  res.render("add_students");
+exports.addStudent = async (req, res) => {
+  const courseAvailable = await course.find();
+
+  res.render("add_students", { courseAvailable });
 };
-exports.addTeacher = (req, res) => {
-  res.render("add_teachers");
+
+exports.addTeacher = async (req, res) => {
+  const courseAvailable = await course.find();
+
+  res.render("add_teachers", { courseAvailable });
 };
