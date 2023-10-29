@@ -21,142 +21,40 @@
     <!-- enquiry_page -->
     <div class="center_part_fee">
       <div class="fee_top_attendance">Attendance</div>
-      <div class="fee_middle">
+      <div class="attendance_middle">
+
         <table>
           <thead>
             <tr>
               <th>Batch</th>
-              <th>Take Attendance</th>
-              <th>View Attendance</th>
+              <th>Mark </th>
+              <th>View </th>
             </tr>
           </thead>
           <tbody>
+            {{#each courseDetail}}
             <tr>
-              <td>1</td>
+              <td> {{this.courseName}} </td>
               <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
+                <form action="/admin/markAttendance/{{this._id}}" method="get">
+
+                  <button class="attendance_button"> 
+                    <i class="bi bi-pen-fill"></i>
+                  </button>
+                </form>
               </td>
               <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
+                <form action="/admin/viewAttendance/{{this._id}}" method="get">
+
+                  <button class="attendance_button" >
+                     <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </form>
               </td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>
-                <a href="take_attendance.html">
-                  <i class="bi bi-pen-fill"></i
-                ></a>
-              </td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td><a href=""></a></td>
-              <td>
-                <a href="view_attendance.html"
-                  ><i class="bi bi-eye-slash-fill"></i
-                ></a>
-              </td>
-            </tr>
+            {{/each}}
+
+
           </tbody>
         </table>
       </div>

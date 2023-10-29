@@ -11,6 +11,7 @@ const notices = require("../controllers/notices")
 const homeAdmin = require("../controllers/homeAdmin")
 const coursecontroller = require("../controllers/course")
 const viewUsercontroller = require("../controllers/viewUser")
+const attendanceController = require("../controllers/attendance")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
@@ -34,7 +35,7 @@ router.get("/admin/inquiry", verifyJWT, role("admin"), usercontroller.inquiry);
 router.get("/admin/courses", verifyJWT, role("admin"), coursecontroller.courses);
 router.get("/admin/teachers", verifyJWT, role("admin"), usercontroller.teachers);
 router.get("/admin/students", verifyJWT, role("admin"), usercontroller.students);
-router.get("/admin/attendance", verifyJWT, role("admin"), usercontroller.attendance);
+router.get("/admin/attendance", verifyJWT, role("admin"), attendanceController.attendance);
 router.get("/admin/studentFee", verifyJWT, role("admin"), usercontroller.fee);
 router.get("/admin/notice", verifyJWT, role("admin"), usercontroller.notice);
 
@@ -57,6 +58,11 @@ router.post("/createCourse", verifyJWT, role("admin"), coursecontroller.createCo
 router.post("/admin/courses/editCourse/:id", verifyJWT, role("admin"), coursecontroller.editCourse);
 router.post("/updateCourse/:id", verifyJWT, role("admin"), coursecontroller.updateCourse);
 router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.deleteCourse);
+
+
+router.get("/admin/markAttendance/:courseID", verifyJWT, role("admin"), attendanceController.markAttendance)
+router.post("/admin/postAttendance/:courseID", verifyJWT, role("admin"), attendanceController.postAttendance)
+router.get("/admin/viewAttendance/:id", verifyJWT, role("admin"), attendanceController.viewAttendance)
 
 // regsitering routes sub-page
 router.post(

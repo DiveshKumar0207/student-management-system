@@ -32,9 +32,7 @@ exports.teachers = (req, res) => {
 exports.students = (req, res) => {
   res.render("students");
 };
-exports.attendance = (req, res) => {
-  res.render("attendance");
-};
+
 exports.fee = (req, res) => {
   res.render("fee");
 };

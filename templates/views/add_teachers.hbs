@@ -139,9 +139,11 @@
               <td>
                 <select name="teachingcourse" required>
                   <option value="" disabled selected>Teaching Course</option>
-                  <option value="html">HTML</option>
-                  <option value="js">JavaScript</option>
-                  <option value="css">CSS</option>
+                  
+                   {{#each courseAvailable}}
+                  <option value="{{this.courseName}}" >{{this.courseName}}
+                  </option>
+                  {{/each}}
                 </select>
               </td>
               <td>

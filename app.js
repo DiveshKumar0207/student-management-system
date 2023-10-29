@@ -41,6 +41,15 @@ app.use((req, res, next) => {
     } else if (route == "admin/editTeacher") {
       app.use("/admin/editTeacher", express.static(staticPath));
       //
+    } else if (route == "admin/markAttendance") {
+      app.use("/admin/markAttendance", express.static(staticPath));
+      //
+    } else if (route == "admin/postAttendance") {
+      app.use("/admin/postAttendance", express.static(staticPath));
+      //
+    } else if (route == "admin/viewAttendance") {
+      app.use("/admin/viewAttendance", express.static(staticPath));
+      //
     } else if (routePrefix == "teacher") {
       app.use("/teacher", express.static(staticPath));
       //

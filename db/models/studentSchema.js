@@ -87,19 +87,6 @@ const studentSchema = new mongoose.Schema({
   refreshtokens: [String],
 });
 
-// middleware to generate jwt token
-// studentSchema.methods.generateAuthToken = async function () {
-//   try {
-//     const jwtToken = jwt.sign({ _id: this._id.toString() }, process.env.PRIVATE_KEY);
-//     // this.tokens = this.tokens.concat({ token: jwtToken });
-//     console.log(jwtToken);
-//     return jwtToken;
-//   } catch (error) {
-//     console.log(`jwt token error : ${error}`);
-//     throw error;
-//   }
-// };
-
 // middleware to hash password and default date
 studentSchema.pre("save", async function (next) {
   const saltRounds = 11;

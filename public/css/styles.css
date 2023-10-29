@@ -2509,6 +2509,8 @@ h2 {
 }
 
 /*  <<<<<--------------------------------------- attendance ------------------------------------------>>>>*/
+
+
 .fee_top_attendance {
   width: 100%;
   background: linear-gradient(35deg, purple, #111744);
@@ -2524,34 +2526,38 @@ h2 {
   font-family: "Dai Banna SIL", serif;
 }
 
-/* <<<----------------take attendance-------------------------->>>  */
 .attendance_middle {
-  margin: auto;
-  /* padding: 3rem; */
-  width: 90%;
   font-family: sans-serif;
   overflow: auto;
-  /* border: 1px solid red; */
 }
 
 .attendance_middle table {
   margin: auto;
-  width: 75%;
-  /* margin: 3rem; */
+  width: 50%;
 
   color: white;
   border-collapse: separate;
   border-spacing: 0 0.4rem;
+
+  margin-top: 1rem;
 }
 
 .attendance_middle thead th {
+  position: sticky;
+  top: 0;
+  table-layout: fixed;
+
+  border: none;
   background: #5b68a1;
-  font-size: 1.2rem;
   padding: 0.8rem;
-  padding-left: 1rem;
-  /* width: 50%; */
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+
   min-width: 8rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
 }
 
 .attendance_middle tbody tr {
@@ -2567,23 +2573,31 @@ h2 {
 
 .attendance_middle td {
   font-size: 1rem;
-  padding: 0.8rem;
-  padding-left: 1.5rem;
-  /* width: 50%; */
+  padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+
 }
 
 .attendance_middle tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.attendance_middle input[type="date"] {
-  margin: 0.5rem 0 1rem 0;
-  padding: 0.2rem 0.5rem;
 
-  border: none;
-  border-radius: 0.2rem;
+.attendance_middle .datepicker {
+  margin: 1rem 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.attendance_middle .datepicker input[type="date"] {
+  width: 200px;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
   color: wheat;
   background: purple;
+  font-size: 1rem;
+
 }
 
 .attendance_middle input[type="date"]::before {
@@ -2591,32 +2605,96 @@ h2 {
   width: 100%;
 }
 
-.attendance_middle input[type="date"]:focus::before {
+.attendance_middle input[type="date"]:focus::before,
+.attendance_middle input[type="date"]:valid::before {
   display: none;
 }
 
+.submitAttendanceButton {
+  display: flex;
+  justify-content: right;
+  margin: 1rem 2rem;
+
+}
+
+.submitAttendanceButton input[type="submit"] {
+  position: absolute;
+  right: 2rem;
+  z-index: 1;
+  margin: 1rem 2rem;
+  background: linear-gradient(45deg, #FF5733, #FF6A47);
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submitAttendanceButton input[type="submit"]:hover {
+  /* background-color: #45a049; */
+  background: linear-gradient(45deg, #FF6A47, #FF5733);
+  transform: scale(1.05);
+}
+
+.submitAttendanceButton input[type="submit"]:active {
+  background: linear-gradient(135deg, #e75e40, #d24829);
+}
+
 .attendance_middle select {
-  padding: 0.1rem;
+  padding: 5px;
   border: none;
-  border-radius: 0.2rem;
+  border-radius: 5px;
   font-size: 0.9rem;
-  background-color: rgb(206, 204, 204);
+  background-color: #cecacc;
+  cursor: pointer;
 }
 
-.attendance_middle option:nth-child(1) {
-  background: green;
-}
-
-.attendance_middle option:nth-child(2) {
-  background: red;
-}
-
-.att_button {
+.present_button {
   background-color: green;
-  padding: 0.1rem 0.5rem;
+  padding: 0.3rem 1rem;
+  border: 1px solid rgb(255, 255, 255, 0.6);
+  border-radius: 0.25rem;
+  width: min-content;
+}
+
+.absent_button {
+  padding: 0.3rem 1rem;
+  background-color: red;
+  border: 1px solid rgb(255, 255, 255, 0.6);
+  border-radius: 0.25rem;
+  width: min-content;
+}
+
+/* Button styles */
+.attendance_button {
+  width: 4rem;
+  background: green;
+  color: white;
   border: none;
-  border-radius: 0.2rem;
-  width: max-content;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  /* transition: background-color 0.3s; */
+}
+
+.attendance_button:hover {
+  background: #008000;
+}
+
+/* Icon styles */
+.attendance_button i.bi {
+  font-size: 1.05rem;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 768px) {
+  .center_part_fee {
+    width: 100%;
+    left: 0;
+  }
 }
 
 /* <<<<<--------------------------------------- courses -------------------------------------------------->>>>*/

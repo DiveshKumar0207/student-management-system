@@ -70,20 +70,20 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 #   title="Enter an ID consisting of 4-8 hexadecimal digits"
 #   autocomplete="new-password" />
 
-1. refreshToken code $$$ refreshToken--change on every time      --BUGS--       --REFRESHING-REFRESH-TOKEN--
+1. refreshToken code $$$ refreshToken--change on every time      --ISSUE--       --REFRESHING-REFRESH-TOKEN--
 2. roles define                                                  --DONE--
 3. otp/mail verification
 4. strong password, forget-password otpVerify,reset-pass page  
 5. logoutAll button
 6. course crud                                                    --DONE--      
-7. student/teacher update $ delete $ view on screen               --BUG--      --SELECTED-ATTRIBUTE-ISSUE--
-8. same for teacher                                               --BUG--      --SELECTED-ATTRIBUTE-ISSUE--
+7. student/teacher update $ delete $ view on screen               --DONE--
+8. same for teacher                                               --DONE--
 9. post inquiry handling
 10. notice                                                        --DONE--
 11. payment gateway
 12. profile view
 13.dashboard for all
-14. Attendance view and mark
+14. Attendance view and mark                                     --WORKING--
 15. "cookie-session/exxpress"- cookie use--->INSTEAD OF NORMAL ONE
         * flash messages 
 # 16. admin database

@@ -24,26 +24,27 @@
       <div class="add_students_top">Update Teacher</div>
       <div class="add_students_middle">
 
-        <form action="/updateTeacher/{{user._id}}" method="post" enctype="multipart/form-data">
+            {{#each teacherData}}
+        <form action="/updateTeacher/{{_doc._id}}" method="post" enctype="multipart/form-data">
           <table>
             <tr>
               <td>
                 <input
                   type="text"
                   name="firstname"
-                  value="{{user.firstname}}"
+                  value="{{_doc.firstname}}"
                   placeholder="First Name"
                   required
                 />
               </td>
               <td>
-                <input type="text" name="lastname" value="{{user.lastname}}" placeholder="Last Name"
+                <input type="text" name="lastname" value="{{_doc.lastname}}" placeholder="Last Name"
                 required />
               </td>
             </tr>
             <tr>
               <td>
-                <input type="email" name="email" value="{{user.email}}" placeholder="example@123gmail.com" required />
+                <input type="email" name="email" value="{{_doc.email}}" placeholder="example@123gmail.com" required />
               </td>
               <td></td>
             </tr>
@@ -52,7 +53,7 @@
                 <input
                   type="tel"
                   name="telephone"
-                  value="{{user.telephone}}"
+                  value="{{_doc.telephone}}"
                   placeholder="800 000 0000"
                   pattern="[789][0-9]{9}"
                   required
@@ -65,7 +66,7 @@
                     name="gender"
                     id="male"
                     value="male"
-                    {{#if (eq user.gender "male")}} checked {{/if}}
+                    {{#if (eq _doc.gender "male")}} checked {{/if}}
                    
                   />
                   <label for="male" >male</label>
@@ -75,7 +76,7 @@
                     name="gender" 
                     id="female" 
                     value="female" 
-                    {{#if (eq user.gender "female")}} checked {{/if}} 
+                    {{#if (eq _doc.gender "female")}} checked {{/if}} 
                   />
                   <label for="female" >female</label>
                 </div>
@@ -86,7 +87,7 @@
                 <input
                   type="number"
                   name="teacherid"
-                  value="{{user.teacherid}}"
+                  value="{{_doc.teacherid}}"
                   placeholder="Teacher ID"
                   min="0"
                   required
@@ -96,7 +97,7 @@
                 <input
                   type="number"
                   name="salary"
-                  value="{{user.salary}}"
+                  value="{{_doc.salary}}"
                   placeholder="salary"
                   min="0"
                   required
@@ -107,10 +108,10 @@
               <td>
                 <fieldset class="address-fieldset">
                   <legend>Address:</legend>
-                  <input type="text" name="street" value="{{user.address.street}}" placeholder="Street" />
-                  <input type="text" name="city" value="{{user.address.city}}" placeholder="City" required/>
-                  <input type="text" name="state" value="{{user.address.state}}" placeholder="State" required />
-                  <input type="text" name="pincode" value="{{user.address.pincode}}" placeholder="PIN Code" required />
+                  <input type="text" name="street" value="{{_doc.address.street}}" placeholder="Street" />
+                  <input type="text" name="city" value="{{_doc.address.city}}" placeholder="City" required/>
+                  <input type="text" name="state" value="{{_doc.address.state}}" placeholder="State" required />
+                  <input type="text" name="pincode" value="{{_doc.address.pincode}}" placeholder="PIN Code" required />
                 </fieldset>
               </td>
               <!-- <td></td> -->
@@ -120,7 +121,7 @@
                 <input
                   type="date"
                   name="joiningdate"
-                  value="{{user.joiningdate}}"
+                  value="{{_doc.joiningdate}}"
                   data-placeholder="Date of Joining"
                   required
                 />
@@ -129,7 +130,7 @@
                 <input
                   type="date"
                   name="dob"
-                  value="{{user.dob}}"
+                  value="{{_doc.dob}}"
                   data-placeholder="D.O.B"
                   required
                 />
@@ -140,9 +141,8 @@
                 <select name="teachingcourse" required>
                   <option value="" disabled >Teaching Course</option>
                     
-                  {{!-- //TODO  select nhi ho rha expected --}}
-                  {{#each courseAvailable}}
-                  <option value="{{this.courseName}}"  {{#if (eq this.courseName  user.teachingcourse)}} selected {{/if}} >{{this.courseName}}
+                  {{#each courseAvailable}}  
+                  <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.teachingcourse)}} selected {{/if}}> {{this.courseName}}
                   </option>
                   {{/each}}
                  
@@ -162,6 +162,8 @@
             </tr>
           </table>
         </form>
+        {{/each}}
+
       </div>
     </div>
 

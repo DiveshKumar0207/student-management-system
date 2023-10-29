@@ -142,9 +142,8 @@
                 <select name="course" required>
                   <option value="" disabled >Student Course</option>
 
-                  {{!-- //TODO  select nhi ho rha expected --}}
                    {{#each courseAvailable}}  
-                  <option value="{{this.courseName}}"  {{#if (eq this.courseName  _doc.course)}} selected {{/if}}> {{this.courseName}}{{ _doc.course}}
+                  <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.course)}} selected {{/if}}> {{this.courseName}}
                   </option>
                   {{/each}}
                  

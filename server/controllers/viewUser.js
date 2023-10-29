@@ -36,8 +36,6 @@ exports.editStudent = async (req, res) => {
       return { ...std, courseAvailable };
     });
 
-    console.log(studentData);
-
     res.render("update_student", { studentData });
   } catch (err) {
     console.log(err);
@@ -137,37 +135,41 @@ exports.viewTeacher = async (req, res) => {
   }
 };
 
-//
+// edit teacher
 exports.editTeacher = async (req, res) => {
   const userID = req.params.id;
 
   try {
-    const user = await teacherRegister.findOne({ _id: userID });
+    const tchrDbData = await teacherRegister.find({ _id: userID });
     const courseAvailable = await course.find();
 
-    res.render("update_teacher", { user, courseAvailable });
+    let teacherData = tchrDbData.map((std) => {
+      return { ...std, courseAvailable };
+    });
+
+    res.render("update_teacher", { teacherData });
   } catch (err) {
     console.log(err);
   }
 };
 
-//
+// update teacher
 exports.updateTeacher = async (req, res) => {
   const userID = req.params.id;
   const {
     firstname,
     lastname,
     gender,
-    email,
+    teacherid,
     password,
     telephone,
+    email,
     street,
     city,
     state,
     pincode,
-    teacherid,
-    salary,
     teachingcourse,
+    salary,
     joiningdate,
     dob,
   } = req.body;
@@ -178,16 +180,16 @@ exports.updateTeacher = async (req, res) => {
         firstname,
         lastname,
         gender,
-        email,
+        teacherid,
         password,
         telephone,
+        email,
         street,
         city,
         state,
         pincode,
-        teacherid,
-        salary,
         teachingcourse,
+        salary,
         joiningdate,
         dob,
       },
