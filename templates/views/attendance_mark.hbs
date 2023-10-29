@@ -26,8 +26,15 @@
         <div class="attendance_middle">
 
             <form action="/admin/postAttendance/{{userCourse._id}}" method="post">
-
-         
+            <div class="datepicker">
+               <input
+                 type="date"
+                 name=""
+                 data-placeholder="Enter Date"
+                 class="input_date_att"
+                 disabled
+               />
+             </div>
 
             <table>
                 <thead>
@@ -60,7 +67,7 @@
             </table>
 
             <div class="submitAttendanceButton ">
-            <input type="submit" value="SUBMIT"  ">
+            <input type="submit" value="SUBMIT" >
             </div>
             </form>
 

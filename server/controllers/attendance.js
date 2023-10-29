@@ -13,14 +13,14 @@ exports.attendance = async (req, res) => {
   }
 };
 
-//
+// page to mark attendance
 exports.markAttendance = async (req, res) => {
   const courseID = req.params.courseID;
 
   try {
     // getting course detail and its course-name
     const userCourse = await course.findOne({ _id: courseID });
-    studentsCourse = userCourse.courseName;
+    const studentsCourse = userCourse.courseName;
 
     // getting students-list as per required course
     const studentsList = await studentRegister.find(
@@ -34,7 +34,7 @@ exports.markAttendance = async (req, res) => {
   }
 };
 
-//
+// marking and then posting attendance
 exports.postAttendance = async (req, res) => {
   const courseID = req.params.courseID;
   try {
@@ -44,7 +44,6 @@ exports.postAttendance = async (req, res) => {
     let studentNames = req.body.studentName;
     let studentRollnos = req.body.studentRollno;
     let studentAttendances = req.body.studentAttendance;
-    // console.log(studentNames, studentRollnos, studentAttendances);
 
     // Ensure studentNames is an array
     if (!Array.isArray(studentNames)) {
@@ -83,6 +82,49 @@ exports.postAttendance = async (req, res) => {
 };
 
 //
-exports.viewAttendance = async (req, res) => {
-  res.render("attendance_view");
+exports.viewAttendancePage = async (req, res) => {
+  const courseID = req.params.courseID;
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = d.getMonth() + 1;
+  let date = d.getDate();
+  date < 10 ? `0${date}` : date;
+  const defaultDate = `${year}-${month}-${date}`;
+
+  try {
+    // getting course detail and its course-name
+    const userCourse = await course.findOne({ _id: courseID });
+    const studentsCourse = userCourse.courseName;
+
+    const studentAttendance = await attendanceRegister.find({
+      batch: studentsCourse,
+      attendancedate: defaultDate,
+    });
+
+    res.render("attendance_view", { studentAttendance, userCourse });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//
+exports.searchAttendance = async (req, res) => {
+  const courseID = req.params.courseID;
+
+  try {
+    // getting course detail and its course-name
+    const userCourse = await course.findOne({ _id: courseID });
+    const studentsCourse = userCourse.courseName;
+
+    const searchDate = req.query.searchAttendanceDate;
+
+    const studentAttendance = await attendanceRegister.find({
+      batch: studentsCourse,
+      attendancedate: searchDate,
+    });
+
+    res.render("attendance_view", { studentAttendance, userCourse });
+  } catch (error) {
+    console.log(error);
+  }
 };

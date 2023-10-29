@@ -2362,7 +2362,7 @@ h2 {
   left: 10%;
   background: linear-gradient(45deg, #49a09d, #5f2c82 90%);
   margin: auto;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .fee_top {
@@ -2528,6 +2528,7 @@ h2 {
 
 .attendance_middle {
   font-family: sans-serif;
+  height: calc(100vh - 10rem);
   overflow: auto;
 }
 
@@ -2542,9 +2543,13 @@ h2 {
   margin-top: 1rem;
 }
 
-.attendance_middle thead th {
+.attendance_middle thead {
   position: sticky;
-  top: 0;
+  top: 0rem;
+
+}
+
+.attendance_middle thead th {
   table-layout: fixed;
 
   border: none;
@@ -2583,7 +2588,7 @@ h2 {
 
 
 .attendance_middle .datepicker {
-  margin: 1rem 1rem 0;
+  margin: 1rem 0 0 2rem;
   display: flex;
   align-items: center;
 }
@@ -2610,17 +2615,18 @@ h2 {
   display: none;
 }
 
-.submitAttendanceButton {
+/* .submitAttendanceButton {
   display: flex;
   justify-content: right;
   margin: 1rem 2rem;
 
-}
+} */
 
 .submitAttendanceButton input[type="submit"] {
   position: absolute;
+  top: 5.2rem;
   right: 2rem;
-  z-index: 1;
+  z-index: 2;
   margin: 1rem 2rem;
   background: linear-gradient(45deg, #FF5733, #FF6A47);
   color: #fff;
@@ -2634,14 +2640,46 @@ h2 {
 }
 
 .submitAttendanceButton input[type="submit"]:hover {
-  /* background-color: #45a049; */
   background: linear-gradient(45deg, #FF6A47, #FF5733);
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .submitAttendanceButton input[type="submit"]:active {
   background: linear-gradient(135deg, #e75e40, #d24829);
 }
+
+/* .viewAttendanceButton {
+  display: flex;
+  justify-content: right;
+  margin: 1rem 2rem;
+} */
+
+.viewAttendanceButton input[type="submit"] {
+  position: absolute;
+  top: 5.2rem;
+  right: 2rem;
+  z-index: 2;
+  margin: 1rem 2rem;
+  background: linear-gradient(45deg, #45a049, #33cc33);
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.viewAttendanceButton input[type="submit"]:hover {
+  background: linear-gradient(45deg, #33cc33, #45a049);
+  transform: scale(1.05);
+}
+
+.viewAttendanceButton input[type="submit"]:active {
+  background: linear-gradient(45deg, #2a9933, #1a6c2d)
+}
+
 
 .attendance_middle select {
   padding: 5px;
@@ -2654,18 +2692,21 @@ h2 {
 
 .present_button {
   background-color: green;
-  padding: 0.3rem 1rem;
+  padding: 0.15rem 1rem;
   border: 1px solid rgb(255, 255, 255, 0.6);
   border-radius: 0.25rem;
-  width: min-content;
+  width: 5.5rem;
+  color: black;
+
 }
 
 .absent_button {
-  padding: 0.3rem 1rem;
-  background-color: red;
-  border: 1px solid rgb(255, 255, 255, 0.6);
+  padding: 0.15rem 1rem;
+  color: black;
+  background-color: orange;
+  border: 1px solid rgb(255, 255, 255, 0.7);
   border-radius: 0.25rem;
-  width: min-content;
+  width: 5.5rem;
 }
 
 /* Button styles */
@@ -2677,7 +2718,6 @@ h2 {
   border-radius: 5px;
   padding: 5px 15px;
   cursor: pointer;
-  /* transition: background-color 0.3s; */
 }
 
 .attendance_button:hover {

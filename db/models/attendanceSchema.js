@@ -22,9 +22,7 @@ const attendanceSchema = new mongoose.Schema({
       rollno: {
         type: Number,
         required: true,
-        unique: true,
         trim: true,
-        sparse: true, // Add this to prevent automatic index creation
       },
       attend: {
         type: String,

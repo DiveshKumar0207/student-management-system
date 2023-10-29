@@ -76,7 +76,7 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 4. strong password, forget-password otpVerify,reset-pass page  
 5. logoutAll button
 6. course crud                                                    --DONE--      
-7. student/teacher update $ delete $ view on screen               --DONE--
+7. student/teacher update $ delete $ view on screen               --BUG--     --on-update--age-dont-set-in-tablw--
 8. same for teacher                                               --DONE--
 9. post inquiry handling
 10. notice                                                        --DONE--

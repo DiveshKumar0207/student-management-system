@@ -60,9 +60,11 @@ router.post("/updateCourse/:id", verifyJWT, role("admin"), coursecontroller.upda
 router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.deleteCourse);
 
 
+// courseID -> object id of in courseSchema/course collection
 router.get("/admin/markAttendance/:courseID", verifyJWT, role("admin"), attendanceController.markAttendance)
 router.post("/admin/postAttendance/:courseID", verifyJWT, role("admin"), attendanceController.postAttendance)
-router.get("/admin/viewAttendance/:id", verifyJWT, role("admin"), attendanceController.viewAttendance)
+router.get("/admin/viewAttendance/:courseID", verifyJWT, role("admin"), attendanceController.viewAttendancePage)
+router.get("/admin/searchAttendance/:courseID", verifyJWT, role("admin"), attendanceController.searchAttendance)
 
 // regsitering routes sub-page
 router.post(

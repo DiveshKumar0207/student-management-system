@@ -50,6 +50,9 @@ app.use((req, res, next) => {
     } else if (route == "admin/viewAttendance") {
       app.use("/admin/viewAttendance", express.static(staticPath));
       //
+    } else if (route == "admin/searchAttendance") {
+      app.use("/admin/searchAttendance", express.static(staticPath));
+      //
     } else if (routePrefix == "teacher") {
       app.use("/teacher", express.static(staticPath));
       //
