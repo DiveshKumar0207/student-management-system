@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> I_navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> I_sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- login card -->
+    <div class="resetPageMain">
+        <div class="main-ccontainer">
+      <div class="newsletter-ccontainer">
+        <h2 class="newsletter-title">Need Help in Logging in?</h2>
+
+        <form class="newsletter-form" method="post" action="/login/verify/email/sendOtp">
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            class="newsletter-input"
+            required
+          />
+          
+            <div class="user_category">
+              <input type="radio"  name="role"  id="admin" value="admin" checked />
+              <label for="admin"  class="category_label"  >Admin</label>
+
+              <input type="radio" name="role"  id="teacher"value="teacher" />
+              <label for="teacher"  class="category_label" >Teacher </label>
+
+              <input type="radio" name="role"  id="student" value="student"/>
+              <label for="student"  class="category_label" >Student</label>
+            </div>
+
+          <button type="submit" class="newsletter-button">Send OTP</button>
+        </form>
+
+      </div> 
+    </div>
+
+
+    
+      <script src="js/jscript.js"></script>
+  </body>
+</html>

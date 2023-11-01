@@ -21,7 +21,7 @@ const partialsPath = path.join(__dirname, "./templates/partials");
 //middleware static file
 app.use((req, res, next) => {
   const route = req.path.split("/").slice(1, 3).join("/");
-  const editRoute = req.path.split("/").slice(1, 4).join("/");
+  const longRoute = req.path.split("/").slice(1, 4).join("/");
 
   const routePrefix = req.path.split("/")[1];
   // const secondPrefix = req.path.split("/")[2];
@@ -29,7 +29,16 @@ app.use((req, res, next) => {
     if (routePrefix == "") {
       app.use(express.static(staticPath));
       //
-    } else if (editRoute == "admin/courses/editCourse") {
+    } else if (longRoute == "login/verify/otp") {
+      app.use("/login/verify/otp", express.static(staticPath));
+      //
+    } else if (route == "login/verify") {
+      app.use("/login/verify", express.static(staticPath));
+      //
+    } else if (longRoute == "login/reset/password") {
+      app.use("/login/reset/password", express.static(staticPath));
+      //
+    } else if (longRoute == "admin/courses/editCourse") {
       app.use("/admin/courses/editCourse", express.static(staticPath));
       //
     } else if (route == "admin/courses") {

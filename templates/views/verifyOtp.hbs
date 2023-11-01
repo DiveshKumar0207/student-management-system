@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> I_navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> I_sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- login card -->
+    <div class="resetPageMain">
+       <form class="form" method="post" action="/login/verify/otp/{{userOtpID}}">
+      <div class="content">
+        <p align="center">Enter your OTP Code</p>
+        <div class="inp">
+          <input name="otp1" maxlength="1" class="optInput" type="text" placeholder="" />
+          <input name="otp2" maxlength="1" class="optInput" type="text" placeholder="" />
+          <input name="otp3" maxlength="1" class="optInput" type="text" placeholder="" />
+          <input name="otp4" maxlength="1" class="optInput" type="text" placeholder="" />
+          <input name="otp5" maxlength="1" class="optInput" type="text" placeholder="" />
+          <input name="otp6" maxlength="1" class="optInput" type="text" placeholder="" />
+        </div>
+        <button>Verify</button>
+      </div>
+    </form>
+      
+    </div>
+
+
+    
+      <script src="js/jscript.js"></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const otpInputs = document.querySelectorAll(".optInput");
+
+          otpInputs.forEach((otp, index) => {
+            otp.addEventListener("input", function () {
+              if (isNaN(this.value)) {
+                this.value = "";
+              }
+
+              if (this.value && index < otpInputs.length - 1) {
+                const b = otpInputs[index + 1];
+                //  Move focus to the next input field
+                b.focus();
+              }
+            });
+          });
+        });
+    </script>
+
+  </body>
+</html>

@@ -12,6 +12,7 @@ const homeAdmin = require("../controllers/homeAdmin")
 const coursecontroller = require("../controllers/course")
 const viewUsercontroller = require("../controllers/viewUser")
 const attendanceController = require("../controllers/attendance")
+const resetPassController = require("../controllers/resetPass")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
@@ -29,6 +30,14 @@ router.get("/postInquiry", usercontroller.inquiry_post);
 router.get("/admin/dashboard", verifyJWT, role("admin"), homeAdmin.home);
 router.get("/student/dashboard", verifyJWT, role("student"), usercontroller.home_students);
 router.get("/teacher/dashboard", verifyJWT, role("teacher"), usercontroller.home_teachers);
+
+// Reset passsword
+router.get("/login/verify/email",  resetPassController.verifyEmailPage);
+router.post("/login/verify/email/sendOtp",  resetPassController.sendOtp);
+router.get("/login/verify/otp/:otpID",  resetPassController.verifyOtpPage);
+router.post("/login/verify/otp/:otpID",  resetPassController.verifyOtp);
+router.get("/login/reset/password/:otpID",  resetPassController.resetPasswordPage);
+router.post("/login/reset/password/:userRole/:userID",  resetPassController.resetPassword);
 
 // admin main pages
 router.get("/admin/inquiry", verifyJWT, role("admin"), usercontroller.inquiry);

@@ -387,13 +387,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(163, 155, 155, 0.2);
+  background-color: rgb(163, 155, 155, 0.8);
 }
 
 .login .card {
   height: 30rem;
   max-width: 30rem;
-  /*to be added*/
   background-color: rgb(247, 237, 224);
   border: 1px solid silver;
   border-radius: 1rem;
@@ -427,11 +426,9 @@ body {
 
 .middle {
   height: 60%;
-  /* background-color: darkslategray; */
   padding-top: 2rem;
   display: flex;
   justify-content: center;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -439,13 +436,10 @@ body {
   width: 100%;
 
   border-radius: 0.3rem;
-  /* height: 2rem; */
   margin-bottom: 1rem;
   padding: 0.6rem;
-  /* filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 255, 0.2)); */
+
   box-shadow: 3px 3px 6px rgba(21, 43, 212, 0.1);
-
-
   border: 1px solid skyblue;
   background-color: whitesmoke;
 }
@@ -528,6 +522,23 @@ body {
   text-align: center;
   margin: 0.7rem 0;
   font-size: 0.9rem;
+}
+
+.login .card p a {
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.login .card p a:hover {
+  text-decoration: underline;
+}
+
+.login .card .forgetPasswordLink a {
+  color: red;
+}
+
+.login .card .inquirePageLink a {
+  color: blue;
 }
 
 
@@ -1378,7 +1389,7 @@ body {
   margin-right: auto;
 }
 
-h1 {
+.center_part_table section h1 {
   font-size: 3em;
   font-weight: 300;
   line-height: 1em;
@@ -1386,7 +1397,7 @@ h1 {
   color: #4dc3fa;
 }
 
-h2 {
+.center_part_table section h2 {
   font-size: 1.5rem;
   font-weight: 300;
   text-align: center;
@@ -2915,7 +2926,7 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.center_part_usertable section h1 {
   font-size: 2.5rem;
   color: wheat;
   margin-top: 0.5rem;
@@ -2924,7 +2935,7 @@ h1 {
   /* letter-spacing: 3px; */
 }
 
-h2 {
+.center_part_usertable section h2 {
   font-size: 1.5rem;
   line-height: 1.5;
   padding: 0.5rem 0 1.5rem;
@@ -3167,4 +3178,373 @@ h2 {
   .user_table .active .accordion-content {
     display: block;
   }
+}
+
+/* ---------------------------------------------VERIFY EMAIL PAGE---------------------------------------------- */
+
+.resetPageMain {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4B5563;
+}
+
+.main-ccontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.newsletter-ccontainer {
+  width: 100%;
+  max-width: 400px;
+  background-color: #111827;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.newsletter-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: goldenrod;
+  margin-bottom: 10px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-input {
+  background-color: #4B5563;
+  color: #E5E7EB;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0;
+  transition: background-color 0.3s, outline 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-input:focus {
+  background-color: #374151;
+  outline: none;
+  box-shadow: 0 0 6px rgba(66, 153, 225, 0.5);
+}
+
+.newsletter-button {
+  background: linear-gradient(to right, #10B981, #3B82F6);
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 10px;
+}
+
+.newsletter-button:hover {
+  background: linear-gradient(to right, #047857, #2563EB);
+}
+
+
+/* ---------------------------------------------VERIFY OTP PAGE------------------------------------------------ */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* background: #333333; */
+  background-color: #111827;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid #fff;
+  width: 22em;
+  height: 12em;
+
+  margin: auto;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.form p {
+  color: #fff;
+  font-weight: bolder;
+}
+
+.inp {
+  margin-left: auto;
+  margin-right: auto;
+  white-space: 4px;
+}
+
+.optInput+.optInput {
+  margin-left: 0.5em
+}
+
+.optInput {
+  color: #fff;
+  height: 2em;
+  width: 2em;
+  float: left;
+  text-align: center;
+  background: rgb(0, 0, 0, 0.3);
+  /* background: #333333; */
+
+  outline: none;
+  border: 1px #fff solid;
+  border-radius: 5px;
+  transition: all 0.6s ease;
+  font-size: larger;
+}
+
+.optInput:focus {
+  outline: none;
+  border: 1px #fff solid;
+}
+
+.optInput:not(:placeholder-shown) {
+  background-color: #fff;
+  width: 1em;
+  height: 1em
+}
+
+.form button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00000000;
+  color: #fff;
+  width: 8.5em;
+  height: 2.3em;
+  border: #fff 0.1em solid;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #fff;
+  color: #000
+}
+
+/* ----------------------------------------------RESET PASSWORD PAGE--------------------------------------------- */
+
+.login-box {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  margin: 20px auto;
+  transform: translate(-50%, -55%);
+  background: rgba(0, 0, 0, .9);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+}
+
+.login-box p:first-child {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.login-box .user-box {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.login-box .user-box #confirmPasswordError,
+#passwordError {
+  font-size: 0.85rem;
+  color: red
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+  top: -20px;
+  left: 0;
+  color: #fff;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 3px
+}
+
+.login-box a button {
+  border: none;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+}
+
+.login-box a button:hover {
+  background-color: white;
+  color: black;
+}
+
+.login-box a:hover {
+  background: #fff;
+  color: #272727;
+  border-radius: 5px;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff);
+  animation: btn-anim1 1.5s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #fff);
+  animation: btn-anim2 1.5s linear infinite;
+  animation-delay: .375s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #fff);
+  animation: btn-anim3 1.5s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #fff);
+  animation: btn-anim4 1.5s linear infinite;
+  animation-delay: 1.125s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}
+
+.login-box p:last-child {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.login-box a.a2 {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-box a.a2:hover {
+  background: transparent;
+  color: #aaa;
+  border-radius: 5px;
 }
