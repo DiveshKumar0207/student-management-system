@@ -47,7 +47,15 @@
               <td>
                 <input type="email" name="email" value="{{_doc.email}}" placeholder="example@123gmail.com" required />
               </td>
-              <td></td>
+              <td>
+                   <input
+                  type="password"
+                  name="password"
+                  placeholder="Password-only changed by user itself"
+                  disabled
+                  style="border: 1.5px gray solid; cursor:not-allowed; opacity: 0.7 "
+                />
+              </td>
             </tr>
             <tr>
               <td>
@@ -95,16 +103,17 @@
                 />
               </td>
               <td>
-                <input
+                {{!-- <input
                   type="number"
                   name="fees"
                   value="{{_doc.fees}}"
                   placeholder="fees"
                   min="0"
                   required
-                />
+                /> --}}
               </td>
             </tr>
+              
             <tr>
               <td>
                 <fieldset class="address-fieldset">
@@ -176,7 +185,7 @@
 
 
 
-    <script src="js/jscript.js"></script>
+    <script src="/js/jscript.js"></script>
 </body>
 
 </html>

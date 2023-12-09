@@ -55,7 +55,8 @@ const teacherSchema = new mongoose.Schema({
   address: Address.schema,
 
   teachingcourse: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "course",
     required: true,
   },
   salary: {
@@ -90,7 +91,7 @@ teacherSchema.pre("save", async function (next) {
     try {
       this.password = await bcrypt.hash(this.password, saltRounds);
     } catch (error) {
-      throw new error("hash failed !");
+      throw new Error("hash failed !");
     }
   }
 

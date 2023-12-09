@@ -1,12 +1,19 @@
 require("../../db/connection/connect");
 const { studentRegister } = require("../../db/models/studentSchema");
 const { teacherRegister } = require("../../db/models/teacherSchema");
-const course = require("../../db/models/courseSchema");
+const courseModel = require("../../db/models/courseSchema");
 
 // student
+//
+exports.addStudentPage = async (req, res) => {
+  const courseAvailable = await courseModel.find();
+
+  res.render("add_students", { courseAvailable });
+};
+
 exports.viewStudent = async (req, res) => {
   try {
-    const stdDbData = await studentRegister.find();
+    const stdDbData = await studentRegister.find().populate("course").exec();
 
     let studentData = stdDbData.map((std) => {
       const dob = new Date(std.dob);
@@ -30,7 +37,7 @@ exports.editStudent = async (req, res) => {
 
   try {
     const stdDbData = await studentRegister.find({ _id: userID });
-    const courseAvailable = await course.find();
+    const courseAvailable = await courseModel.find();
 
     let studentData = stdDbData.map((std) => {
       return { ...std, courseAvailable };
@@ -57,12 +64,15 @@ exports.updateStudent = async (req, res) => {
     state,
     pincode,
     rollno,
-    fees,
     course,
     joiningdate,
     dob,
   } = req.body;
   try {
+    const courseTook = await courseModel.findOne({ courseName: course });
+
+    const courseTookID = courseTook._id;
+
     const updData = await studentRegister.findOneAndUpdate(
       { _id: userID },
       {
@@ -77,8 +87,7 @@ exports.updateStudent = async (req, res) => {
         state,
         pincode,
         rollno,
-        fees,
-        course,
+        course: courseTookID,
         joiningdate,
         dob,
       },
@@ -91,14 +100,8 @@ exports.updateStudent = async (req, res) => {
       };
     }
 
-    await updData
-      .save()
-      .then(() => {
-        console.log("updated Student");
-      })
-      .catch((error) => {
-        console.log(`save error:  ${error}`);
-      });
+    await updData.save();
+
     res.redirect("/admin/viewStudent");
   } catch (err) {
     console.log(err);
@@ -116,9 +119,17 @@ exports.deleteStudent = async (req, res) => {
 
 //
 // teacher
+//
+
+exports.addTeacherPage = async (req, res) => {
+  const courseAvailable = await course.find();
+
+  res.render("add_teachers", { courseAvailable });
+};
+
 exports.viewTeacher = async (req, res) => {
   try {
-    const stdDbData = await teacherRegister.find();
+    const stdDbData = await teacherRegister.find().populate("teachingcourse");
 
     let TeacherData = stdDbData.map((std) => {
       const dob = new Date(std.dob);
@@ -141,7 +152,7 @@ exports.editTeacher = async (req, res) => {
 
   try {
     const tchrDbData = await teacherRegister.find({ _id: userID });
-    const courseAvailable = await course.find();
+    const courseAvailable = await courseModel.find();
 
     let teacherData = tchrDbData.map((std) => {
       return { ...std, courseAvailable };
@@ -174,6 +185,10 @@ exports.updateTeacher = async (req, res) => {
     dob,
   } = req.body;
   try {
+    const courseTook = await courseModel.findOne({ courseName: course });
+
+    const courseTookID = courseTook._id;
+
     const updData = await teacherRegister.findOneAndUpdate(
       { _id: userID },
       {
@@ -188,7 +203,7 @@ exports.updateTeacher = async (req, res) => {
         city,
         state,
         pincode,
-        teachingcourse,
+        teachingcourse: courseTookID,
         salary,
         joiningdate,
         dob,
@@ -202,14 +217,8 @@ exports.updateTeacher = async (req, res) => {
       };
     }
 
-    await updData
-      .save()
-      .then(() => {
-        console.log("updated Teacher");
-      })
-      .catch((error) => {
-        console.log(`save error:  ${error}`);
-      });
+    await updData.save();
+
     res.redirect("/admin/viewTeacher");
   } catch (err) {
     console.log(err);

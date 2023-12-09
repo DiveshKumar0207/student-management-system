@@ -11,7 +11,7 @@
 
 
 # "cookie-parser": "^1.4.3" done
-"morgan": "^1.8.2",
+# "morgan": "^1.8.2",
 "serve-favicon": "^2.4.3"
 
 "cors" 
@@ -73,22 +73,13 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 -->>child_process.execFile.
 
 
-    # "dotenv": "^8.2.0",
-    # "express": "^4.17.1",
-    # "hbs": "^5.2.0",    
-    # "mongoose": "^4.11.1",
-    # multer
-    #
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hbs": "^5.2.0",    
+    "mongoose": "^4.11.1",
+    'multer'
+    
 
-
-
-#     <label for="hexId">Hex ID: </label>
-# <input
-#   id="hexId"
-#   type="password"
-#   pattern="[0-9a-fA-F]{4,8}"
-#   title="Enter an ID consisting of 4-8 hexadecimal digits"
-#   autocomplete="new-password" />
 
 1. refreshToken code $$$ refreshToken--change on every time      --LIL-ISSUE--       --REFRESHING-REFRESH-TOKEN==before-LOGIN-it-starts-setInterval--
 2. roles define                                                  --DONE--
@@ -96,11 +87,11 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 4. strong password, forget-password otpVerify,reset-pass page   --DONE--
 5. logoutAll button
 6. course crud                                                    --DONE--      
-7. student/teacher update $ delete $ view on screen               --BUG--     --on-update--age-dont-set-in-tablw--
-8. same for teacher                                               --BUG--
+7. student/teacher update $ delete $ view on screen               --DONE--   
+8. same for teacher                                               --DONE--
 9. post inquiry handling
 10. notice                                                        --DONE--
-11. payment gateway
+11. payment gateway                                               --WOKRING--
 12. profile view
 13.dashboard for all
 14. Attendance view and mark                                     --DONE--
@@ -110,7 +101,8 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 17. parent-pages (optional)
 18. more client side validation
 19. correction of date input                                       --DONE--
-20. 404 NOT FOUND PAGE
+20. 404 NOT FOUND PAGE                                             --DONE--     
+21. attendance database-->> [course name, ki jagah course id as refernce dalni h] 
 
 # ERROR :  --DONE--
 # dashboard:1  Access to fetch at 'http://localhost:3000/refresh' from origin 'http://127.0.0.1:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.

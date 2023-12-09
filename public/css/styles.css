@@ -566,6 +566,7 @@ body {
 
 .center_part {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -577,6 +578,7 @@ body {
 
 .center_part_enquiry {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -1355,6 +1357,7 @@ body {
 
 .center_part_table {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -1685,6 +1688,7 @@ body {
 
 .center_part_dashboard {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -1819,6 +1823,7 @@ body {
 
 .center_part_notice {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -1957,6 +1962,7 @@ body {
 /* <<<<-----------------------------------------------------student page-------------------------------------------------------->>>>>>>> */
 .center_part_student {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -2026,6 +2032,7 @@ body {
 
 .center_part_addstd {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -2098,7 +2105,7 @@ body {
 
 }
 
-.add_students_middle tr:nth-child(5) td {
+.add_students_middle .address-group {
 
   width: 44rem;
   max-width: 50rem;
@@ -2367,6 +2374,7 @@ body {
 
 .center_part_fee {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -2393,24 +2401,33 @@ body {
 
 .fee_middle {
   margin: auto;
-  padding: 3rem;
-  width: 90%;
+  height: calc(100vh - 10rem);
+  /* padding: 3rem; */
   font-family: sans-serif;
-  /* overflow: auto; */
+  overflow-y: auto;
 }
 
 .fee_middle table {
   margin: auto;
-  width: 75%;
+  width: 50%;
 
   color: white;
   border-collapse: separate;
   border-spacing: 0 0.4rem;
+  margin-top: 1rem;
+}
+
+.fee_middle thead {
+  position: sticky;
+  top: 0rem;
+
 }
 
 .fee_middle thead th {
+  table-layout: fixed;
+
   background: #5b68a1;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 0.8rem;
   padding-left: 1rem;
   /* width: 50%; */
@@ -2430,10 +2447,8 @@ body {
 }
 
 .fee_middle td {
-  font-size: 1.1rem;
-  padding: 0.8rem;
-  padding-left: 1.5rem;
-  /* width: 50%; */
+  font-size: 1rem;
+  padding: 0.8rem 0.8rem 0.8rem 1.5rem;
 }
 
 .fee_middle tbody tr:hover {
@@ -2893,6 +2908,7 @@ body {
 
 .center_part_usertable {
   position: absolute;
+  z-index: -1;
   height: calc(100vh - 3.9rem);
   width: 80%;
   top: 3.9rem;
@@ -3547,4 +3563,44 @@ body {
   background: transparent;
   color: #aaa;
   border-radius: 5px;
+}
+
+/* -------------------- */
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Style for the right-pointing tooltip content */
+.tooltip .tooltiptext-right {
+  visibility: hidden;
+  position: absolute;
+  z-index: 9999;
+
+  width: 100px;
+  background-color: #333;
+
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+
+  top: 50%;
+  left: 105%;
+  margin-top: -15px;
+  /* Center the tooltip vertically */
+  opacity: 0;
+  transition: opacity 0.3s;
+  transition-delay: 0.5s;
+}
+
+.tooltip:hover .tooltiptext-right {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cover_cover {
+  position: relative;
+  z-index: 0;
 }

@@ -86,7 +86,7 @@ adminSchema.pre("save", async function (next) {
     try {
       this.password = await bcrypt.hash(this.password, saltRounds);
     } catch (error) {
-      throw new error("hash failed !");
+      throw new Error("hash failed !");
     }
   }
 
@@ -105,4 +105,4 @@ adminSchema.pre("save", async function (next) {
 
 const adminRegister = new mongoose.model("adminregister", adminSchema);
 
-module.exports = { adminRegister };
+module.exports = {adminRegister};

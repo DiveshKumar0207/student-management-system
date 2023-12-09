@@ -25,7 +25,7 @@
         <div class="fee_top_attendance">Taking-Attendance</div>
         <div class="attendance_middle">
 
-            <form action="/admin/postAttendance/{{userCourse._id}}" method="post">
+            <form action="/admin/postAttendance/{{courseChoosenID}}" method="post">
             <div class="datepicker">
                <input
                  type="date"
@@ -33,6 +33,7 @@
                  data-placeholder="Enter Date"
                  class="input_date_att"
                  disabled
+                 style="cursor: not-allowed;"
                />
              </div>
 
@@ -104,7 +105,7 @@
 
 
 
-    <script src="js/jscript.js"></script>
+    <script src="/js/jscript.js"></script>
 </body>
 
 </html>

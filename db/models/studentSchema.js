@@ -57,14 +57,6 @@ const studentSchema = new mongoose.Schema({
 
   address: Address.schema,
 
-  course: {
-    type: String,
-    required: true,
-  },
-  fees: {
-    type: Number,
-    required: true,
-  },
   age: {
     type: Number,
   },
@@ -84,6 +76,11 @@ const studentSchema = new mongoose.Schema({
     type: String,
     default: "student",
   },
+  course: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "course",
+    required: true,
+  },
   refreshtokens: [String],
 });
 
@@ -95,7 +92,7 @@ studentSchema.pre("save", async function (next) {
     try {
       this.password = await bcrypt.hash(this.password, saltRounds);
     } catch (error) {
-      throw new error("hash failed !");
+      throw new Error("hash failed !");
     }
   }
 

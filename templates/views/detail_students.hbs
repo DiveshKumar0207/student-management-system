@@ -41,7 +41,6 @@
               <th>AGE</th>
               <th>JoiningDate</th>
               <th>CourseID</th>
-              <th>TotalFees</th>
               <th>gender</th>
               <th>Update</th>
               <th>Delete</th>
@@ -63,8 +62,7 @@
               <td name="Age" class="accordion-content">{{this.age}}</td>
 
               <td name="JoiningDate" class="accordion-content">{{this._doc.joiningdate}}</td>
-              <td name="Course" class="accordion-content">{{this._doc.course}}</td>
-              <td name="TotalFee" class="accordion-content">{{this._doc.fees}}</td>
+              <td name="Course" class="accordion-content">{{this._doc.course.courseName}}</td>
               <td name="Gender" class="accordion-content">{{this._doc.gender}}</td>
               <td class="accordion-content">
 
@@ -101,7 +99,7 @@
     </script>
 
 
-    <script src="js/jscript.js"></script>
+    <script src="/js/jscript.js"></script>
 </body>
 
 </html>

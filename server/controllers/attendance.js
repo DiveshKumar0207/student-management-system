@@ -19,16 +19,16 @@ exports.markAttendance = async (req, res) => {
 
   try {
     // getting course detail and its course-name
-    const userCourse = await course.findOne({ _id: courseID });
-    const studentsCourse = userCourse.courseName;
+    const courseChoosen = await course.findOne({ _id: courseID });
+    const courseChoosenID = courseChoosen._id;
 
     // getting students-list as per required course
     const studentsList = await studentRegister.find(
-      { course: studentsCourse },
+      { course: courseChoosenID },
       { firstname: 1, rollno: 1 }
     );
 
-    res.render("attendance_mark", { studentsList, userCourse });
+    res.render("attendance_mark", { studentsList, courseChoosenID });
   } catch (error) {
     console.log(error);
   }
@@ -54,7 +54,7 @@ exports.postAttendance = async (req, res) => {
 
     const attendanceRecord = new attendanceRegister({
       batch: studentsCourse,
-      attendancedate: undefined,
+      // attendancedate: undefined,
       attendance: [],
     });
 
@@ -66,14 +66,7 @@ exports.postAttendance = async (req, res) => {
       });
     }
 
-    await attendanceRecord
-      .save()
-      .then(() => {
-        console.log("attendance mark \n");
-      })
-      .catch((error) => {
-        console.log(`save error:  ${error}`);
-      });
+    await attendanceRecord.save();
 
     res.redirect("/admin/attendance");
   } catch (err) {
@@ -81,9 +74,10 @@ exports.postAttendance = async (req, res) => {
   }
 };
 
-//
+// attendance for current date
 exports.viewAttendancePage = async (req, res) => {
   const courseID = req.params.courseID;
+
   const d = new Date();
   const year = d.getFullYear();
   const month = d.getMonth() + 1;

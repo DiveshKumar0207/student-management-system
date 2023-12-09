@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const noticeSchema = new mongoose.Schema({
-  noticeHead: {
+  noticehead: {
     type: String,
     trim: true,
   },

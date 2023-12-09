@@ -46,19 +46,32 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    {{#each studentAttendance}}
-                    {{#each this.attendance}}
                   
-                    <tr>
-                        <td>{{name}}</td>
-                        <td>{{rollno}}</td>
-                        <td>
-                            <div class="{{attend}}_button"> {{attend}}</div>
-                        </td>
-                    </tr>
+                    {{#unless studentAttendance}}
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO ATTENDANCE MARKED TODAY</td>
 
-                    {{/each}}
-                    {{/each}}
+                            </tr>
+                            <tr>
+                                 <td colspan="3" style="color: brown; text-align: center;">ENTER DATE $ CLICK VIEW, FOR THAT DATE'S ATTENTDANCE RECORD</td>
+                            </tr>
+                    {{else}}
+                      <!-- Content to render if the condition is truthy -->
+                            {{#each studentAttendance}}
+                            {{#each this.attendance}}
+
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{rollno}}</td>
+                                <td>
+                                    <div class="{{attend}}_button">{{attend}}</div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                            {{/each}}
+                    
+                    {{/unless}}
                 </tbody>
             </table>
 
@@ -74,7 +87,7 @@
 
 
 
-    <script src="js/jscript.js"></script>
+    <script src="/js/jscript.js"></script>
 </body>
 
 </html>

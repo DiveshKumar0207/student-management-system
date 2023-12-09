@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 require("./db/connection/connect");
 const routes = require("./server/routes/route");
 
+const usercontroller = require("./server/controllers/usercontroller");
 const PORT = process.env.PORT || 3000;
 
 // paths
@@ -18,66 +19,72 @@ const staticPath = path.join(__dirname, "./public");
 const viewsPath = path.join(__dirname, "./templates/views");
 const partialsPath = path.join(__dirname, "./templates/partials");
 
+//! i made mistake in linking css. it should be like href="/css/styles.css" not  href="css/styles.css" --notice that "/"before css
+//?  this caused all messed up and i had to write this code
+//! DO SIMPLY LIKE: app.use(express.static(staticPath)); AS WE DO,
+//* STOP MAKING MISTAKES
 //middleware static file
-app.use((req, res, next) => {
-  const route = req.path.split("/").slice(1, 3).join("/");
-  const longRoute = req.path.split("/").slice(1, 4).join("/");
+// app.use((req, res, next) => {
+//   const route = req.path.split("/").slice(1, 3).join("/");
+//   const longRoute = req.path.split("/").slice(1, 4).join("/");
 
-  const routePrefix = req.path.split("/")[1];
-  // const secondPrefix = req.path.split("/")[2];
-  try {
-    if (routePrefix == "") {
-      app.use(express.static(staticPath));
-      //
-    } else if (longRoute == "login/verify/otp") {
-      app.use("/login/verify/otp", express.static(staticPath));
-      //
-    } else if (route == "login/verify") {
-      app.use("/login/verify", express.static(staticPath));
-      //
-    } else if (longRoute == "login/reset/password") {
-      app.use("/login/reset/password", express.static(staticPath));
-      //
-    } else if (longRoute == "admin/courses/editCourse") {
-      app.use("/admin/courses/editCourse", express.static(staticPath));
-      //
-    } else if (route == "admin/courses") {
-      app.use("/admin/courses", express.static(staticPath));
-      //
-    } else if (route == "admin/editStudent") {
-      app.use("/admin/editStudent", express.static(staticPath));
-      //
-    } else if (route == "admin/editTeacher") {
-      app.use("/admin/editTeacher", express.static(staticPath));
-      //
-    } else if (route == "admin/markAttendance") {
-      app.use("/admin/markAttendance", express.static(staticPath));
-      //
-    } else if (route == "admin/postAttendance") {
-      app.use("/admin/postAttendance", express.static(staticPath));
-      //
-    } else if (route == "admin/viewAttendance") {
-      app.use("/admin/viewAttendance", express.static(staticPath));
-      //
-    } else if (route == "admin/searchAttendance") {
-      app.use("/admin/searchAttendance", express.static(staticPath));
-      //
-    } else if (routePrefix == "teacher") {
-      app.use("/teacher", express.static(staticPath));
-      //
-    } else if (routePrefix == "student") {
-      app.use("/student", express.static(staticPath));
-      //
-    } else if (routePrefix == "admin") {
-      app.use("/admin", express.static(staticPath));
-      //
-    }
-  } catch (err) {
-    console.log(err);
-  }
+//   const routePrefix = req.path.split("/")[1];
+//   // const secondPrefix = req.path.split("/")[2];
+//   try {
+//     if (routePrefix == "") {
+//       app.use(express.static(staticPath));
+//       //
+//     } else if (longRoute == "login/verify/otp") {
+//       app.use("/login/verify/otp", express.static(staticPath));
+//       //
+//     } else if (route == "login/verify") {
+//       app.use("/login/verify", express.static(staticPath));
+//       //
+//     } else if (longRoute == "login/reset/password") {
+//       app.use("/login/reset/password", express.static(staticPath));
+//       //
+//     } else if (longRoute == "admin/courses/editCourse") {
+//       app.use("/admin/courses/editCourse", express.static(staticPath));
+//       //
+//     } else if (route == "admin/courses") {
+//       app.use("/admin/courses", express.static(staticPath));
+//       //
+//     } else if (route == "admin/editStudent") {
+//       app.use("/admin/editStudent", express.static(staticPath));
+//       //
+//     } else if (route == "admin/editTeacher") {
+//       app.use("/admin/editTeacher", express.static(staticPath));
+//       //
+//     } else if (route == "admin/markAttendance") {
+//       app.use("/admin/markAttendance", express.static(staticPath));
+//       //
+//     } else if (route == "admin/postAttendance") {
+//       app.use("/admin/postAttendance", express.static(staticPath));
+//       //
+//     } else if (route == "admin/viewAttendance") {
+//       app.use("/admin/viewAttendance", express.static(staticPath));
+//       //
+//     } else if (route == "admin/searchAttendance") {
+//       app.use("/admin/searchAttendance", express.static(staticPath));
+//       //
+//     } else if (routePrefix == "teacher") {
+//       app.use("/teacher", express.static(staticPath));
+//       //
+//     } else if (routePrefix == "student") {
+//       app.use("/student", express.static(staticPath));
+//       //
+//     } else if (routePrefix == "admin") {
+//       app.use("/admin", express.static(staticPath));
+//       //
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
 
-  next();
-});
+//   next();
+// });
+
+app.use(express.static(staticPath));
 
 //
 app.use(cors());

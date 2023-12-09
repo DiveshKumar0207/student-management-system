@@ -3,7 +3,7 @@ const router = express.Router();
 
 // require-controllers
 const usercontroller = require("../controllers/usercontroller");
-const registerUser = require("../controllers/register");
+const registerUser = require("../controllers/registerUser");
 const logIn = require("../controllers/logIn");
 const logOut = require("../controllers/logout");
 const refreshToken = require("../../server/controllers/refreshToken");
@@ -13,6 +13,7 @@ const coursecontroller = require("../controllers/course")
 const viewUsercontroller = require("../controllers/viewUser")
 const attendanceController = require("../controllers/attendance")
 const resetPassController = require("../controllers/resetPass")
+const feeController = require("../controllers/fee")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
@@ -45,17 +46,17 @@ router.get("/admin/courses", verifyJWT, role("admin"), coursecontroller.courses)
 router.get("/admin/teachers", verifyJWT, role("admin"), usercontroller.teachers);
 router.get("/admin/students", verifyJWT, role("admin"), usercontroller.students);
 router.get("/admin/attendance", verifyJWT, role("admin"), attendanceController.attendance);
-router.get("/admin/studentFee", verifyJWT, role("admin"), usercontroller.fee);
+router.get("/admin/studentFee", verifyJWT, role("admin"), feeController.viewFee);
 router.get("/admin/notice", verifyJWT, role("admin"), usercontroller.notice);
 
 // sub pages
-router.get("/admin/addStudent", verifyJWT, role("admin"), usercontroller.addStudent);
+router.get("/admin/addStudent", verifyJWT, role("admin"), viewUsercontroller.addStudentPage);
 router.get("/admin/viewStudent", verifyJWT, role("admin"), viewUsercontroller.viewStudent);
 router.post("/admin/editStudent/:id", verifyJWT, role("admin"), viewUsercontroller.editStudent);
 router.post("/updateStudent/:id", verifyJWT, role("admin"), upload.single("profilepic"), viewUsercontroller.updateStudent);
 router.post("/deleteStudent/:id", verifyJWT, role("admin"), viewUsercontroller.deleteStudent);
 
-router.get("/admin/addTeacher", verifyJWT, role("admin"), usercontroller.addTeacher);
+router.get("/admin/addTeacher", verifyJWT, role("admin"), viewUsercontroller.addTeacherPage);
 router.get("/admin/viewTeacher", verifyJWT, role("admin"), viewUsercontroller.viewTeacher);
 router.post("/admin/editTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.editTeacher);
 router.post("/updateTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.updateTeacher);
@@ -67,6 +68,8 @@ router.post("/createCourse", verifyJWT, role("admin"), coursecontroller.createCo
 router.post("/admin/courses/editCourse/:id", verifyJWT, role("admin"), coursecontroller.editCourse);
 router.post("/updateCourse/:id", verifyJWT, role("admin"), coursecontroller.updateCourse);
 router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.deleteCourse);
+
+// router.get("/admin/studentFee", verifyJWT, role("admin"), feeController.fee);
 
 
 // courseID -> object id of in courseSchema/course collection
@@ -101,5 +104,9 @@ router.get("/refresh", verifyJWT, refreshToken.refresh);
 
 // 
 router.post("/postNotice", verifyJWT, role("admin"), notices.notice);
+
+// 
+router.get("*", usercontroller.errorPage);
+
 
 module.exports = router;

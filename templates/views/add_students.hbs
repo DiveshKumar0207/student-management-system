@@ -24,6 +24,7 @@
      <div class="center_part_addstd">
       <div class="add_students_top">Add a Student</div>
       <div class="add_students_middle">
+        
         <form action="" method="post" enctype="multipart/form-data">
           <table>
             <tr>
@@ -89,17 +90,39 @@
                 />
               </td>
               <td>
-                <input
+                {{!-- <input
                   type="number"
                   name="fees"
                   placeholder="fees"
                   min="0"
                   required
-                />
+                  disabled
+                  style="border: 1.5px gray solid; cursor:not-allowed;"
+                /> --}}
               </td>
             </tr>
             <tr>
               <td>
+                <input
+                  type="number"
+                  name="feeDiscout"
+                  placeholder="Fee Discount in percentage"
+                  min="0"     
+                  max="100"         
+                />
+              </td>
+              <td>
+                <input
+                  type="date"
+                  name="dueDate"
+                  data-placeholder="Due Date"
+                  required
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td class="address-group">
                 <fieldset class="address-fieldset">
                   <legend>Address:</legend>
                   <input type="text" name="street" placeholder="Street" />
@@ -110,6 +133,7 @@
               </td>
               <!-- <td></td> -->
             </tr>
+            
             <tr>
               <td>
                 <input
@@ -134,7 +158,7 @@
                   <option value="" disabled selected>Student Course</option>
 
                    {{#each courseAvailable}}
-                  <option value="{{this.courseName}}" >{{this.courseName}}
+                  <option value="{{this.courseName}}" >{{this.courseName}}, (Rs {{this.courseFee}})
                   </option>
                   {{/each}}
                   
@@ -161,7 +185,7 @@
 
 
 
-    <script src="js/jscript.js"></script>
+    <script src="/js/jscript.js"></script>
 </body>
 
 </html>
