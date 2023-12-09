@@ -69,15 +69,12 @@ Open your web browser and go to `http://localhost:3000` to access the Student Ma
 
 ## Contributing
 
-We welcome contributions to improve and expand the functionality of the Student Management System. If you'd like to contribute, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+We welcome contributions to improve and expand the functionality of the Student Management System. 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Support or Contact
 
-If you need assistance or have any questions, please contact us at support@example.com or refer to our documentation.
+If you need assistance or have any questions, please contact us at [linkedIn](https://www.linkedin.com/in/diveshkumar0207) .
 
 ## Future Update
 
