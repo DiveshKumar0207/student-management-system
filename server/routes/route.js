@@ -59,7 +59,7 @@ router.post("/deleteStudent/:id", verifyJWT, role("admin"), viewUsercontroller.d
 router.get("/admin/addTeacher", verifyJWT, role("admin"), viewUsercontroller.addTeacherPage);
 router.get("/admin/viewTeacher", verifyJWT, role("admin"), viewUsercontroller.viewTeacher);
 router.post("/admin/editTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.editTeacher);
-router.post("/updateTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.updateTeacher);
+router.post("/updateTeacher/:id", verifyJWT, role("admin"), upload.single("profilepic"), viewUsercontroller.updateTeacher);
 router.post("/deleteTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.deleteTeacher);
 
 
@@ -69,7 +69,7 @@ router.post("/admin/courses/editCourse/:id", verifyJWT, role("admin"), coursecon
 router.post("/updateCourse/:id", verifyJWT, role("admin"), coursecontroller.updateCourse);
 router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.deleteCourse);
 
-// router.get("/admin/studentFee", verifyJWT, role("admin"), feeController.fee);
+router.get("/admin/feedetails/:courseID", verifyJWT, role("admin"), feeController.viewStudentDetails);
 
 
 // courseID -> object id of in courseSchema/course collection

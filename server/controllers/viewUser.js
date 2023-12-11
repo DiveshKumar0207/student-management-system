@@ -73,23 +73,48 @@ exports.updateStudent = async (req, res) => {
 
     const courseTookID = courseTook._id;
 
+    let dataToSend;
+
+    profilepic !== undefined
+      ? (dataToSend = {
+          firstname,
+          lastname,
+          gender,
+          email,
+          password,
+          telephone,
+          street,
+          city,
+          state,
+          pincode,
+          rollno,
+          course: courseTookID,
+          joiningdate,
+          dob,
+          profilepic,
+        })
+      : (dataToSend = {
+          firstname,
+          lastname,
+          gender,
+          email,
+          password,
+          telephone,
+          street,
+          city,
+          state,
+          pincode,
+          rollno,
+          course: courseTookID,
+          joiningdate,
+          dob,
+        });
+
+    //TODO SOLVE ISSUE FOR ADDDING PROFILEPIC ONLY WHEN GIVEN
     const updData = await studentRegister.findOneAndUpdate(
       { _id: userID },
       {
-        firstname,
-        lastname,
-        gender,
-        email,
-        password,
-        telephone,
-        street,
-        city,
-        state,
-        pincode,
-        rollno,
-        course: courseTookID,
-        joiningdate,
-        dob,
+        $set: dataToSend,
       },
       { new: true }
     );
@@ -122,7 +147,7 @@ exports.deleteStudent = async (req, res) => {
 //
 
 exports.addTeacherPage = async (req, res) => {
-  const courseAvailable = await course.find();
+  const courseAvailable = await courseModel.find();
 
   res.render("add_teachers", { courseAvailable });
 };
@@ -167,46 +192,75 @@ exports.editTeacher = async (req, res) => {
 // update teacher
 exports.updateTeacher = async (req, res) => {
   const userID = req.params.id;
+
   const {
     firstname,
     lastname,
     gender,
-    teacherid,
+    email,
     password,
     telephone,
-    email,
     street,
     city,
     state,
     pincode,
-    teachingcourse,
+    teacherid,
     salary,
+    teachingcourse,
     joiningdate,
     dob,
+    profilepic,
   } = req.body;
   try {
-    const courseTook = await courseModel.findOne({ courseName: course });
+    const courseTook = await courseModel.findOne({
+      courseName: teachingcourse,
+    });
 
     const courseTookID = courseTook._id;
+
+    let dataToSend;
+
+    profilepic !== undefined
+      ? (dataToSend = {
+          firstname,
+          lastname,
+          gender,
+          teacherid,
+          password,
+          telephone,
+          email,
+          street,
+          city,
+          state,
+          pincode,
+          teachingcourse: courseTookID,
+          salary,
+          joiningdate,
+          dob,
+          profilepic,
+        })
+      : (dataToSend = {
+          firstname,
+          lastname,
+          gender,
+          teacherid,
+          password,
+          telephone,
+          email,
+          street,
+          city,
+          state,
+          pincode,
+          teachingcourse: courseTookID,
+          salary,
+          joiningdate,
+          dob,
+        });
 
     const updData = await teacherRegister.findOneAndUpdate(
       { _id: userID },
       {
-        firstname,
-        lastname,
-        gender,
-        teacherid,
-        password,
-        telephone,
-        email,
-        street,
-        city,
-        state,
-        pincode,
-        teachingcourse: courseTookID,
-        salary,
-        joiningdate,
-        dob,
+        $set: dataToSend,
       },
       { new: true }
     );

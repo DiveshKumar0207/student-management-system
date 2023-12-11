@@ -109,6 +109,6 @@ studentSchema.pre("save", async function (next) {
   next();
 });
 
-const studentRegister = new mongoose.model("studentregister", studentSchema);
+const studentRegister = mongoose.model("studentregister", studentSchema);
 
 module.exports = { studentRegister };

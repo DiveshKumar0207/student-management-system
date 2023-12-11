@@ -103,6 +103,6 @@ adminSchema.pre("save", async function (next) {
   next();
 });
 
-const adminRegister = new mongoose.model("adminregister", adminSchema);
+const adminRegister = mongoose.model("adminregister", adminSchema);
 
-module.exports = {adminRegister};
+module.exports = { adminRegister };

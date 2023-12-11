@@ -47,22 +47,35 @@
                 </thead>
                 <tbody>
 
-            {{#each studentsList}}
-                    <tr>
-                        <td >{{this.firstname}}</td>                        
-                        <td >{{this.rollno}}</td>
-                           <input type="hidden" name="studentName" value="{{this.firstname}}">
-                         <input type="hidden" name="studentRollno" value="{{this.rollno}}">
+                     {{#unless studentsList}}
 
-                        <td>
-                            <select name="studentAttendance" class="attendanceSelect" required>
-                                <option value="present">Present</option>
-                                <option value="absent">Absent</option>
-                            </select>
-                        </td>
-                    </tr>
- 
-            {{/each}}
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO STUDENT ENROLLED</td>
+
+                            </tr>
+
+                     {{else}}
+
+                            {{#each studentsList}}
+                            <tr>
+                                <td >{{this.firstname}}</td>                        
+                                <td >{{this.rollno}}</td>
+                                   <input type="hidden" name="studentName" value="{{this.firstname}}">
+                                 <input type="hidden" name="studentRollno" value="{{this.rollno}}">
+
+                                <td>
+                                    <select name="studentAttendance" class="attendanceSelect" required>
+                                        <option value="present">Present</option>
+                                        <option value="absent">Absent</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+
+                     {{/unless}}
+            
 
                 </tbody>
             </table>

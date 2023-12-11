@@ -108,6 +108,6 @@ teacherSchema.pre("save", async function (next) {
   next();
 });
 
-const teacherRegister = new mongoose.model("teacherregister", teacherSchema);
+const teacherRegister = mongoose.model("teacherregister", teacherSchema);
 
 module.exports = { teacherRegister };

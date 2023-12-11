@@ -29,180 +29,42 @@
               <th>Roll no</th>
               <th>Mob. no</th>
               <th>Dues</th>
+              <th>Status</th>
               <th>Pay</th>
               <th>receipt</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
 
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>hhh</td>
-              <td>
-                <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
-              </td>
-              <td>
-                <a href=""
-                  ><i class="bi bi-file-earmark-arrow-down-fill"></i
-                ></a>
-              </td>
-            </tr>
+            {{#unless feeData}}
+
+              <tr>
+                  <td colspan="7"  style="color: brown; text-align: center;">NO STUDENT ENROLLED</td>
+              </tr>
+
+
+
+
+            {{else}}
+                  {{#each feeData}}
+                      <tr>
+                        <td>{{this.student.firstname}}</td>
+                        <td>{{this.student.rollno}}</td>
+                        <td>{{this.student.telephone}}</td>
+                        <td>{{this.amount}}</td>
+                        <td>{{this.paymentstatus}}</td>
+                        <td>
+                          <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
+                        </td>
+                        <td>
+                          <a href=""
+                            ><i class="bi bi-file-earmark-arrow-down-fill"></i
+                          ></a>
+                        </td>
+                      </tr>
+
+                  {{/each}}
+            {{/unless}}
           </tbody>
         </table>
       </div>

@@ -25,7 +25,7 @@
       <div class="add_students_middle">
 
             {{#each teacherData}}
-        <form action="/updateTeacher/{{_doc._id}}" method="post" enctype="multipart/form-data">
+        <form action="/updateTeacher/{{_doc._id}}" method="post" enctype='multipart/form-data'>
           <table>
             <tr>
               <td>
@@ -46,7 +46,15 @@
               <td>
                 <input type="email" name="email" value="{{_doc.email}}" placeholder="example@123gmail.com" required />
               </td>
-              <td></td>
+              <td>
+                  <input
+                  type="password"
+                  name="password"
+                  placeholder="Password-only changed by user itself"
+                  disabled
+                  style="border: 1.5px gray solid; cursor:not-allowed; opacity: 0.7 "
+                />
+              </td>
             </tr>
             <tr>
               <td>
@@ -138,14 +146,24 @@
             </tr>
             <tr>
               <td>
-                <select name="teachingcourse" required>
+                {{!-- <select name="teachingcourse" required>
                   <option value="" disabled >Teaching Course</option>
                     
                   {{#each courseAvailable}}  
-                  <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.teachingcourse)}} selected {{/if}}> {{this.courseName}}
+                  <option value="{{this.courseName}}"  > {{this.courseName}}
                   </option>
+                  {{log this.courseName}}
                   {{/each}}
                  
+                </select> --}}
+                  <select name="teachingcourse" required>
+                  <option value="" disabled selected>Teaching Course</option>
+                  {{!--//TODO same work as in update_student.hbs  --}}
+
+                   {{#each courseAvailable}}
+                  <option value="{{this.courseName}}" >{{this.courseName}}
+                  </option>
+                  {{/each}}
                 </select>
               </td>
               <td>
@@ -162,6 +180,7 @@
             </tr>
           </table>
         </form>
+
         {{/each}}
 
       </div>

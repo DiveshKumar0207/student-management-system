@@ -151,8 +151,9 @@
                 <select name="course" required>
                   <option value="" disabled >Student Course</option>
 
+{{!-- //TODO option should match the students course in displaying  on editStudent controller in viewUser--}}
                    {{#each courseAvailable}}  
-                  <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.course)}} selected {{/if}}> {{this.courseName}}
+                  <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.course)}} selected {{/if}}> {{this.courseName}}, (Rs {{this.courseFee}})
                   </option>
                   {{/each}}
                  

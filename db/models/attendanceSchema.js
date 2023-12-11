@@ -49,6 +49,6 @@ attendanceSchema.pre("save", function (next) {
 // compount-index --> so that attendance can be done once a day of a batch
 attendanceSchema.index({ batch: 1, attendancedate: 1 }, { unique: true });
 
-const attendance = new mongoose.model("studentattendance", attendanceSchema);
+const attendance = mongoose.model("studentattendance", attendanceSchema);
 
 module.exports = attendance;

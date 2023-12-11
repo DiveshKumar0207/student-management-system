@@ -96,7 +96,6 @@ exports.register_teacher = async (req, res) => {
       dob,
       profilepic,
     } = req.body;
-
     const courseTook = await courseModel.findOne({
       courseName: teachingcourse,
     });

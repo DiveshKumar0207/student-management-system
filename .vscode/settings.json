@@ -20,5 +20,6 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#000a12",
-  "todo-tree.tree.showBadges": false
+  "todo-tree.tree.showBadges": false,
+  "todo-tree.tree.scanMode": "workspace only"
 }
