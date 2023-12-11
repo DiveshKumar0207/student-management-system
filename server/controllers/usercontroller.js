@@ -6,20 +6,12 @@ const course = require("../../db/models/courseSchema");
 exports.index = (req, res) => {
   res.render("index");
 };
-exports.inquiry_post = (req, res) => {
-  res.render("inquiry_post");
-};
 
 exports.home_students = (req, res) => {
   res.render("home_students");
 };
 exports.home_teachers = (req, res) => {
   res.render("home_teachers");
-};
-
-//
-exports.inquiry = (req, res) => {
-  res.render("inquiry");
 };
 
 exports.teachers = (req, res) => {

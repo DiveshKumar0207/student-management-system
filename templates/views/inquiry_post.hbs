@@ -21,32 +21,32 @@
 
     <div class="container">
         <section> Zillionsoftech</section>
-        <form>
+        <form action="/postInquiry" method="post">
             <ul class="flex-outer">
                 <li>
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your first name here" required>
+                    <input type="text" id="first-name" name="firstname" placeholder="Enter your first name here" required>
                 </li>
                 <li>
                     <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" placeholder="Enter your last name here">
+                    <input type="text" id="last-name" name="lastname" placeholder="Enter your last name here">
                 </li>
                 <li>
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email here" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your email here" required>
                 </li>
                 <li>
                     <label for="phone">Phone</label>
-                    <input type="tel" id="phone" placeholder="Enter your phone here" required>
+                    <input type="tel" id="phone" name="telephone" placeholder="Enter your phone here" required>
                 </li>
                 <li>
-                    <label for="User_location">Location</label>
-                    <input type="text" id="User_location" placeholder="Enter your location" required>
+                    <label for="User_location">City</label>
+                    <input type="text" id="User_location" name="address" placeholder="Enter your location" required>
                 </li>
 
                 <li>
                     <label for="message">Inquiry msg</label>
-                    <textarea rows="6" id="message"
+                    <textarea rows="6" id="message" name="message"
                         placeholder="Enter your message here Or inquiry about course you interested in"
                         required></textarea>
                 </li>
@@ -55,30 +55,30 @@
                     <p>Age</p>
                     <ul class="flex-inner">
                         <li>
-                            <input type="radio" id="ten-to-nineteen" name="age_Enquiry" checked>
-                            <label for="twenty-to-twentynine">10-19</label>
+                            <input type="radio" id="ten-to-nineteen" value="10-18" name="ageGroup" checked>
+                            <label for="twenty-to-twentynine">10-18</label>
                         </li>
                         <li>
-                            <input type="radio" id="twenty-to-twentynine" name="age_Enquiry">
-                            <label for="twenty-to-twentynine">20-29</label>
+                            <input type="radio" id="twenty-to-twentynine" value="19-29" name="ageGroup">
+                            <label for="twenty-to-twentynine">19-29</label>
                         </li>
                         <li>
-                            <input type="radio" id="thirty-to-thirtynine" name="age_Enquiry">
+                            <input type="radio" id="thirty-to-thirtynine" value="30-39" name="ageGroup">
                             <label for="thirty-to-thirtynine">30-39</label>
                         </li>
                         <li>
-                            <input type="radio" id="fourty-to-fourtynine" name="age_Enquiry">
+                            <input type="radio" id="fourty-to-fourtynine" value="40-49" name="ageGroup">
                             <label for="fourty-to-fourtynine">40-49</label>
                         </li>
 
                         <li>
-                            <input type="radio" id="other" name="age_Enquiry">
+                            <input type="radio" id="other" value="other" name="ageGroup">
                             <label for="other">Other</label>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <button type="submit">Submit</button>
+                    <button style="cursor: pointer;" type="submit">Submit</button>
                 </li>
             </ul>
         </form>

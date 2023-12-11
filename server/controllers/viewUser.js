@@ -136,10 +136,14 @@ exports.updateStudent = async (req, res) => {
 // delete student
 exports.deleteStudent = async (req, res) => {
   const userID = req.params.id;
-  await studentRegister.findOneAndDelete({ _id: userID });
-  console.log(`Student User deleted`);
+  try {
+    await studentRegister.findOneAndDelete({ _id: userID });
+    console.log(`Student User deleted`);
 
-  res.redirect("/admin/viewStudent");
+    res.redirect("/admin/viewStudent");
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //

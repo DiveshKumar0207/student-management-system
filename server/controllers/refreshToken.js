@@ -61,7 +61,7 @@ exports.refresh = async (req, res) => {
     try {
       await res.clearCookie("jwtAccess");
       await res.cookie("jwtAccess", newAccessToken, {
-        httpOnly: true,
+        maxAge: 30 * 60 * 1000,
       });
       console.log("token set-");
     } catch (err) {

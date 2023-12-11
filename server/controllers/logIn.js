@@ -1,6 +1,6 @@
-const {studentRegister} = require("../../db/models/studentSchema");
-const {teacherRegister} = require("../../db/models/teacherSchema");
-const {adminRegister} = require("../../db/models/adminSchema");
+const { studentRegister } = require("../../db/models/studentSchema");
+const { teacherRegister } = require("../../db/models/teacherSchema");
+const { adminRegister } = require("../../db/models/adminSchema");
 require("../../db/connection/connect");
 
 require("dotenv").config();
@@ -18,13 +18,13 @@ const refreshPrivateKey = fs.readFileSync(
 );
 
 function generateAccessToken(id, role) {
-  return jwt.sign({_id: id, role: role}, accessPrivateKey, {
+  return jwt.sign({ _id: id, role: role }, accessPrivateKey, {
     algorithm: "ES256",
     expiresIn: process.env.ACCESS_EXPIRE_TIME,
   });
 }
 function generateRefreshToken(id, role) {
-  return jwt.sign({_id: id, role: role}, refreshPrivateKey, {
+  return jwt.sign({ _id: id, role: role }, refreshPrivateKey, {
     algorithm: "ES256",
     expiresIn: process.env.REFRESH_EXPIRE_TIME,
   });
@@ -32,26 +32,26 @@ function generateRefreshToken(id, role) {
 // login=====================================================
 exports.login = async (req, res) => {
   try {
-    const {email, password, role} = req.body;
+    const { email, password, role } = req.body;
 
     let user;
     if (role === "student") {
-      user = await studentRegister.findOne({email: email});
+      user = await studentRegister.findOne({ email: email });
     } else if (role === "teacher") {
-      user = await teacherRegister.findOne({email: email});
+      user = await teacherRegister.findOne({ email: email });
     } else if (role === "admin") {
-      user = await adminRegister.findOne({email: email});
+      user = await adminRegister.findOne({ email: email });
     }
 
     if (!user) {
-      res.status(401).json({message: "unauthorized"});
+      res.status(401).json({ message: "unauthorized" });
     }
 
     // if (user) {
     const checkPassword = await bcrypt.compare(password, user.password);
 
     if (!checkPassword) {
-      res.status(401).json({message: "unauthorized"});
+      res.status(401).json({ message: "unauthorized" });
     }
 
     // genrating jwt tokens
@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
 
       // setting cookies
       await res.cookie("jwtAccess", accessToken, {
-        httpOnly: true,
+        maxAge: 30 * 60 * 1000,
       });
       await res.cookie("jwtRefresh", refreshToken, {
         httpOnly: true,

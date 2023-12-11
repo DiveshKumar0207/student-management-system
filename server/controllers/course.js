@@ -29,14 +29,8 @@ exports.createCourse = async (req, res) => {
     courseFee,
   });
 
-  await register
-    .save()
-    .then(() => {
-      console.log(`Course Created`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  await register.save();
+
   res.redirect("admin/courses/addCourse");
 };
 
@@ -66,14 +60,7 @@ exports.updateCourse = async (req, res) => {
       { new: true }
     );
 
-    await upddetails
-      .save()
-      .then(() => {
-        console.log(`Course Updated`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await upddetails.save();
 
     res.redirect("/admin/courses");
   } catch (err) {

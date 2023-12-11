@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   {{>hbs}}
+    {{>head}}
 
 </head>
 
@@ -20,339 +20,96 @@
     {{> sidebar}}
     {{!-- sidebar end --}}
 
+
     <!------ enquiry_page ----->
-    <div class="center_part_table">
+     
+    <div class="center_part_usertable">
+      <section>
+        <h1>Zillionsoftech</h1>
+        <h2>Inquiry Details</h2>
+      </section>
+      <div class="tableContainer">
+        <table class="user_table">
+          <thead>
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Location</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>UpdateStatus</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each inquiryData}}
+            <tr>
+              <td>{{this.firstname}}</td>
+              <td>{{this.lastname}}</td>
+              <td name="Email">{{this.email}}</td>
+              <td name="Telephone" class="accordion-content">{{this.telephone}}</td>
+              <!-- prettier ingnore -->
+              <td name="Address" class="accordion-content">
+               {{this.address}}
+              </td>
 
-        <section>
-            <h1> <span class="yellow"> <a href="index.html">Zillionsoftech</a> </span>
-            </h1>
-            <h2>Inquiry table</a></h2>
-        </section>
+              <td name="message" class="accordion-content">
+               {{this.message}}
+              </td>
+              <td name="status" value="{{this.status}}" class="accordion-content" >
+               {{this.status}}
+              </td>
 
-        <table class="enquiry_table">
-            <thead>
-                <tr>
-                    <th>
-                        <h1> First Name</h1>
-                    </th>
-                    <th>
-                        <h1>Last Name</h1>
-                    </th>
-                    <th>
-                        <h1>Email</h1>
-                    </th>
-                    <th>
-                        <h1>Phone</h1>
-                    </th>
-                    <th>
-                        <h1>Location</h1>
-                    </th>
-                    <th>
-                        <h1>Age</h1>
-                    </th>
-                    <th>
-                        <h1>Call Count</h1>
-                    </th>
-                    <th>
-                        <h1>Add/Edit</h1>
-                    </th>
-                    <th>
-                        <h1>Summary</h1>
-                    </th>
+              <td class="accordion-content">
 
+                <form action="/updateInquiryStatus/{{this._id}}" method="post">
+                    <button class="edit-button">Checked</button>
+                </form>
+                
+              </td>
+              <td class="accordion-content">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>abcdefg </td>
-                    <td>abcdefg </td>
-                    <td>abc121@gmail.com </td>
-                    <td>9863816297 </td>
-                    <td>gurgaon </td>
-                    <td>21 </td>
-                    <td>12222 </td>
-                    <td>
+                <form action="/deleteInquiry/{{this._id}}" method="post">
+                    <button class="delete-button">Delete</button>
+                </form>
 
+              </td>
+            </tr>
+            {{/each}}
 
-
-                        <a name="" id="" class="enq_details_edit " href="add_enquiry.html">Edit</a>
-
-
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="dropbtn">hover <i class="bi bi-chevron-double-down"></i></button>
-                            <div class="dropdown-content">
-                                <button class="summary_btn1"> Call1</button>
-                                <button class="summary_btn2"> Call2</button>
-                                <button class="summary_btn3"> Call3</button>
-                                <button class="summary_btn4"> Call4</button>
-                                <div class="summary1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-                                    quas a eum repellat accusantium non doloremque dolorem iste voluptas harum
-                                    voluptatum similique officia quos distinctio eveniet vel, aliquam fugiat laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary2">khjkjh kjhkihk hgj kjgkgk hg kkhkgj ggjghjhgj hg gjh jhfjf j.
-                                </div>
-                                <div class="summary3">Lojbjmbmj hjghjg hgjh jgj jhgjgjgj tio eveniet vel, aliquam fugiat
-                                    laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary4">Lojbjmbm laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td>abcdefg </td>
-                    <td>abcdefg </td>
-                    <td>abc121@gmail.com </td>
-                    <td>9863816297 </td>
-                    <td>gurgaon </td>
-                    <td>21 </td>
-                    <td>12222 </td>
-                    <td>
-                        <a name="" id="" class="enq_details_edit " href="add_enquiry.html">Edit</a>
-
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="dropbtn">hover <i class="bi bi-chevron-double-down"></i></button>
-                            <div class="dropdown-content">
-                                <button class="summary_btn1"> Call1</button>
-                                <button class="summary_btn2"> Call2</button>
-                                <button class="summary_btn3"> Call3</button>
-                                <button class="summary_btn4"> Call4</button>
-                                <div class="summary1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-                                    quas a eum repellat accusantium non doloremque dolorem iste voluptas harum
-                                    voluptatum similique officia quos distinctio eveniet vel, aliquam fugiat laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary2">khjkjh kjhkihk hgj kjgkgk hg kkhkgj ggjghjhgj hg gjh jhfjf j.
-                                </div>
-                                <div class="summary3">Lojbjmbmj hjghjg hgjh jgj jhgjgjgj tio eveniet vel, aliquam fugiat
-                                    laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary4">Lojbjmbm laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>abcdefg </td>
-                    <td>abcdefg </td>
-                    <td>abc121@gmail.com </td>
-                    <td>9863816297 </td>
-                    <td>gurgaon </td>
-                    <td>21 </td>
-                    <td>12222 </td>
-                    <td>
-                        <a name="" id="" class="enq_details_edit " href="add_enquiry.html">Edit</a>
-
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="dropbtn">hover <i class="bi bi-chevron-double-down"></i></button>
-                            <div class="dropdown-content">
-                                <button class="summary_btn1"> Call1</button>
-                                <button class="summary_btn2"> Call2</button>
-                                <button class="summary_btn3"> Call3</button>
-                                <button class="summary_btn4"> Call4</button>
-                                <div class="summary1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-                                    quas a eum repellat accusantium non doloremque dolorem iste voluptas harum
-                                    voluptatum similique officia quos distinctio eveniet vel, aliquam fugiat laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary2">khjkjh kjhkihk hgj kjgkgk hg kkhkgj ggjghjhgj hg gjh jhfjf j.
-                                </div>
-                                <div class="summary3">Lojbjmbmj hjghjg hgjh jgj jhgjgjgj tio eveniet vel, aliquam fugiat
-                                    laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary4">Lojbjmbm laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>abcdefg </td>
-                    <td>abcdefg </td>
-                    <td>abc121@gmail.com </td>
-                    <td>9863816297 </td>
-                    <td>gurgaon </td>
-                    <td>21 </td>
-                    <td>12222 </td>
-                    <td>
-                        <a name="" id="" class="enq_details_edit " href="add_enquiry.html">Edit</a>
-
-
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="dropbtn">hover <i class="bi bi-chevron-double-down"></i></button>
-                            <div class="dropdown-content">
-                                <button class="summary_btn1"> Call1</button>
-                                <button class="summary_btn2"> Call2</button>
-                                <button class="summary_btn3"> Call3</button>
-                                <button class="summary_btn4"> Call4</button>
-                                <div class="summary1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-                                    quas a eum repellat accusantium non doloremque dolorem iste voluptas harum
-                                    voluptatum similique officia quos distinctio eveniet vel, aliquam fugiat laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary2">khjkjh kjhkihk hgj kjgkgk hg kkhkgj ggjghjhgj hg gjh jhfjf j.
-                                </div>
-                                <div class="summary3">Lojbjmbmj hjghjg hgjh jgj jhgjgjgj tio eveniet vel, aliquam fugiat
-                                    laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary4">Lojbjmbm laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>abcdefg </td>
-                    <td>abcdefg </td>
-                    <td>abc121@gmail.com </td>
-                    <td>9863816297 </td>
-                    <td>gurgaon </td>
-                    <td>21 </td>
-                    <td>12222 </td>
-                    <td>
-                        <a name="" id="" class="enq_details_edit " href="add_enquiry.html">Edit</a>
-
-
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="dropbtn">hover <i class="bi bi-chevron-double-down"></i></button>
-                            <div class="dropdown-content">
-                                <button class="summary_btn1"> Call1</button>
-                                <button class="summary_btn2"> Call2</button>
-                                <button class="summary_btn3"> Call3</button>
-                                <button class="summary_btn4"> Call4</button>
-                                <div class="summary1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-                                    quas a eum repellat accusantium non doloremque dolorem iste voluptas harum
-                                    voluptatum similique officia quos distinctio eveniet vel, aliquam fugiat laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary2">khjkjh kjhkihk hgj kjgkgk hg kkhkgj ggjghjhgj hg gjh jhfjf j.
-                                </div>
-                                <div class="summary3">Lojbjmbmj hjghjg hgjh jgj jhgjgjgj tio eveniet vel, aliquam fugiat
-                                    laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                                <div class="summary4">Lojbjmbm laborum.
-                                    Nostrum quis numquam quo animi voluptatum ipsa libero. Cumque culpa pariatur fugit
-                                    possimus veritatis quibusdam, aut deserunt accusantium beatae voluptatum.
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                    <td>kjhkjhkjhkj </td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                </tr>
-
-
-
-            </tbody>
+          </tbody>
         </table>
-
-
+      </div>
     </div>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const accordionRows = document.querySelectorAll("tr");
+        const statusInput = document.getElementsByName("status");
+
+        accordionRows.forEach(function (row) {
+          row.addEventListener("click", function () {
+            this.classList.toggle("active");
+          });
+        });
+
+        statusInput.forEach( (inputElement)=>{
+            if(inputElement.innerText == 'Pending'){
+                inputElement.style.color= "rgb(251, 102, 122)";
+            }else if(inputElement.innerText == 'Resolved'){
+                inputElement.style.color= "lightgreen";
+            }
+        })
 
 
 
-
+      });
+    </script>
 
 
     <script src="/js/jscript.js"></script>
-    <script src="/js/inquieTable"></script>
 </body>
 
 </html>

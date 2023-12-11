@@ -25,119 +25,53 @@
 
         <div id="enquiry_forms_no">
           <div id="inquiry_display_text">Inquries &nbsp;:</div>
-          <div id="inquiry_display">2</div>
+
+          <div id="inquiry_display">{{responseData.count}}</div>
         </div>
       </div>
 
       <div class="enq_middle">
         <div class="enq_slidding">
-          <div class="tray" style="--delay: -1">
-            <div class="box1">
-              <div class="inner1">
-                <div class="inner11"><i class="bi bi-person-circle"></i></div>
-                <div class="inner12">Name <span>abc121@gmail.com</span></div>
-              </div>
-              <div class="inner3">
-                <button><a href="enquiry_details.html">Check</a></button>
-              </div>
-            </div>
-            <div class="box2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe
-              deserunt incidunt fugiat numquam quas reprehenderit cum sunt
-              perferendis nisi ea ullam voluptatum adipisci ratione culpa
-              blanditiis non nulla, temporibus facere? Beatae tenetur vel
-              exercitationem nulla, doloremque omnis porro necessitatibus at
-              odio quos iure voluptates, laborum deserunt minima nisi quidem?
-            </div>
-          </div>
-          <div class="tray" style="--delay: 0">
-            <div class="box1">
-              <div class="inner1">
-                <div class="inner11"><i class="bi bi-person-circle"></i></div>
-                <div class="inner12">Raman <span>abc121@gmail.com</span></div>
-              </div>
-              <div class="inner3">
-                <button><a href="enquiry_details.html">Check</a></button>
-              </div>
-            </div>
-            <div class="box2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe
-              deserunt incidunt fugiat numquam quas reprehenderit cum sunt
-              perferendis nisi ea ullam voluptatum adipisci ratione culpa
-              blanditiis non nulla, temporibus facere? Beatae tenetur vel
-              exercitationem nulla, doloremque omnis porro necessitatibus at
-              odio quos iure voluptates, laborum deserunt minima nisi quidem?
-            </div>
-          </div>
+           {{#each responseData.data}}
+           {{!-- --delay nd --duration are used in style.css as var --}}
+              <div class="tray" style="--delay: {{@index}}; --duration: {{../responseData.calculatedDuration}};" >
+                <div class="box1">
+                  <div class="inner1">
+                    <div class="inner11"><i class="bi bi-person-circle"></i></div>
+                    <div class="inner12">{{this.firstname}} {{this.lastname}}  <span>{{this.email}}</span></div>
+                  </div>
+                  <div class="inner3">
 
-          <div class="tray" style="--delay: 1">
-            <div class="box1">
-              <div class="inner1">
-                <div class="inner11"><i class="bi bi-person-circle"></i></div>
-                <div class="inner12">Chaman <span>abc121@gmail.com</span></div>
-              </div>
-              <div class="inner3">
-                <button><a href="enquiry_details.html">Check</a></button>
-              </div>
-            </div>
-            <div class="box2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe
-              deserunt incidunt fugiat numquam quas reprehenderit cum sunt
-              perferendis nisi ea ullam voluptatum adipisci ratione culpa
-              blanditiis non nulla, temporibus facere? Beatae tenetur vel
-              exercitationem nulla, doloremque omnis porro necessitatibus at
-              odio quos iure voluptates, laborum deserunt minima nisi quidem?
-            </div>
-          </div>
+                    <form action="/inquiryDetails" method="get">
+                         <button type="submit">Check</button>
+                    </form>
 
-          <div class="tray" style="--delay: 2">
-            <div class="box1">
-              <div class="inner1">
-                <div class="inner11"><i class="bi bi-person-circle"></i></div>
-                <div class="inner12">Champ <span>abc121@gmail.com</span></div>
+                  </div>
+                </div>
+                <div class="box2">
+                  {{this.message}}
+                </div>
               </div>
-              <div class="inner3">
-                <button><a href="enquiry_details.html">Check</a></button>
-              </div>
-            </div>
-            <div class="box2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe
-              deserunt incidunt fugiat numquam quas reprehenderit cum sunt
-              perferendis nisi ea ullam voluptatum adipisci ratione culpa
-              blanditiis non nulla, temporibus facere? Beatae tenetur vel
-              exercitationem nulla, doloremque omnis porro necessitatibus at
-              odio quos iure voluptates, laborum deserunt minima nisi quidem?
-            </div>
-          </div>
-
-          <div class="tray" style="--delay: 3">
-            <div class="box1">
-              <div class="inner1">
-                <div class="inner11"><i class="bi bi-person-circle"></i></div>
-                <div class="inner12">XTZOO <span>abc121@gmail.com</span></div>
-              </div>
-              <div class="inner3">
-                <button><a href="enquiry_details.html">Check</a></button>
-              </div>
-            </div>
-            <div class="box2">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad saepe
-              deserunt incidunt fugiat numquam quas reprehenderit cum sunt
-              perferendis nisi ea ullam voluptatum adipisci ratione culpa
-              blanditiis non nulla, temporibus facere? Beatae tenetur vel
-              exercitationem nulla, doloremque omnis porro necessitatibus at
-              odio quos iure voluptates, laborum deserunt minima nisi quidem?
-            </div>
-          </div>
+          {{/each}}
+         
         </div>
 
         <div class="enq_details">
-          <a href="enquiry_details.html">
-            <div class="More_Details">
-              <i class="bi bi-box-arrow-in-down-left"></i>
-            </div>
+          
+            {{!-- <div class="More_Details"> --}}
+              
+              <form action="/inquiryDetails" method="get">
+                
+                      {{!-- <i class="bi bi-box-arrow-in-down-left"></i> --}}
+                    <button type="submit" style="border: none; width: auto; padding: 5px 10px; color: black;" > 
+                          click for details
+                      </button>
+                
+              </form>
+
+            {{!-- </div> --}}
             <div id="More_Details" class="More_Details"></div>
-          </a>
+   
         </div>
       </div>
     </div>

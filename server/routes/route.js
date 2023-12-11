@@ -14,6 +14,7 @@ const viewUsercontroller = require("../controllers/viewUser")
 const attendanceController = require("../controllers/attendance")
 const resetPassController = require("../controllers/resetPass")
 const feeController = require("../controllers/fee")
+const inquiryController = require("../controllers/inquiry")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
@@ -27,7 +28,6 @@ const upload = multer({ storage: storage });
 // home nd index page
 router.get("/", usercontroller.index);
 router.post("/", logIn.login); //login route
-router.get("/postInquiry", usercontroller.inquiry_post);
 router.get("/admin/dashboard", verifyJWT, role("admin"), homeAdmin.home);
 router.get("/student/dashboard", verifyJWT, role("student"), usercontroller.home_students);
 router.get("/teacher/dashboard", verifyJWT, role("teacher"), usercontroller.home_teachers);
@@ -41,7 +41,7 @@ router.get("/login/reset/password/:otpID",  resetPassController.resetPasswordPag
 router.post("/login/reset/password/:userRole/:userID",  resetPassController.resetPassword);
 
 // admin main pages
-router.get("/admin/inquiry", verifyJWT, role("admin"), usercontroller.inquiry);
+router.get("/admin/inquiry", verifyJWT, role("admin"), inquiryController.inquiry);
 router.get("/admin/courses", verifyJWT, role("admin"), coursecontroller.courses);
 router.get("/admin/teachers", verifyJWT, role("admin"), usercontroller.teachers);
 router.get("/admin/students", verifyJWT, role("admin"), usercontroller.students);
@@ -72,6 +72,13 @@ router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.dele
 router.get("/admin/feedetails/:courseID", verifyJWT, role("admin"), feeController.viewStudentDetails);
 
 
+router.get("/postInquiry", inquiryController.inquiryPostPage);
+router.post("/postInquiry", inquiryController.inquiryPost);
+router.get("/inquiryDetails", verifyJWT, role("admin"), inquiryController.inquiryDetails);
+router.post("/updateInquiryStatus/:id", verifyJWT, role("admin"), inquiryController.updateInquiryStatus);
+router.post("/deleteInquiry/:id", verifyJWT, role("admin"), inquiryController.deleteInquiry);
+
+
 // courseID -> object id of in courseSchema/course collection
 router.get("/admin/markAttendance/:courseID", verifyJWT, role("admin"), attendanceController.markAttendance)
 router.post("/admin/postAttendance/:courseID", verifyJWT, role("admin"), attendanceController.postAttendance)
@@ -79,14 +86,12 @@ router.get("/admin/viewAttendance/:courseID", verifyJWT, role("admin"), attendan
 router.get("/admin/searchAttendance/:courseID", verifyJWT, role("admin"), attendanceController.searchAttendance)
 
 // regsitering routes sub-page
-router.post(
-  "/admin/addStudent",
+router.post("/admin/addStudent",
   verifyJWT, role("admin"),
   upload.single("profilepic"),
   registerUser.register_student
 );
-router.post(
-  "/admin/addTeacher",
+router.post("/admin/addTeacher",
   verifyJWT, role("admin"),
   upload.single("profilepic"),
   registerUser.register_teacher

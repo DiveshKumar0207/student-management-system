@@ -15,7 +15,10 @@ window.addEventListener("load", () => {
   loader.classList.add("animation_center-hidden");
 
   loader.addEventListener("transitionend", () => {
-    document.body.removeChild("loader");
+    if (document.body.classList.contains("loader")) {
+      document.body.removeChild("loader");
+      console.log("yes");
+    }
   });
 });
 // <<<------------------inquiry-page//more details-button//----------->>>
@@ -86,15 +89,24 @@ const a = document.getElementById("refreshbutton");
 // });
 
 document.addEventListener("DOMContentLoaded", function () {
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
   async function sendRefresh() {
     const baseUrl = window.location.protocol + "//" + window.location.host;
 
     const fullURL = baseUrl + "/refresh";
-    console.log(fullURL);
+
+    const accessToken = getCookie("jwtAccess");
+    if (!accessToken) {
+      return;
+    }
 
     try {
       const response = await fetch(fullURL, { method: "get" });
-
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -103,5 +115,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   // no-need, server hanling it
-  setInterval(sendRefresh, 300000);
+  setInterval(sendRefresh, 20 * 60 * 1000);
 });
