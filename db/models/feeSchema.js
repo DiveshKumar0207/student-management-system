@@ -21,7 +21,7 @@ const feeSchema = new mongoose.Schema({
   },
   paymentstatus: {
     type: String,
-    enums: ["Pending", "Paid"],
+    enums: ["Pending", "Paid", "Failed"],
     default: "Pending",
   },
   timestamp: {

@@ -1,3 +1,9 @@
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+==>------------------------------------------------A-TODO-AND-REMINDER-.TXT---------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+ 
  https://snyk.io/
  
  https://expressjs.com/en/advanced/best-practice-security.html  
@@ -81,20 +87,20 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
     
 
 
-1. refreshToken code $$$ refreshToken--change on every time      --LIL-ISSUE--       --REFRESHING-REFRESH-TOKEN==before-LOGIN-it-starts-setInterval--
-2. roles define                                                  --DONE--
-3. otp/mail verification                                        --DONE--
-4. strong password, forget-password otpVerify,reset-pass page   --DONE--
+1. refreshToken code $$$ refreshToken--change on every time       --DONE--       
+2. roles define                                                   --DONE--
+3. otp/mail verification                                          --DONE--
+4. strong password, forget-password otpVerify,reset-pass page     --DONE--
 5. logoutAll button
 6. course crud                                                    --DONE--      
 7. student/teacher update $ delete $ view on screen               --DONE--   
 8. same for teacher                                               --DONE--
-9. post inquiry handling
+9. post inquiry handling                                          --DONE--
 10. notice                                                        --DONE--
-11. payment gateway                                               --WOKRING--
+11. payment gateway                                               --WOKRING-- ==PENDING==
 12. profile view
 13.dashboard for all
-14. Attendance view and mark                                     --DONE--
+14. Attendance view and mark                                      --DONE--
 15. "cookie-session/exxpress"- cookie use--->INSTEAD OF NORMAL ONE
         * flash messages 
 # 16. admin database
@@ -102,7 +108,9 @@ rate-limiter-flexible package provides tools to make this technique easy and fas
 18. more client side validation
 19. correction of date input                                       --DONE--
 20. 404 NOT FOUND PAGE                                             --DONE--     
-21. attendance database-->> [course name, ki jagah course id as refernce dalni h] 
+21. attendance database-->> [course name, ki jagah course id as refernce dalni h]    --DONE-- 
+
+22. admin dashboard update for fee/salary display                  ==>PENDING<==
 
 # ERROR :  --DONE--
 # dashboard:1  Access to fetch at 'http://localhost:3000/refresh' from origin 'http://127.0.0.1:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
