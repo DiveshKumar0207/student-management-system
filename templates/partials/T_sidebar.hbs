@@ -7,12 +7,18 @@
 
       <hr />
 
+    <div class="tooltip">
       <ul>
         <li>
           <a href="/teacher/dashboard"> <i class="bi bi-laptop"></i> </a>
         </li>
-      </ul>
+      </ul> 
+       <div class="tooltiptext-right">Dashboard</div>
+    </div>
 
+
+      
+    <div class="tooltip">
       <ul>
         <li>
           <a href="/teacher/attendance">
@@ -20,6 +26,8 @@
           ></a>
         </li>
       </ul>
+        <div class="tooltiptext-right">Attendance</div>
+    </div>
 
       {{!-- <ul>
         <li>
@@ -31,7 +39,7 @@
     <div class="sidebar_android">
       <ul>
         <li>
-          <a href="/teacher/dashboard"><i class="bi bi-person-circle"></i> NAME</a>
+          <a href="/teacher/dashboard"><i class="bi bi-person-circle"></i> {{firstname}}</a>
         </li>
       </ul>
 

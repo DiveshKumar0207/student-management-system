@@ -26,31 +26,60 @@
         Check your Attendance
       </div>
       <div class="attendance_middle">
-        <span
-          ><input
-            type="date"
-            name=""
-            id=""
-            data-placeholder="Date to Check"
-            class="input_date_att"
-        /></span>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
 
-              <th>Attendance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>march12, 22</td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <form action="/student/searchAttendance" method="get">
+
+            <div class="datepicker">
+               <input
+                 type="date"
+                 name="searchAttendanceDate"
+                 data-placeholder="Enter Date"
+                 class="input_date_att"
+                 required
+               />
+             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                  
+                    {{#unless studentAttendance}}
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO ATTENDANCE MARKED</td>
+
+                            </tr>
+                            <tr>
+                                 <td colspan="3" style="color: brown; text-align: center;">ENTER DATE $ CLICK VIEW, FOR THAT DATE'S ATTENTDANCE RECORD</td>
+                            </tr>
+                    {{else}}
+                      <!-- Content to render if the condition is truthy -->
+                            {{#each studentAttendance}}
+                            {{#each this.attendance}}
+
+                            <tr>
+                                <td>{{../../date}}</td>
+                                <td>
+                                    <div class="{{attend}}_button">{{attend}}</div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                            {{/each}}
+                    
+                    {{/unless}}
+                </tbody>
+            </table>
+
+             <div class="viewAttendanceButton ">
+                <input type="submit" value="VIEW" >
+            </div>
+
+            </form>
       </div>
     </div>
 

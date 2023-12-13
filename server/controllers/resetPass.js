@@ -120,8 +120,6 @@ exports.resetPasswordPage = async (req, res) => {
     }
 
     if (realUser) {
-      console.log(realUser);
-
       res.render("resetPassword", { realUser });
     }
   } catch (error) {

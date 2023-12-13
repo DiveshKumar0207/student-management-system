@@ -19,7 +19,6 @@ exports.viewStudentDetails = async (req, res) => {
     const feeData = await feeModel
       .find({ course: courseID })
       .populate("student");
-    console.log("fee data: ", feeData);
 
     res.render("detail_fee", { feeData });
   } catch (error) {

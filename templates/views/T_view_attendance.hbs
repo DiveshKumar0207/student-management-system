@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {{>head}}
-  </head>
 
-  <body>
+<head>
+    {{>head}}
+
+</head>
+
+<body>
      <!-- animation -->
     {{> animation}}
     <!-- animation ends -->
@@ -20,100 +22,72 @@
 
     <!-- enquiry_page -->
     <div class="center_part_fee">
-      <div class="fee_top_attendance" style="color: red">Past-Attendance</div>
-      <div class="attendance_middle">
-        <span
-          ><input
-            type="date"
-            name=""
-            id=""
-            data-placeholder="Date to Check"
-            class="input_date_att"
-        /></span>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Roll no</th>
-              <th>Attendance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>heyyy</td>
-              <td>12</td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td>233</td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td>443</td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <div class="att_button">Present</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="fee_top_attendance" style="color: red;">Past-Attendance</div>
+        <div class="attendance_middle">
+
+            <form action="/teacher/searchAttendance/{{userCourse._id}}" method="get">
+
+            <div class="datepicker">
+               <input
+                 type="date"
+                 name="searchAttendanceDate"
+                 data-placeholder="Enter Date"
+                 class="input_date_att"
+                 required
+               />
+             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll no</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                  
+                    {{#unless studentAttendance}}
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO ATTENDANCE MARKED TODAY</td>
+
+                            </tr>
+                            <tr>
+                                 <td colspan="3" style="color: brown; text-align: center;">ENTER DATE $ CLICK VIEW, FOR THAT DATE'S ATTENTDANCE RECORD</td>
+                            </tr>
+                    {{else}}
+                      <!-- Content to render if the condition is truthy -->
+                            {{#each studentAttendance}}
+                            {{#each this.attendance}}
+
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{rollno}}</td>
+                                <td>
+                                    <div class="{{attend}}_button">{{attend}}</div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+                            {{/each}}
+                    
+                    {{/unless}}
+                </tbody>
+            </table>
+
+             <div class="viewAttendanceButton ">
+                <input type="submit" value="VIEW" >
+            </div>
+
+            </form>
+
+        </div>
+
     </div>
 
+
+
     <script src="/js/jscript.js"></script>
-  </body>
+</body>
+
 </html>

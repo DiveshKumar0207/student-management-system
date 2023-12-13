@@ -21,46 +21,45 @@
     <div class="center_part_dashboard">
       <div class="admin_dashboard_tray">
         <div class="admin_dashboard_tray1">
-          <p><a href="students.html">Name</a></p>
-          <p>Raman</p>
+          <p>Name</p>
+          <p>{{firstname}}</p>
         </div>
         <div class="admin_dashboard_tray1">
-          <p><a href="teachers.html">Mobile</a></p>
-          <p>8800000000</p>
+          <p>Mobile</p>
+          <p>{{telephone}}</p>
         </div>
         <div class="admin_dashboard_tray1">
-          <p><a href="salary_details.html">Roll No</a></p>
-          <p>12</p>
+          <p>Roll no</p>
+          <p>{{rollno}}</p>
         </div>
         <div class="admin_dashboard_tray1">
-          <p><a href="fee.html">Fees</a></p>
-          <p>8000</p>
+          <p>Fees</p>
+          <p>Rs {{fee.amount}}</p>
+          <p style="color: yellow; text-align: right; padding-bottom: 20px; padding-right: 30px;">{{fee.paymentstatus}}</p>
         </div>
       </div>
 
-      <div class="notice">
-        <section>
+        <div class="notice">
+        <div class="cover">
+          <div class="slider">
+
+          {{#each noticedisp}}
           <div class="alert alert-1-primary">
-            <h3 class="alert-title">Hello World</h3>
-            <p class="alert-content">Lorem ipsum</p>
+            <h3 class="alert-title">{{this.noticeHead}}</h3>
+            <p class="alert-content">{{this.notice}}</p>
           </div>
-          <div class="alert alert-2-secondary">
-            <h3 class="alert-title">Hello World</h3>
-            <p class="alert-content">Lorem ipsum</p>
+          {{!-- <div class="alert alert-2-secondary">
+            <h3 class="alert-title">{{this.noticeHead}}</h3>
+            <p class="alert-content">{{this.notice}}</p>
+          </div> --}}
+
+          {{/each}}
+
+
           </div>
-          <div class="alert alert-3-danger">
-            <h3 class="alert-title">Hello World</h3>
-            <p class="alert-content">Lorem ipsum</p>
-          </div>
-          <div class="alert alert-1-warning">
-            <h3 class="alert-title">Hello World</h3>
-            <p class="alert-content">Lorem ipsum</p>
-          </div>
-          <div class="alert alert-2-success">
-            <h3 class="alert-title">Hello World</h3>
-            <p class="alert-content">Lorem ipsum</p>
-          </div>
-        </section>
+
+          
+        </div>
       </div>
     </div>
 

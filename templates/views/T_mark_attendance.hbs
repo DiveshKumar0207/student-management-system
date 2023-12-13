@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {{> head}}
-  </head>
 
-  <body>
+<head>
+    {{> head}}
+
+</head>
+
+<body>
      <!-- animation -->
     {{> animation}}
     <!-- animation ends -->
@@ -20,125 +22,103 @@
 
     <!-- enquiry_page -->
     <div class="center_part_fee">
-      <div class="fee_top_attendance">Taking-Attendance</div>
-      <div class="attendance_middle">
-        <span
-          ><input type="date" name="" id="" data-placeholder="Today's Date"
-        /></span>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Roll no</th>
-              <th>Attendance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>heyyy</td>
-              <td>12</td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td>233</td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td>443</td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>heyyy</td>
-              <td></td>
-              <td>
-                <select name="" id="">
-                  <option value="">Present</option>
-                  <option value="">Absent</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="fee_top_attendance">Taking-Attendance</div>
+        <div class="attendance_middle">
+
+            <form action="/teacher/postAttendance/{{courseChoosenID}}" method="post">
+            <div class="datepicker">
+               <input
+                 type="date"
+                 name=""
+                 data-placeholder="Enter Date"
+                 class="input_date_att"
+                 disabled
+                 style="cursor: not-allowed;"
+               />
+             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll no</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                     {{#unless studentsList}}
+
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO STUDENT ENROLLED</td>
+
+                            </tr>
+
+                     {{else}}
+
+                            {{#each studentsList}}
+                            <tr>
+                                <td >{{this.firstname}}</td>                        
+                                <td >{{this.rollno}}</td>
+                                   <input type="hidden" name="studentName" value="{{this.firstname}}">
+                                 <input type="hidden" name="studentRollno" value="{{this.rollno}}">
+
+                                <td>
+                                    <select name="studentAttendance" class="attendanceSelect" required>
+                                        <option value="present">Present</option>
+                                        <option value="absent">Absent</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+
+                     {{/unless}}
+            
+
+                </tbody>
+            </table>
+
+            <div class="submitAttendanceButton ">
+            <input type="submit" value="SUBMIT" >
+            </div>
+            </form>
+
+        </div>
+
     </div>
 
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", () => {
+
+        const selectopt = document.querySelectorAll(".attendanceSelect");
+
+        function updateBackgroundColor(sel) {
+                    if (sel.value === "present") {
+                        sel.style.backgroundColor = "green";
+                    } else if (sel.value === "absent") {
+                        sel.style.backgroundColor = "orange";
+                    }
+                }
+
+            selectopt.forEach((sel) => {
+                
+                updateBackgroundColor(sel);
+
+                sel.addEventListener("change", () => {
+
+                    updateBackgroundColor(sel)
+                });
+            });
+        });
+
+    </script>
+
+
+
     <script src="/js/jscript.js"></script>
-  </body>
+</body>
+
 </html>

@@ -2,8 +2,29 @@ require("../../db/connection/connect");
 const { studentRegister } = require("../../db/models/studentSchema");
 const { teacherRegister } = require("../../db/models/teacherSchema");
 const courseModel = require("../../db/models/courseSchema");
+const feeModel = require("../../db/models/feeSchema");
 
 // student
+
+//
+exports.students = async (req, res) => {
+  try {
+    const totalStudent = await studentRegister.find().count();
+
+    const totalFees = await feeModel.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalpendingfees: { $sum: "$amount" },
+        },
+      },
+    ]);
+    res.render("students", { totalFees, totalStudent });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //
 exports.addStudentPage = async (req, res) => {
   const courseAvailable = await courseModel.find();
@@ -147,7 +168,20 @@ exports.deleteStudent = async (req, res) => {
 };
 
 //
+
 // teacher
+
+//
+exports.teachers = async (req, res) => {
+  try {
+    const totalTeacher = await teacherRegister.find().count();
+
+    res.render("teachers", { totalTeacher });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //
 
 exports.addTeacherPage = async (req, res) => {

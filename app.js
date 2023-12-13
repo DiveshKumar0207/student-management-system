@@ -11,7 +11,6 @@ const cookieParser = require("cookie-parser");
 require("./db/connection/connect");
 const routes = require("./server/routes/route");
 
-const usercontroller = require("./server/controllers/usercontroller");
 const PORT = process.env.PORT || 3000;
 
 // paths

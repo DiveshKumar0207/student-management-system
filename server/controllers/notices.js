@@ -1,7 +1,11 @@
 const noticeRegister = require("../../db/models/noticeSchema");
 require("../../db/connection/connect");
 
-exports.notice = (req, res) => {
+exports.noticePage = (req, res) => {
+  res.render("notice");
+};
+
+exports.postNotice = (req, res) => {
   const { noticeHead, notice, expireAt } = req.body;
 
   const expiration = new Date(expireAt);

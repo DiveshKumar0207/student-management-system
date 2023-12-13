@@ -32,11 +32,20 @@
         </div>
         <div class="admin_dashboard_tray1">
           <p><a href="/admin/studentFee">Pending Salary</a></p>
-          <p>15000</p>
+          <p>---</p>
         </div>
         <div class="admin_dashboard_tray1">
           <p><a href="#">Pending Fees</a></p>
-          <p>8000</p>
+          <p>
+            {{#unless pendingFees.[0].totalpendingfees}}
+                ---
+            {{else}}
+
+                {{pendingFees.[0].totalpendingfees}}
+
+            {{/unless}}
+
+          </p>
         </div>
       </div>
 
@@ -60,7 +69,7 @@
           </div>
 
           
-        </div class="cover">
+        </div>
       </div>
     </div>
     </div>

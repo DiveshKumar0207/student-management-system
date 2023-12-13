@@ -1,6 +1,7 @@
    <!-- sidebar-nav -->
 
     <div class="sidebar_small">
+
       <ul>
         <li>
           <a href=""> <i class="bi bi-person-circle"></i></a>
@@ -9,12 +10,17 @@
 
       <hr />
 
+    <div class="tooltip">
       <ul>
         <li>
           <a href="/student/dashboard"> <i class="bi bi-laptop"></i> </a>
         </li>
-      </ul>
+      </ul>  <div class="tooltiptext-right">Dashboard</div>
+    </div>
+    
 
+
+    <div class="tooltip">
       <ul>
         <li>
           <a href="/student/viewAttendance">
@@ -22,12 +28,16 @@
           ></a>
         </li>
       </ul>
+      <div class="tooltiptext-right">Attendance</div>
+    </div>
+
+
     </div>
 
     <div class="sidebar_android">
       <ul>
         <li>
-          <a href=""><i class="bi bi-person-circle"></i> NAME</a>
+          <a><i class="bi bi-person-circle"></i> {{firstname}}</a>
         </li>
       </ul>
 
