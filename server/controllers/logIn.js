@@ -65,21 +65,12 @@ exports.login = async (req, res) => {
       await user.refreshtokens.push(refreshToken);
 
       // setting cookies
-      await res.cookie("jwtAccess", accessToken, {
-        maxAge: 30 * 60 * 1000,
-      });
+      await res.cookie("jwtAccess", accessToken);
       await res.cookie("jwtRefresh", refreshToken, {
         httpOnly: true,
       });
 
-      await user
-        .save()
-        .then(() => {
-          console.log("refresh token saved");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      await user.save();
 
       // res.json({ accessToken });
 

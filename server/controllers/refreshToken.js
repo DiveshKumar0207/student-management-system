@@ -11,15 +11,13 @@ const refreshPublicKey = fs.readFileSync(
   "utf8"
 );
 
-// refreshThreshold = "29s";
-
 //
 exports.refresh = async (req, res) => {
   try {
     const refreshToken = req.cookies.jwtRefresh;
 
     if (!refreshToken) {
-      res.status(401).json({ message: "1- unauthorized" });
+      res.status(401).json({ message: "unauthorized" });
     }
 
     // from verifyJWT middleware-> we defined req.user
@@ -27,7 +25,7 @@ exports.refresh = async (req, res) => {
 
     //   checking refreshToken on db
     const WebRefreshToken = await user.refreshtokens.includes(refreshToken);
-    if (!WebRefreshToken) res.status(403).json({ message: "1- forbidden" });
+    if (!WebRefreshToken) res.status(403).json({ message: "forbidden" });
 
     //   verifying token
     try {
@@ -39,13 +37,9 @@ exports.refresh = async (req, res) => {
     } catch (error) {
       console.log(`refresh verify err ${error}`);
 
-      res.status(403).json({ message: "1- Forbidden" });
+      res.status(403).json({ message: "Forbidden" });
     }
 
-    // const currentTime = Math.floor(Date.now() / 1000);
-
-    //   generating new accesstoken
-    // if (decoded.exp - currentTime < process.env.REFRESH_THRESHOLD) {
     const newAccessToken = jwt.sign(
       { _id: user._id, role: user.role },
       accessPrivateKey,
@@ -60,20 +54,18 @@ exports.refresh = async (req, res) => {
     // set accessToken --> new cookie
     try {
       await res.clearCookie("jwtAccess");
-      await res.cookie("jwtAccess", newAccessToken, {
-        maxAge: 30 * 60 * 1000,
-      });
-      console.log("token set-");
+      await res.cookie("jwtAccess", newAccessToken);
+      console.log(
+        "token set------------------------------------------------------------------------------"
+      );
     } catch (err) {
       console.log(`token regeneration err : ${err}`);
     }
-
-    // console.log(req.cookies);
 
     res.status(200);
     // }
   } catch (err) {
     console.log(`error: ${err}`);
-    res.status(401).json({ message: "1-unauthorized" });
+    res.status(401).json({ message: "unauthorized" });
   }
 };

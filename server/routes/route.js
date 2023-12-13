@@ -116,7 +116,7 @@ router.get("/student/viewAttendance", verifyJWT, accountName, role("student"), s
 router.get("/student/searchAttendance", verifyJWT, accountName, role("student"), studentController.S_searchAttendance);
 
 //
-router.get("/refresh", verifyJWT, refreshToken.refresh);
+router.post("/refresh", verifyJWT, refreshToken.refresh);
 
 // 
 router.post("/postNotice", verifyJWT, role("admin"), noticeController.postNotice);
