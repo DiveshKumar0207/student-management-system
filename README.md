@@ -42,10 +42,10 @@ Open your web browser and go to `http://localhost:3000` to access the Student Ma
 6. **Notice Board:**
 - Admin can publish notices on the website, visible to every student and teacher using the platform.
 
-7. **Inquiry Feature (Pending):**
+7. **Inquiry Feature:**
 - Users who are not students or staff can reach the institute by filling a form on the login page.
 - Users can provide their details and what information or assistance they require.
-- All inquiry data and a short summary of each conversation between inquirers and admin staff will be stored for better communication.
+<!-- - All inquiry data and a short summary of each conversation between inquirers and admin staff will be stored for better communication. -->
 
 8. **Admin Dashboard:**
 - Admin dashboard is complete, providing access to various administrative tasks.
