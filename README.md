@@ -50,7 +50,7 @@ Open your web browser and go to `http://localhost:3000` to access the Student Ma
 8. **Admin Dashboard:**
 - Admin dashboard is complete, providing access to various administrative tasks.
 
-9. **Student and Teacher Dashboards (Pending):**
+9. **Student and Teacher Dashboards:**
 - Pending completion. Students will be able to view their attendance, check their fees, and read notices. Teachers can access their information and take student attendance.
 
 ## Features
@@ -61,7 +61,7 @@ Open your web browser and go to `http://localhost:3000` to access the Student Ma
 - **Teacher Management:** Manage teachers and their information.
 - **Fee Payment:** Easily pay fees through the website.
 - **Notice Board:** Admin can publish notices for students and teachers.
-- **Inquiry Feature (Pending):** Users can inquire about institute-related information.
+- **Inquiry Feature:** Users can inquire about institute-related information.
 
 ## Configuration
 
@@ -78,9 +78,6 @@ If you need assistance or have any questions, please contact us at [linkedIn](ht
 
 ## Future Update
 
-We have exciting plans for future updates, including:
-
-- **Student and Teacher Dashboards (Pending):** Completion of dashboards for students and teachers.
-- **Inquiry Feature (Pending):** Implementation of the inquiry feature to improve communication with users outside the institute.
+We have exciting plans for future updates.
 
 
