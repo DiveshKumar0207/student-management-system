@@ -34,6 +34,9 @@
                 <tr>
                   <td>{{this.courseName}}</td></form>
                   <form action="/admin/feedetails/{{this._id}}">
+                    <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    
                       <td>
                         <button class="attendance_button">
                         <i class="bi bi-eye-slash-fill"></i>

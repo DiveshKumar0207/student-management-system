@@ -69,12 +69,18 @@
               <td class="accordion-content">
 
                 <form action="/admin/editTeacher/{{this._doc._id}}" method="post">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
                     <button class="edit-button">Update</button>
                 </form>
               </td>
               <td class="accordion-content">
 
                 <form action="/deleteTeacher/{{this._doc._id}}" method="post">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    
                     <button class="delete-button">Delete</button>
                 </form>
               </td>

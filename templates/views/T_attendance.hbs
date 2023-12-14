@@ -40,6 +40,8 @@
               <td> {{this.courseName}} </td>
               <td>
                 <form action="/teacher/markAttendance/{{this._id}}" method="get">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
                   <button class="attendance_button"> 
                     <i class="bi bi-pen-fill"></i>
@@ -48,6 +50,8 @@
               </td>
               <td>
                 <form action="/teacher/viewAttendance/{{this._id}}" method="get">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
                   <button class="attendance_button" >
                      <i class="bi bi-eye-slash-fill"></i>

@@ -39,21 +39,18 @@
 --security-dependencies--
 "hpp"          --"HTTP-parameter-pollution-attacks"--
 "helmet"        --to-secure-HTTP-headers"
-"synk"
+"snyk"
 "csurf"     --Protect-your-app-against-CSRFProtect-your-app-against-CSRF--
 ---
 "rate-limiter-flexible" --against-brute-force--
 -------
-"express-mongo-sanitize"
 
 "joi validator"
 "ajv validator"
-"npm validator"
+"express validator"
 ---------------------
 
-"var ratelimit = require('koa-ratelimit');
 var redis = require('redis');
-var koa = require('koa');"
 
 " uuid"
  "date-fns"

@@ -26,6 +26,8 @@
         <div class="attendance_middle">
 
             <form action="/admin/searchAttendance/{{userCourse._id}}" method="get">
+              <!-- Including CSRF token in form (csrfToken -> global variable)-->
+              <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
             <div class="datepicker">
                <input

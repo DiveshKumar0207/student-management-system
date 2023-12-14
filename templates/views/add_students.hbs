@@ -26,6 +26,8 @@
       <div class="add_students_middle">
         
         <form action="" method="post" enctype="multipart/form-data">
+          <!-- Including CSRF token in form (csrfToken -> global variable)-->
+          <input type="hidden" name="_csrf" value="{{csrfToken}}">
           <table>
             <tr>
               <td>

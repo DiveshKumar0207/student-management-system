@@ -25,6 +25,8 @@
         <h2 class="newsletter-title">Need Help in Logging in?</h2>
 
         <form class="newsletter-form" method="post" action="/login/verify/email/sendOtp">
+          <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
 
           <input
             type="email"

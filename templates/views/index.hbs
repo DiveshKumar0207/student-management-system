@@ -26,6 +26,8 @@
         <div class="middle">
 
           <form action="/" method="post">
+                 <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
             <input
               type="email"
               name="email"

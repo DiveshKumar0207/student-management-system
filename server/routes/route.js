@@ -32,7 +32,8 @@ const upload = multer({ storage: storage });
 
 // home nd index page
 router.get("/", indexController.index);
-router.post("/", logIn.login); //login route
+ //login route
+router.post("/", logIn.login);
 router.get("/admin/dashboard", verifyJWT, accountName, role("admin"), homeAdmin.home);
 router.get("/student/dashboard", verifyJWT, accountName, role("student"), studentController.home_students);
 router.get("/teacher/dashboard", verifyJWT, accountName, role("teacher"), teacherController.home_teachers);
@@ -80,7 +81,7 @@ router.get("/admin/feedetails/:courseID", verifyJWT, accountName, role("admin"),
 router.get("/postInquiry", inquiryController.inquiryPostPage);
 router.post("/postInquiry", inquiryController.inquiryPost);
 router.get("/inquiryDetails", verifyJWT, accountName, role("admin"), inquiryController.inquiryDetails);
-router.post("/updateInquiryStatus/:id", verifyJWT, role("admin"), inquiryController.updateInquiryStatus);
+// router.post("/updateInquiryStatus/:id", verifyJWT, role("admin"), inquiryController.updateInquiryStatus);
 router.post("/deleteInquiry/:id", verifyJWT, role("admin"), inquiryController.deleteInquiry);
 
 

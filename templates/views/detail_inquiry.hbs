@@ -65,6 +65,9 @@
               <td class="accordion-content">
 
                 <form action="/updateInquiryStatus/{{this._id}}" method="post">
+                    <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
                     <button class="edit-button">Checked</button>
                 </form>
                 
@@ -72,6 +75,9 @@
               <td class="accordion-content">
 
                 <form action="/deleteInquiry/{{this._id}}" method="post">
+                     <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
                     <button class="delete-button">Delete</button>
                 </form>
 

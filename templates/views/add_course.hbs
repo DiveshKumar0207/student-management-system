@@ -26,6 +26,10 @@
             <div class="courses_middle_card">
 
                 <form action="/createCourse" method="post">
+                      <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+
                     <input type="text" name="courseID" id="" placeholder="Course ID" required>
                     <input type="text" name="courseName" id="" placeholder="Course Name" required>
                     <input type="number" name="courseFee" id="" placeholder="Fees..." min="0" required>

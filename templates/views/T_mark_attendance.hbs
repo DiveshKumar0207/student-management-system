@@ -26,6 +26,10 @@
         <div class="attendance_middle">
 
             <form action="/teacher/postAttendance/{{courseChoosenID}}" method="post">
+              <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+
             <div class="datepicker">
                <input
                  type="date"

@@ -43,6 +43,9 @@
                   <div class="inner3">
 
                     <form action="/inquiryDetails" method="get">
+                      <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    
                          <button type="submit">Check</button>
                     </form>
 
@@ -61,6 +64,8 @@
             {{!-- <div class="More_Details"> --}}
               
               <form action="/inquiryDetails" method="get">
+                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 
                       {{!-- <i class="bi bi-box-arrow-in-down-left"></i> --}}
                     <button type="submit" style="border: none; width: auto; padding: 5px 10px; color: black;" > 

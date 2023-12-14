@@ -1,4 +1,8 @@
 const express = require("express");
+const hpp = require("hpp");
+const helmet = require("helmet");
+const csrfProtection = require("csurf");
+const { RateLimiterMemory } = require("rate-limiter-flexible");
 const app = express();
 
 require("dotenv").config();
@@ -18,80 +22,49 @@ const staticPath = path.join(__dirname, "./public");
 const viewsPath = path.join(__dirname, "./templates/views");
 const partialsPath = path.join(__dirname, "./templates/partials");
 
-//! i made mistake in linking css. it should be like href="/css/styles.css" not  href="css/styles.css" --notice that "/"before css
-//?  this caused all messed up and i had to write this code
-//! DO SIMPLY LIKE: app.use(express.static(staticPath)); AS WE DO,
-//* STOP MAKING MISTAKES
-//middleware static file
-// app.use((req, res, next) => {
-//   const route = req.path.split("/").slice(1, 3).join("/");
-//   const longRoute = req.path.split("/").slice(1, 4).join("/");
-
-//   const routePrefix = req.path.split("/")[1];
-//   // const secondPrefix = req.path.split("/")[2];
-//   try {
-//     if (routePrefix == "") {
-//       app.use(express.static(staticPath));
-//       //
-//     } else if (longRoute == "login/verify/otp") {
-//       app.use("/login/verify/otp", express.static(staticPath));
-//       //
-//     } else if (route == "login/verify") {
-//       app.use("/login/verify", express.static(staticPath));
-//       //
-//     } else if (longRoute == "login/reset/password") {
-//       app.use("/login/reset/password", express.static(staticPath));
-//       //
-//     } else if (longRoute == "admin/courses/editCourse") {
-//       app.use("/admin/courses/editCourse", express.static(staticPath));
-//       //
-//     } else if (route == "admin/courses") {
-//       app.use("/admin/courses", express.static(staticPath));
-//       //
-//     } else if (route == "admin/editStudent") {
-//       app.use("/admin/editStudent", express.static(staticPath));
-//       //
-//     } else if (route == "admin/editTeacher") {
-//       app.use("/admin/editTeacher", express.static(staticPath));
-//       //
-//     } else if (route == "admin/markAttendance") {
-//       app.use("/admin/markAttendance", express.static(staticPath));
-//       //
-//     } else if (route == "admin/postAttendance") {
-//       app.use("/admin/postAttendance", express.static(staticPath));
-//       //
-//     } else if (route == "admin/viewAttendance") {
-//       app.use("/admin/viewAttendance", express.static(staticPath));
-//       //
-//     } else if (route == "admin/searchAttendance") {
-//       app.use("/admin/searchAttendance", express.static(staticPath));
-//       //
-//     } else if (routePrefix == "teacher") {
-//       app.use("/teacher", express.static(staticPath));
-//       //
-//     } else if (routePrefix == "student") {
-//       app.use("/student", express.static(staticPath));
-//       //
-//     } else if (routePrefix == "admin") {
-//       app.use("/admin", express.static(staticPath));
-//       //
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-
-//   next();
-// });
-
 app.use(express.static(staticPath));
-
-//
-app.use(cors());
 
 //
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Enable CORS for all routes
+app.use(cors());
+// Enable Helmet middleware for secure HTTP headers
+app.use(helmet());
+
+// Enable HPP middleware to prevent HTTP Parameter Pollution attacks
+app.use(hpp());
+
+// Enable CSRF protection with csurf middleware
+// Send csrfToken via querry/body in while post-type request
+app.use(csrfProtection({ cookie: true }));
+
+// Set a middleware to make the CSRF token available in all templates(global variable) or responses
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
+
+// Example rate limiting with rate-limiter-flexible
+const rateLimiter = new RateLimiterMemory({
+  points: 5, // Number of points
+  duration: 1, // Per second
+});
+
+app.use((req, res, next) => {
+  rateLimiter
+    .consume(req.ip)
+    .then(() => {
+      // Request allowed, continue to the next middleware or route handler
+      next();
+    })
+    .catch(() => {
+      // Request denied due to rate limiting
+      res.status(429).send("Too Many Requests");
+    });
+});
 
 // hbs helper for equatting 2 thing
 hbs.registerHelper("eq", function (a, b) {
@@ -119,6 +92,19 @@ hbs.registerPartials(partialsPath);
 
 //  routes
 app.use("/", routes);
+
+if (process.env.NODE_ENV === "development") {
+  // Development environment error handling
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send(`Internal Server Error: ${err.message}`);
+  });
+} else {
+  // Production environment error handling
+  app.use((err, req, res, next) => {
+    res.status(500).send("Internal Server Error");
+  });
+}
 
 // listening server port
 app.listen(PORT, () => {

@@ -28,6 +28,8 @@
 
                {{!-- {{#each updateDetail}} --}}
                 <form action="/updateCourse/{{updateDetail._id}}" method="post">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
                
                     <input type="text" name="courseID" value="{{updateDetail.courseID}}" placeholder="Course ID" required>
                     <input type="text" name="courseName" value="{{updateDetail.courseName}}" placeholder="Course Name" required>

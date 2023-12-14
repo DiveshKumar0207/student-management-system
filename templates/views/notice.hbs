@@ -25,6 +25,10 @@
         <div class="notice_middle">
 
           <form action="/postNotice" method="post" class="Notice_entry">
+                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+
             <ul >
               <li>
                 <input type="datetime-local" name="expireAt" id="expireNotice" data-placeholder="Expiry of notice" required>

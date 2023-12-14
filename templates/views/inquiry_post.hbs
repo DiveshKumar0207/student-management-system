@@ -22,6 +22,10 @@
     <div class="container">
         <section> Zillionsoftech</section>
         <form action="/postInquiry" method="post">
+                    <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+
             <ul class="flex-outer">
                 <li>
                     <label for="first-name">First Name</label>

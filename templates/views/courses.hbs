@@ -44,11 +44,16 @@
                         {{!-- <td>{{this.courseFee}}</td> --}}
                         <td>
                             <form method="post" action="/admin/courses/editCourse/{{this._id}}">
+                                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
                                 <input type="submit" value="update" class="edit-button">
                             </form>
                         </td>
                         <td>
                             <form method="post" action="/deleteCourse/{{this._id}}" >
+                                    <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                                    <input type="hidden" name="_csrf" value="{{csrfToken}}">    
                             {{!-- <input type="hidden" name="_method" value="DELETE">                             --}}
                                 <input  type="submit" value="Delete" class="delete-button">
                             </form>

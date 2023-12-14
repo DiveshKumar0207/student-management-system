@@ -21,6 +21,8 @@
     <!-- login card -->
     <div class="resetPageMain">
        <form class="form" method="post" action="/login/verify/otp/{{userOtpID}}">
+         <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <div class="content">
         <p align="center">Enter your OTP Code</p>
         <div class="inp">

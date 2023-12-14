@@ -59,24 +59,24 @@ exports.inquiryDetails = async (req, res) => {
 };
 
 // update inquiry status
-exports.updateInquiryStatus = async (req, res) => {
-  const inquireID = req.params.id;
+// exports.updateInquiryStatus = async (req, res) => {
+//   const inquireID = req.params.id;
 
-  try {
-    const status = "Resolved";
-    const inquiryStatusToUpdate = await inquiryModel.findOneAndUpdate(
-      { _id: inquireID },
-      { status },
-      { new: true }
-    );
+//   try {
+//     const status = "Resolved";
+//     const inquiryStatusToUpdate = await inquiryModel.findOneAndUpdate(
+//       { _id: inquireID },
+//       { status },
+//       { new: true }
+//     );
 
-    await inquiryStatusToUpdate.save();
+//     await inquiryStatusToUpdate.save();
 
-    res.redirect("/inquiryDetails");
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     res.redirect("/inquiryDetails");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 exports.deleteInquiry = async (req, res) => {
   const inquireID = req.params.id;
 

@@ -25,6 +25,9 @@
                 ><i class="bi bi-box-arrow-right"></i> Logout</a
               > --}}
               <form method="post" action="/logout">
+                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              
                    <button type="submit">
                           <i class="bi bi-box-arrow-right"></i> Logout
                    </button>
