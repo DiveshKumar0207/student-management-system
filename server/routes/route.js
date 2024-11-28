@@ -6,7 +6,7 @@ const indexController = require("../controllers/index");
 const registerUser = require("../controllers/registerUser");
 const logIn = require("../controllers/logIn");
 const logOut = require("../controllers/logout");
-const refreshToken = require("../../server/controllers/refreshToken");
+// const refreshToken = require("../../server/controllers/refreshToken");
 const noticeController = require("../controllers/notices")
 const homeAdmin = require("../controllers/homeAdmin")
 const coursecontroller = require("../controllers/course")
@@ -14,21 +14,26 @@ const viewUsercontroller = require("../controllers/viewUser")
 const attendanceController = require("../controllers/attendance")
 const resetPassController = require("../controllers/resetPass")
 const feeController = require("../controllers/fee")
+const salaryController = require("../controllers/salary")
 const inquiryController = require("../controllers/inquiry")
 const errorPageController = require("../controllers/errorPage")
 
 const teacherController = require("../controllers/teacherController")
 const studentController = require("../controllers/studentController")
+const createAdmin = require("../controllers/createAdmin")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
 const role = require("../../middleware/userRole");
 const accountName = require("../../middleware/accountName");
 
+
 const multer = require("multer");
 //  Configure Multer for file uploads
 const storage = multer.memoryStorage(); //  Store file in memory
 const upload = multer({ storage: storage });
+
+
 
 // home nd index page
 router.get("/", indexController.index);
@@ -59,13 +64,13 @@ router.get("/admin/notice", verifyJWT, accountName, role("admin"), noticeControl
 router.get("/admin/addStudent", verifyJWT, accountName, role("admin"), viewUsercontroller.addStudentPage);
 router.get("/admin/viewStudent", verifyJWT, accountName, role("admin"), viewUsercontroller.viewStudent);
 router.post("/admin/editStudent/:id", verifyJWT, role("admin"), viewUsercontroller.editStudent);
-router.post("/updateStudent/:id", verifyJWT, role("admin"), upload.single("profilepic"), viewUsercontroller.updateStudent);
+router.post("/updateStudent/:id", verifyJWT,  upload.single("profilepic"), role("admin"), viewUsercontroller.updateStudent);
 router.post("/deleteStudent/:id", verifyJWT, role("admin"), viewUsercontroller.deleteStudent);
 
 router.get("/admin/addTeacher", verifyJWT, accountName, role("admin"), viewUsercontroller.addTeacherPage);
 router.get("/admin/viewTeacher", verifyJWT, accountName, role("admin"), viewUsercontroller.viewTeacher);
 router.post("/admin/editTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.editTeacher);
-router.post("/updateTeacher/:id", verifyJWT, role("admin"), upload.single("profilepic"), viewUsercontroller.updateTeacher);
+router.post("/updateTeacher/:id", verifyJWT, role("admin"),  upload.single("profilepic"),  viewUsercontroller.updateTeacher);
 router.post("/deleteTeacher/:id", verifyJWT, role("admin"), viewUsercontroller.deleteTeacher);
 
 
@@ -75,13 +80,14 @@ router.post("/admin/courses/editCourse/:id", verifyJWT, role("admin"), coursecon
 router.post("/updateCourse/:id", verifyJWT, role("admin"), coursecontroller.updateCourse);
 router.post("/deleteCourse/:id", verifyJWT, role("admin"), coursecontroller.deleteCourse);
 
+router.get("/admin/salarydetails", verifyJWT, accountName, role("admin"), salaryController.viewTeacherDetails);
 router.get("/admin/feedetails/:courseID", verifyJWT, accountName, role("admin"), feeController.viewStudentDetails);
 
 
 router.get("/postInquiry", inquiryController.inquiryPostPage);
 router.post("/postInquiry", inquiryController.inquiryPost);
 router.get("/inquiryDetails", verifyJWT, accountName, role("admin"), inquiryController.inquiryDetails);
-// router.post("/updateInquiryStatus/:id", verifyJWT, role("admin"), inquiryController.updateInquiryStatus);
+router.post("/updateInquiryStatus/:id", verifyJWT, role("admin"), inquiryController.updateInquiryStatus);
 router.post("/deleteInquiry/:id", verifyJWT, role("admin"), inquiryController.deleteInquiry);
 
 
@@ -117,10 +123,13 @@ router.get("/student/viewAttendance", verifyJWT, accountName, role("student"), s
 router.get("/student/searchAttendance", verifyJWT, accountName, role("student"), studentController.S_searchAttendance);
 
 //
-router.post("/refresh", verifyJWT, refreshToken.refresh);
+// router.post("/refresh", verifyJWT, refreshToken.refresh);
 
 // 
 router.post("/postNotice", verifyJWT, role("admin"), noticeController.postNotice);
+
+// 
+router.get("/createAdmin", createAdmin.createAdmin);
 
 // 
 router.get("*", errorPageController.errorPage);

@@ -1,7 +1,6 @@
 const express = require("express");
 const hpp = require("hpp");
 const helmet = require("helmet");
-const csrfProtection = require("csurf");
 const { RateLimiterMemory } = require("rate-limiter-flexible");
 const app = express();
 
@@ -24,28 +23,38 @@ const partialsPath = path.join(__dirname, "./templates/partials");
 
 app.use(express.static(staticPath));
 
+// app.use((req, res, next) => {
+//   let rawBody = "";
+//   req.on("data", (chunk) => {
+//     rawBody += chunk.toString();
+//   });
+//   req.on("end", () => {
+//     console.log("Raw Body:", rawBody);
+//     next();
+//   });
+// });
+
 //
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Enable CORS for all routes
 app.use(cors());
 // Enable Helmet middleware for secure HTTP headers
-app.use(helmet());
+// app.use(helmet());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://cdn.jsdelivr.net/"],
+    },
+  })
+);
 
 // Enable HPP middleware to prevent HTTP Parameter Pollution attacks
 app.use(hpp());
-
-// Enable CSRF protection with csurf middleware
-// Send csrfToken via querry/body in while post-type request
-app.use(csrfProtection({ cookie: true }));
-
-// Set a middleware to make the CSRF token available in all templates(global variable) or responses
-app.use((req, res, next) => {
-  res.locals.csrfToken = req.csrfToken();
-  next();
-});
 
 // Example rate limiting with rate-limiter-flexible
 const rateLimiter = new RateLimiterMemory({

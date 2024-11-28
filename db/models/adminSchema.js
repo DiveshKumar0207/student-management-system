@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const Address = require("./addressSchema");
+
 
 const adminSchema = new mongoose.Schema({
   firstname: {
@@ -16,23 +16,7 @@ const adminSchema = new mongoose.Schema({
     trim: true,
     uppercase: true,
   },
-  gender: {
-    type: String,
-    required: true,
-  },
-  teacherid: {
-    type: Number,
-    required: true,
-    unique: true,
-    trim: true,
-  },
-  telephone: {
-    type: Number,
-    required: true,
-    unique: true,
-    trim: true,
-    min: [10, "Must be at least 10, got {VALUE}"],
-  },
+
   email: {
     type: String,
     required: true,
@@ -52,29 +36,11 @@ const adminSchema = new mongoose.Schema({
     min: [8, "Must be at least 8, got {VALUE}"],
   },
 
-  address: Address.schema,
-
-  teachingcourse: {
-    type: String,
-    required: true,
-  },
-
-  joiningdate: {
-    type: String,
-  },
-  dob: {
-    type: String,
-    required: true,
-  },
-  profilepic: {
-    contentType: String,
-    data: Buffer,
-  },
   role: {
     type: String,
     default: "admin",
   },
-  refreshtokens: [String],
+
 });
 
 // middleware for admin schema

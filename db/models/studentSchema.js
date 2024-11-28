@@ -68,10 +68,6 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  profilepic: {
-    contentType: String,
-    data: Buffer,
-  },
   role: {
     type: String,
     default: "student",
@@ -81,7 +77,6 @@ const studentSchema = new mongoose.Schema({
     ref: "course",
     required: true,
   },
-  refreshtokens: [String],
 });
 
 // middleware to hash password and default date

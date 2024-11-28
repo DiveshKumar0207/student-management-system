@@ -8,27 +8,28 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const fs = require("fs");
-const accessPrivateKey = fs.readFileSync(
-  process.env.ACCESS_PRIVATE_KEY,
-  "utf8"
-);
-const refreshPrivateKey = fs.readFileSync(
-  process.env.REFRESH_PRIVATE_KEY,
-  "utf8"
-);
+const accessPrivateKey = fs.readFileSync("private.pem", "utf8");
+// const accessPrivateKey = fs.readFileSync(
+//   process.env.ACCESS_PRIVATE_KEY,
+//   "utf8"
+// );
+// const refreshPrivateKey = fs.readFileSync(
+//   process.env.REFRESH_PRIVATE_KEY,
+//   "utf8"
+// );
 
 function generateAccessToken(id, role) {
   return jwt.sign({ _id: id, role: role }, accessPrivateKey, {
     algorithm: "ES256",
-    expiresIn: process.env.ACCESS_EXPIRE_TIME,
+    // expiresIn: process.env.ACCESS_EXPIRE_TIME,
   });
 }
-function generateRefreshToken(id, role) {
-  return jwt.sign({ _id: id, role: role }, refreshPrivateKey, {
-    algorithm: "ES256",
-    expiresIn: process.env.REFRESH_EXPIRE_TIME,
-  });
-}
+// function generateRefreshToken(id, role) {
+//   return jwt.sign({ _id: id, role: role }, refreshPrivateKey, {
+//     algorithm: "ES256",
+//     expiresIn: process.env.REFRESH_EXPIRE_TIME,
+//   });
+// }
 // login=====================================================
 exports.login = async (req, res) => {
   try {
@@ -58,17 +59,17 @@ exports.login = async (req, res) => {
     try {
       const accessToken = generateAccessToken(user._id, user.role);
 
-      const refreshToken = generateRefreshToken(user._id, user.role);
-      console.log("access $ refresh token made");
+      // const refreshToken = generateRefreshToken(user._id, user.role);
+      // console.log("access $ refresh token made");
 
       // pushing refreshtoken to database
-      await user.refreshtokens.push(refreshToken);
+      // await user.refreshtokens.push(refreshToken);
 
       // setting cookies
       await res.cookie("jwtAccess", accessToken);
-      await res.cookie("jwtRefresh", refreshToken, {
-        httpOnly: true,
-      });
+      // await res.cookie("jwtRefresh", refreshToken, {
+      //   httpOnly: true,
+      // });
 
       await user.save();
 

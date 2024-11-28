@@ -27,7 +27,7 @@
 
             <form action="/admin/postAttendance/{{courseChoosenID}}" method="post">
               <!-- Including CSRF token in form (csrfToken -> global variable)-->
-              <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
               
             <div class="datepicker">
                <input
@@ -58,21 +58,21 @@
                             </tr>
 
                      {{else}}
-
+                     
                             {{#each studentsList}}
                             <tr>
                                 <td >{{this.firstname}}</td>                        
                                 <td >{{this.rollno}}</td>
-                                   <input type="hidden" name="studentName" value="{{this.firstname}}">
-                                 <input type="hidden" name="studentRollno" value="{{this.rollno}}">
+                                   <input type="hidden" name="studentName[]" value="{{this.firstname}}">
+                                 <input type="hidden" name="studentRollno[]" value="{{this.rollno}}">
 
                                 <td>
-                                    <select name="studentAttendance" class="attendanceSelect" required>
+                                    <select name="studentAttendance[]" class="attendanceSelect" id="attendanceSelect" required>
                                         <option value="present">Present</option>
                                         <option value="absent">Absent</option>
                                     </select>
                                 </td>
-                            </tr>
+                            </tr>   
 
                             {{/each}}
 
@@ -92,36 +92,8 @@
 
     </div>
 
-    <script>
-        
-        document.addEventListener("DOMContentLoaded", () => {
-
-        const selectopt = document.querySelectorAll(".attendanceSelect");
-
-        function updateBackgroundColor(sel) {
-                    if (sel.value === "present") {
-                        sel.style.backgroundColor = "green";
-                    } else if (sel.value === "absent") {
-                        sel.style.backgroundColor = "orange";
-                    }
-                }
-
-            selectopt.forEach((sel) => {
-                
-                updateBackgroundColor(sel);
-
-                sel.addEventListener("change", () => {
-
-                    updateBackgroundColor(sel)
-                });
-            });
-        });
-
-    </script>
-
-
-
     <script src="/js/jscript.js"></script>
+    
 </body>
 
 </html>

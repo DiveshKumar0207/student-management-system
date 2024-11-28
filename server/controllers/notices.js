@@ -10,6 +10,8 @@ exports.postNotice = (req, res) => {
 
   const expiration = new Date(expireAt);
 
+  console.log(req.body)
+
   try {
     const postNotice = new noticeRegister({
       // noticeHead: noticeHead,

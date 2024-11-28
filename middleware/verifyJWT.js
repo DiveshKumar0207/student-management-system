@@ -6,7 +6,8 @@ const { teacherRegister } = require("../db/models/teacherSchema");
 const { adminRegister } = require("../db/models/adminSchema");
 
 const fs = require("fs");
-const publicKey = fs.readFileSync(process.env.ACCESS_PUBLIC_KEY, "utf8");
+// const publicKey = fs.readFileSync(process.env.ACCESS_PUBLIC_KEY, "utf8");
+const publickey = fs.readFileSync('public.pem', 'utf8');
 
 // auth middleware
 const auth = async (req, res, next) => {
@@ -25,10 +26,9 @@ const auth = async (req, res, next) => {
     // const accessToken = authHeader.spilt(" ")[1];
 
     try {
-      const decoded = jwt.verify(accessToken, publicKey, {
+      const decoded = jwt.verify(accessToken, publickey, {
         algorithms: "ES256",
       });
-      console.log(`verified access token `);
 
       req.role = decoded.role;
 

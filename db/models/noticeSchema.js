@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const noticeSchema = new mongoose.Schema({
-  noticehead: {
+  noticeHead: {
     type: String,
     trim: true,
   },
@@ -16,7 +16,7 @@ const noticeSchema = new mongoose.Schema({
 });
 
 //  TTL index to auto-expire notice //but we need custom deletion
-// noticeSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
+noticeSchema.index({ expireAt: 1 }, { expireAfterSeconds: 86400 });
 
 const notice = mongoose.model("notice", noticeSchema);
 

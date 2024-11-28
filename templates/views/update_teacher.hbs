@@ -27,7 +27,7 @@
             {{#each teacherData}}
         <form action="/updateTeacher/{{_doc._id}}" method="post" enctype='multipart/form-data'>
           <!-- Including CSRF token in form (csrfToken -> global variable)-->
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
                     
           <table>
             <tr>
@@ -164,7 +164,8 @@
                   {{!--//TODO same work as in update_student.hbs  --}}
 
                    {{#each courseAvailable}}
-                  <option value="{{this.courseName}}" >{{this.courseName}}
+                  {{!-- <option value="{{this.courseName}}" >{{this.courseName}} --}}
+                    <option value="{{this.courseName}}"  {{#if (eq this.courseName ../_doc.course)}} selected {{/if}}> {{this.courseName}}, (Rs {{this.courseFee}})
                   </option>
                   {{/each}}
                 </select>

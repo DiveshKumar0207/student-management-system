@@ -36,6 +36,7 @@ exports.sendOtp = async (req, res) => {
 
     if (user) {
       const otpCode = generateOtp();
+      console.log(`otp : ${otpCode}`);
       const storeOtp = new otp({
         email: user.email,
         role: user.role,
@@ -133,6 +134,8 @@ exports.resetPassword = async (req, res) => {
   const enteredPassword = req.body.password;
   const enteredConfirmPassword = req.body.confirmPassword;
   try {
+    console.log("jbbjhghj");
+
     if (enteredPassword === enteredConfirmPassword) {
       //
       const Model = mongoose.model(`${userRole}register`);
@@ -150,6 +153,7 @@ exports.resetPassword = async (req, res) => {
         { password: hashPassword },
         { new: true }
       );
+
 
       try {
         await updatedData.save();

@@ -9,10 +9,8 @@ require("dotenv").config();
 
 //register student  // AND fee details of a student
 exports.register_student = async (req, res) => {
-  const session = await mongoose.startSession();
-  session.startTransaction();
-
   try {
+
     const {
       firstname,
       lastname,
@@ -33,11 +31,12 @@ exports.register_student = async (req, res) => {
       feeDiscout,
     } = req.body;
 
+
     const courseTook = await courseModel.findOne({ courseName: course });
 
     const courseTookID = courseTook._id;
 
-    const amount = courseTook.courseFee - parseInt(feeDiscout) / 100;
+    const amount = courseTook.courseFee * parseInt(100- feeDiscout) / 100; //discounted fees
 
     const stdRegister = new studentRegister({
       firstname,
@@ -60,7 +59,7 @@ exports.register_student = async (req, res) => {
       };
     }
 
-    const newStudent = await stdRegister.save({ session });
+    const newStudent = await stdRegister.save();
 
     const stdFee = new feeModel({
       student: newStudent._id,
@@ -69,20 +68,16 @@ exports.register_student = async (req, res) => {
       dueDate,
     });
 
-    await stdFee.save({ session });
-
-    await session.commitTransaction();
-    session.endSession();
+    await stdFee.save();
 
     res.status(201).redirect("/admin/addStudent");
   } catch (error) {
-    await session.commitTransaction();
-    session.endSession();
 
     console.error("Error registering student and creating fee data:", error);
     res.status(400).send(error);
   }
 };
+
 
 // register teacher
 exports.register_teacher = async (req, res) => {

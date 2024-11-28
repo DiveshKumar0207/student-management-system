@@ -1,25 +1,25 @@
 {
   "liveServer.settings.port": 5501,
+  "todo-tree.tree.showBadges": false,
+  "todo-tree.tree.scanMode": "workspace only",
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#002645",
-    "activityBar.background": "#002645",
+    "activityBar.activeBackground": "#173156",
+    "activityBar.background": "#173156",
     "activityBar.foreground": "#e7e7e7",
     "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#bf0069",
+    "activityBarBadge.background": "#b02f64",
     "activityBarBadge.foreground": "#e7e7e7",
     "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#002645",
-    "statusBar.background": "#000a12",
+    "sash.hoverBorder": "#173156",
+    "statusBar.background": "#0c1a2e",
     "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#002645",
-    "statusBarItem.remoteBackground": "#000a12",
+    "statusBarItem.hoverBackground": "#173156",
+    "statusBarItem.remoteBackground": "#0c1a2e",
     "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#000a12",
+    "titleBar.activeBackground": "#0c1a2e",
     "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#000a1299",
+    "titleBar.inactiveBackground": "#0c1a2e99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#000a12",
-  "todo-tree.tree.showBadges": false,
-  "todo-tree.tree.scanMode": "workspace only"
+  "peacock.color": "#0c1a2e"
 }

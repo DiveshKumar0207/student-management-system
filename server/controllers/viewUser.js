@@ -63,7 +63,6 @@ exports.editStudent = async (req, res) => {
     let studentData = stdDbData.map((std) => {
       return { ...std, courseAvailable };
     });
-
     res.render("update_student", { studentData });
   } catch (err) {
     console.log(err);
@@ -87,6 +86,7 @@ exports.updateStudent = async (req, res) => {
     rollno,
     course,
     joiningdate,
+    profilepic,
     dob,
   } = req.body;
   try {
@@ -229,27 +229,28 @@ exports.editTeacher = async (req, res) => {
 
 // update teacher
 exports.updateTeacher = async (req, res) => {
-  const userID = req.params.id;
-
-  const {
-    firstname,
-    lastname,
-    gender,
-    email,
-    password,
-    telephone,
-    street,
-    city,
-    state,
-    pincode,
-    teacherid,
-    salary,
-    teachingcourse,
-    joiningdate,
-    dob,
-    profilepic,
-  } = req.body;
   try {
+    const userID = req.params.id;
+
+    const {
+      firstname,
+      lastname,
+      gender,
+      email,
+      password,
+      telephone,
+      street,
+      city,
+      state,
+      pincode,
+      teacherid,
+      salary,
+      teachingcourse,
+      joiningdate,
+      dob,
+      profilepic,
+    } = req.body;
+
     const courseTook = await courseModel.findOne({
       courseName: teachingcourse,
     });

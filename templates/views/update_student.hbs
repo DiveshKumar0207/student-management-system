@@ -28,7 +28,7 @@
              {{#each studentData}}
         <form action="/updateStudent/{{_doc._id}}" method="post" enctype="multipart/form-data">
           <!-- Including CSRF token in form (csrfToken -> global variable)-->
-                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
                     
           <table>
             <tr>

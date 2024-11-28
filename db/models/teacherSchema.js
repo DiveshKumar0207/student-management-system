@@ -71,10 +71,7 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  profilepic: {
-    contentType: String,
-    data: Buffer,
-  },
+
   role: {
     type: String,
     default: "teacher",

@@ -21,6 +21,27 @@ window.addEventListener("load", () => {
     }
   });
 });
+
+// -------------------For the mark-attendance color -------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  let selectopt = document.getElementById("attendanceSelect");
+
+  function updateBackgroundColor() {
+    if (selectopt.value === "present") {
+      selectopt.style.backgroundColor = "green";
+    } else if (selectopt.value === "absent") {
+      selectopt.style.backgroundColor = "orange";
+    }
+  }
+
+  // Call the function initially to set the background color based on the default value
+  updateBackgroundColor();
+
+  // Add an event listener to detect when the selection changes
+  selectopt.addEventListener("change", updateBackgroundColor);
+});
+
 // <<<------------------inquiry-page//more details-button//----------->>>
 
 // const outputDiv = document.getElementById("More_Details");
