@@ -38,39 +38,35 @@ exports.markAttendance = async (req, res) => {
 exports.postAttendance = async (req, res) => {
   const courseID = req.params.courseID;
   try {
-    // const userCourse = await course.findOne({ _id: courseID });
-    // const studentsCourse = userCourse.courseName;
+    const userCourse = await course.findOne({ _id: courseID });
+    const studentsCourse = userCourse.courseName;
 
-    // let studentNames = req.body.studentName;
-    // let studentRollnos = req.body.studentRollno;
-    // let studentAttendances = req.body.studentAttendance;
+    let studentNames = Object.values(req.body.studentName);
+    let studentRollnos = Object.values(req.body.studentRollno);
+    let studentAttendances = Object.values(req.body.studentAttendance);
 
-    console.log("body", req.body);
-    const items = req.body["items[]"];
-    console.log(items); // This will log the array of items
+    // Ensure studentNames is an array
+    if (!Array.isArray(studentNames)) {
+      studentNames = [studentNames];
+      studentRollnos = [studentRollnos];
+      studentAttendances = [studentAttendances];
+    }
 
-    // // Ensure studentNames is an array
-    // if (!Array.isArray(studentNames)) {
-    //   studentNames = [studentNames];
-    //   studentRollnos = [studentRollnos];
-    //   studentAttendances = [studentAttendances];
-    // }
+    const attendanceRecord = new attendanceRegister({
+      batch: studentsCourse,
+      // attendancedate: undefined,
+      attendance: [],
+    });
 
-    // const attendanceRecord = new attendanceRegister({
-    //   batch: studentsCourse,
-    //   // attendancedate: undefined,
-    //   attendance: [],
-    // });
+    for (let i = 0; i < studentNames.length; i++) {
+      attendanceRecord.attendance.push({
+        name: studentNames[i],
+        rollno: studentRollnos[i],
+        attend: studentAttendances[i],
+      });
+    }
 
-    // for (let i = 0; i < studentNames.length; i++) {
-    //   attendanceRecord.attendance.push({
-    //     name: studentNames[i],
-    //     rollno: studentRollnos[i],
-    //     attend: studentAttendances[i],
-    //   });
-    // }
-
-    // await attendanceRecord.save();
+    await attendanceRecord.save();
 
     res.redirect("/admin/attendance");
   } catch (err) {

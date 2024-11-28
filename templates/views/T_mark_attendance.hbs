@@ -64,11 +64,11 @@
                             <tr>
                                 <td >{{this.firstname}}</td>                        
                                 <td >{{this.rollno}}</td>
-                                   <input type="hidden" name="studentName" value="{{this.firstname}}">
-                                 <input type="hidden" name="studentRollno" value="{{this.rollno}}">
+                                   <input type="hidden" name="studentName[{{this._id}}]" value="{{this.firstname}}">
+                                 <input type="hidden" name="studentRollno[{{this._id}}]" value="{{this.rollno}}">
 
                                 <td>
-                                    <select name="studentAttendance" class="attendanceSelect" required>
+                                    <select name="studentAttendance[{{this._id}}]" class="attendanceSelect" required>
                                         <option value="present">Present</option>
                                         <option value="absent">Absent</option>
                                     </select>
