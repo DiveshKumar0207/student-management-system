@@ -20,7 +20,6 @@ const errorPageController = require("../controllers/errorPage")
 
 const teacherController = require("../controllers/teacherController")
 const studentController = require("../controllers/studentController")
-const createAdmin = require("../controllers/createAdmin")
 
 // middleware
 const verifyJWT = require("../../middleware/verifyJWT");
@@ -129,7 +128,6 @@ router.get("/student/searchAttendance", verifyJWT, accountName, role("student"),
 router.post("/postNotice", verifyJWT, role("admin"), noticeController.postNotice);
 
 // 
-router.get("/createAdmin", createAdmin.createAdmin);
 
 // 
 router.get("*", errorPageController.errorPage);

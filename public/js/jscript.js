@@ -25,21 +25,29 @@ window.addEventListener("load", () => {
 // -------------------For the mark-attendance color -------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  let selectopt = document.getElementById("attendanceSelect");
+  let selectopt = document.querySelectorAll("#attendanceSelect");
 
-  function updateBackgroundColor() {
-    if (selectopt.value === "present") {
-      selectopt.style.backgroundColor = "green";
-    } else if (selectopt.value === "absent") {
-      selectopt.style.backgroundColor = "orange";
+  function updateBackgroundColor(select) {
+    // Use the passed select element to set the background color
+    if (select.value === "present") {
+      select.style.backgroundColor = "green";
+      select.style.color = "white";
+    } else if (select.value === "absent") {
+      select.style.backgroundColor = "orange";
+      select.style.color = "black";
     }
   }
 
-  // Call the function initially to set the background color based on the default value
-  updateBackgroundColor();
+  // Loop over all select elements and attach event listeners
+  selectopt.forEach((select) => {
+    // Call the function initially to set the background color based on the default value
+    updateBackgroundColor(select);
 
-  // Add an event listener to detect when the selection changes
-  selectopt.addEventListener("change", updateBackgroundColor);
+    // Add an event listener to detect when the selection changes
+    select.addEventListener("change", function () {
+      updateBackgroundColor(select);
+    });
+  });
 });
 
 // <<<------------------inquiry-page//more details-button//----------->>>
