@@ -3,7 +3,7 @@ const { studentRegister } = require("../../db/models/studentSchema");
 const { teacherRegister } = require("../../db/models/teacherSchema");
 const { adminRegister } = require("../../db/models/adminSchema");
 const otp = require("../../db/models/otpSchema");
-const otpSendEmail = require("../controllers/sendEmail");
+const otpSendEmail = require("../../utils/sendEmail");
 const mongoose = require("mongoose");
 
 require("dotenv").config();
@@ -13,6 +13,94 @@ function generateOtp() {
   const min = 100000;
   const max = 999999;
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function otpMailOptions(otp, recipientEmail, subject) {
+  let message = {
+    from: "your-email@gmail.com",
+    // to: "your-email@gmail.com", // Or any placeholder email
+    bcc: [recipientEmail], // BCC hides recipients
+    subject: `${subject}`,
+    text: `
+      Your One-Time Password (OTP)
+
+      Dear User,
+
+      Your OTP code for secure access is: ${otp}
+
+      Please use this code to complete your action. This code will expire in 5 minutes.
+
+      If you did not request this OTP, please ignore this email.
+    `,
+    html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f5f5f5;
+                        margin: 0;
+                        padding: 0;
+                    }
+                  
+                    .container {
+                        background-color: #ffffff;
+                        width: 600px;
+                        margin: 50px auto;
+                        padding: 30px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                  
+                    .logo {
+                        max-width: 100px;
+                        margin: 0 auto;
+                        display: block;
+                        padding: 20px 0;
+                    }
+                  
+                    h1 {
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                  
+                    p {
+                        text-align: center;
+                        font-size: 16px;
+                        line-height: 1.6;
+                    }
+                  
+                    .otp {
+                        background-color: #007BFF;
+                        color: #ffffff;
+                        font-size: 24px;
+                        padding: 10px 20px;
+                        margin: 20px auto;
+                        display: block;
+                        width: 150px;
+                        text-align: center;
+                        border-radius: 5px;
+                    }
+                  
+                    .validity {
+                        font-size: 14px;
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <img src="https://via.placeholder.com/100x50" alt="Logo" class="logo">
+                    <h1>Your One Time Password (OTP)</h1>
+                    <p class="otp">${otp}</p>
+                    <p class="validity">Please enter this OTP within 10 minutes to verify your identity.</p>
+                </div>
+            </body>
+            </html>`,
+  };
+
+  return message;
 }
 
 //
@@ -35,19 +123,33 @@ exports.sendOtp = async (req, res) => {
     }
 
     if (user) {
-      const otpCode = generateOtp();
-      console.log(`otp : ${otpCode}`);
-      const storeOtp = new otp({
-        email: user.email,
-        role: user.role,
-        otp: otpCode,
-      });
-
       try {
-        const savedOtp = await storeOtp.save();
-        console.log("otp stored");
+        const otpCode = generateOtp();
+        console.log(`otp : ${otpCode}`);
 
-        otpSendEmail(otpCode, user.email)
+        const existingOtp = await otp.findOne({ email: user.email });
+
+        let savedOtp;
+        if (existingOtp) {
+          existingOtp.otp = otpCode; //updates otp
+          existingOtp.createdAt = new Date(Date.now()); //expires the existing otp
+          savedOtp = await existingOtp.save();
+        } else {
+          var storeOtpObject = new otp({
+            email: user.email,
+            role: user.role,
+            otp: otpCode,
+          });
+          savedOtp = await storeOtpObject.save();
+        }
+
+        const subject = "Reset OTP";
+
+        const emails = [user.email];
+
+        const mailOptions = otpMailOptions(otpCode, emails, subject);
+
+        otpSendEmail(mailOptions)
           .then(() => {
             console.log("OTP sent to your mail");
           })
@@ -153,7 +255,6 @@ exports.resetPassword = async (req, res) => {
         { password: hashPassword },
         { new: true }
       );
-
 
       try {
         await updatedData.save();
